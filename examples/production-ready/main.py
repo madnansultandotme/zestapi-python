@@ -1,6 +1,7 @@
-from zestapi import ZestAPI, Settings, ORJSONResponse
-import os
 import logging
+import os
+
+from zestapi import ORJSONResponse, Settings, ZestAPI
 
 # Production settings
 settings = Settings()

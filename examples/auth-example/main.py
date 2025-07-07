@@ -1,5 +1,6 @@
-from zestapi import ZestAPI, Settings, ORJSONResponse
 import logging
+
+from zestapi import ORJSONResponse, Settings, ZestAPI
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

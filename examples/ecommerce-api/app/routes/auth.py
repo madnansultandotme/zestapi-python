@@ -1,13 +1,14 @@
-from zestapi import route, ORJSONResponse
-from app.models import UserCreate, UserLogin, Token, Message
+from datetime import datetime
+
 from app.auth import (
-    hash_password,
-    verify_password,
     create_access_token,
     get_user_from_token,
+    hash_password,
+    verify_password,
 )
-from app.database import users_db, user_id_counter, get_user_by_email
-from datetime import datetime
+from app.database import get_user_by_email, user_id_counter, users_db
+from app.models import Message, Token, UserCreate, UserLogin
+from zestapi import ORJSONResponse, route
 
 
 @route("/auth/register", methods=["POST"])

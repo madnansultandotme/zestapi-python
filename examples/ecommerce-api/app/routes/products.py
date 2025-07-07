@@ -1,21 +1,22 @@
-from zestapi import route, ORJSONResponse
-from app.models import (
-    ProductCreate,
-    ProductUpdate,
-    CategoryCreate,
-    ProductSearchFilters,
-)
+from datetime import datetime
+
 from app.database import (
-    products_db,
     categories_db,
-    product_id_counter,
     category_id_counter,
-    get_product_by_id,
     get_category_by_id,
+    get_product_by_id,
+    product_id_counter,
+    products_db,
     search_products,
 )
+from app.models import (
+    CategoryCreate,
+    ProductCreate,
+    ProductSearchFilters,
+    ProductUpdate,
+)
 from app.routes.auth import get_current_user
-from datetime import datetime
+from zestapi import ORJSONResponse, route
 
 
 @route("/products", methods=["GET"])

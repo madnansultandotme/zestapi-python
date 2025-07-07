@@ -1,6 +1,8 @@
-from zestapi import ZestAPI, ORJSONResponse, websocket_route, HTMLResponse
 import json
+
 from stream_manager import StreamManager
+
+from zestapi import HTMLResponse, ORJSONResponse, ZestAPI, websocket_route
 
 # Create ZestAPI instance
 app_instance = ZestAPI()

@@ -1,6 +1,8 @@
-from zestapi import route, ORJSONResponse
-from pydantic import BaseModel, field_validator
 from typing import Optional
+
+from pydantic import BaseModel, field_validator
+
+from zestapi import ORJSONResponse, route
 
 
 # Pydantic models for validation

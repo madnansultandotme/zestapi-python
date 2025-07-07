@@ -1,21 +1,23 @@
-import logging
 import importlib.util
+import logging
 import os
 import sys
 from pathlib import Path
-from typing import List, Optional, Dict, Any, Callable, Union
+from typing import Any, Callable, Dict, List, Optional, Union
+
 from starlette.applications import Starlette
-from starlette.routing import Route, WebSocketRoute, BaseRoute
+from starlette.exceptions import HTTPException
 from starlette.middleware.authentication import AuthenticationMiddleware
 from starlette.middleware.cors import CORSMiddleware
-from starlette.exceptions import HTTPException
 from starlette.requests import Request
 from starlette.responses import Response
-from .routing import discover_routes
-from .security import JWTAuthBackend
+from starlette.routing import BaseRoute, Route, WebSocketRoute
+
 from .middleware import ErrorHandlingMiddleware, RequestLoggingMiddleware
 from .ratelimit import RateLimitMiddleware
 from .responses import ORJSONResponse
+from .routing import discover_routes
+from .security import JWTAuthBackend
 from .settings import Settings
 
 logger = logging.getLogger(__name__)

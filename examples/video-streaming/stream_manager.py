@@ -1,11 +1,12 @@
-import cv2
+import asyncio
 import base64
 import json
-import asyncio
 import threading
 import time
-from typing import Dict, List, Set, Optional, Any
 from datetime import datetime
+from typing import Any, Dict, List, Optional, Set
+
+import cv2
 
 
 class VideoStream:

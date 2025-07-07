@@ -1,4 +1,4 @@
-from zestapi import ZestAPI, ORJSONResponse
+from zestapi import ORJSONResponse, ZestAPI
 
 # Create ZestAPI instance
 app_instance = ZestAPI()

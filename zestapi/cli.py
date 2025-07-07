@@ -5,9 +5,9 @@ ZestAPI CLI Tool
 This module provides command-line interface tools for ZestAPI projects.
 """
 import argparse
+import importlib.util
 import os
 import sys
-import importlib.util
 
 
 def init_project():
@@ -36,7 +36,7 @@ app_instance = ZestAPI(
 async def homepage(request):
     return ORJSONResponse({"message": "Welcome to ZestAPI!", "version": "1.0.0"})
 
-app = app_instance.create_app()
+app = app_instance.app
 
 if __name__ == "__main__":
     app_instance.run()

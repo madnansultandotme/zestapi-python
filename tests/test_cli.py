@@ -2,12 +2,14 @@
 Tests for ZestAPI CLI functionality.
 """
 
-import pytest
-import tempfile
 import os
-import shutil
 import platform
+import shutil
+import tempfile
 from pathlib import Path
+
+import pytest
+
 from zestapi.cli import main
 
 

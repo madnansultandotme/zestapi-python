@@ -1,12 +1,12 @@
-from zestapi import route, ORJSONResponse
-from app.models import OrderCreate, OrderStatusUpdate
 from app.database import (
     create_order_from_cart,
+    get_product_by_id,
     get_user_orders,
     orders_db,
-    get_product_by_id,
 )
+from app.models import OrderCreate, OrderStatusUpdate
 from app.routes.auth import get_current_user
+from zestapi import ORJSONResponse, route
 
 
 @route("/orders", methods=["GET"])

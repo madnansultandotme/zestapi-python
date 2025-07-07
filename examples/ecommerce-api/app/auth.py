@@ -1,14 +1,14 @@
 import bcrypt
 
 try:
-    from jose import jwt, JWTError
+    from jose import JWTError, jwt
 except ImportError:
     print("Warning: python-jose not installed. Install with: pip install python-jose")
     jwt = None
     JWTError = Exception
 
 from datetime import datetime, timedelta
-from typing import Optional, Dict, Any
+from typing import Any, Dict, Optional
 
 SECRET_KEY = "your-secret-key-here-change-in-production"
 ALGORITHM = "HS256"

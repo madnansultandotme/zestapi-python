@@ -1,13 +1,13 @@
-from zestapi import route, ORJSONResponse
-from app.models import CartItemCreate, CartItemUpdate
 from app.database import (
-    get_product_by_id,
-    get_user_cart,
     add_to_cart,
     calculate_cart_total,
     cart_items_db,
+    get_product_by_id,
+    get_user_cart,
 )
+from app.models import CartItemCreate, CartItemUpdate
 from app.routes.auth import get_current_user
+from zestapi import ORJSONResponse, route
 
 
 @route("/cart", methods=["GET"])

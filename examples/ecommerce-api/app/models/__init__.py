@@ -1,7 +1,8 @@
-from pydantic import BaseModel, field_validator
-from typing import Optional, List, Union
 from datetime import datetime
 from enum import Enum
+from typing import List, Optional, Union
+
+from pydantic import BaseModel, field_validator
 
 
 class UserRole(str, Enum):

@@ -2,9 +2,11 @@
 Conftest file for pytest configuration and shared fixtures.
 """
 
-import pytest
 import asyncio
-from typing import Generator, AsyncGenerator
+from typing import AsyncGenerator, Generator
+
+import pytest
+
 from zestapi import ZestAPI
 from zestapi.core.application import ZestAPI as ZestAPICore
 

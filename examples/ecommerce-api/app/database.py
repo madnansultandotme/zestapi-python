@@ -1,14 +1,15 @@
 from datetime import datetime
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
 from app.models import (
-    Product,
-    Category,
-    User,
     CartItem,
+    Category,
     Order,
     OrderItem,
-    UserRole,
     OrderStatus,
+    Product,
+    User,
+    UserRole,
 )
 
 # In-memory databases (replace with real database in production)

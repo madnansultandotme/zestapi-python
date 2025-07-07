@@ -1,7 +1,9 @@
-from zestapi import ZestAPI, ORJSONResponse, websocket_route, HTMLResponse
 import json
 from datetime import datetime
+
 from chat_manager import ChatManager
+
+from zestapi import HTMLResponse, ORJSONResponse, ZestAPI, websocket_route
 
 # Create ZestAPI instance
 app_instance = ZestAPI()

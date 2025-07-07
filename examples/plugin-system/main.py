@@ -13,10 +13,11 @@ The plugin system allows for modular functionality that can be
 enabled/disabled and configured independently.
 """
 
-from zestapi import ZestAPI, ORJSONResponse
-from app.plugins.example_plugin.plugin import RequestLoggerPlugin, APIKeyPlugin
-import logging
 import asyncio
+import logging
+
+from app.plugins.example_plugin.plugin import APIKeyPlugin, RequestLoggerPlugin
+from zestapi import ORJSONResponse, ZestAPI
 
 # Configure logging
 logging.basicConfig(

@@ -3,7 +3,8 @@ Tests for ZestAPI core functionality.
 """
 
 import pytest
-from zestapi import ZestAPI, ORJSONResponse
+
+from zestapi import ORJSONResponse, ZestAPI
 
 
 class TestZestAPICore:

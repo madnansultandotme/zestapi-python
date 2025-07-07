@@ -1,5 +1,5 @@
-from zestapi import ZestAPI, ORJSONResponse
 from app.database import init_sample_data
+from zestapi import ORJSONResponse, ZestAPI
 
 # Create ZestAPI instance
 app_instance = ZestAPI()

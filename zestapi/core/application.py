@@ -109,6 +109,25 @@ class ZestAPI:
         except Exception as e:
             logger.error(f"Failed to add WebSocket route {path}: {e}")
             raise ValueError(f"Invalid WebSocket route configuration: {e}")
+    
+    def route(
+        self, 
+        path: str, 
+        methods: Optional[List[str]] = None, 
+        name: Optional[str] = None
+    ) -> Callable:
+        """Decorator for adding routes to the application"""
+        def decorator(func: Callable) -> Callable:
+            self.add_route(path, func, methods=methods, name=name)
+            return func
+        return decorator
+    
+    def websocket_route(self, path: str, name: Optional[str] = None) -> Callable:
+        """Decorator for adding WebSocket routes to the application"""
+        def decorator(func: Callable) -> Callable:
+            self.add_websocket_route(path, func, name=name)
+            return func
+        return decorator
         
     def include_router(self, router) -> None:
         """Include routes from a router"""

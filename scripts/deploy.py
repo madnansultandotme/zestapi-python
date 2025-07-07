@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quick deployment script for ZestAPI.
+Quick deployment script for ZestAPI to GitHub and PyPI.
 """
 import subprocess
 import sys
@@ -11,123 +11,105 @@ from pathlib import Path
 def run_command(command, description):
     """Run a command and handle errors."""
     print(f"🔄 {description}...")
-    result = subprocess.run(command, shell=True, capture_output=True, text=True)
-    
-    if result.returncode != 0:
-        print(f"❌ {description} failed!")
-        print(f"Error: {result.stderr}")
+    try:
+        # Fix Windows HOME variable issue for Git commands
+        if command.startswith('git'):
+            # Set environment variable for the subprocess
+            env = os.environ.copy()
+            env['HOME'] = '/c/Users/adnan'
+            result = subprocess.run(command, shell=True, check=True, capture_output=True, text=True, env=env)
+        else:
+            result = subprocess.run(command, shell=True, check=True, capture_output=True, text=True)
+        
+        print(f"✅ {description} completed successfully")
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"❌ {description} failed:")
+        print(f"   Command: {command}")
+        print(f"   Error: {e.stderr}")
         return False
-    
-    print(f"✅ {description} completed!")
-    if result.stdout.strip():
-        print(f"Output: {result.stdout.strip()}")
-    return True
 
 
 def check_git_status():
-    """Check git status and repository setup."""
-    print("🔍 Checking git status...")
-    
-    # Check if git is initialized
-    if not Path(".git").exists():
-        print("📝 Initializing git repository...")
-        if not run_command("git init", "Git initialization"):
-            return False
-    
-    # Check if remote origin exists
-    result = subprocess.run("git remote -v", shell=True, capture_output=True, text=True)
-    if "origin" not in result.stdout:
-        print("🔗 Adding GitHub remote...")
-        remote_url = "https://github.com/madnansultandotme/zestapi-python.git"
-        if not run_command(f"git remote add origin {remote_url}", "Adding remote origin"):
-            return False
-    
+    """Check if there are uncommitted changes."""
+    # Fix Windows HOME variable issue
+    env = os.environ.copy()
+    env['HOME'] = '/c/Users/adnan'
+    result = subprocess.run("git status --porcelain", shell=True, capture_output=True, text=True, env=env)
+    if result.stdout.strip():
+        print("⚠️  Warning: You have uncommitted changes:")
+        print(result.stdout)
+        response = input("Continue anyway? (y/N): ")
+        return response.lower() == 'y'
     return True
 
 
-def pre_deployment_checks():
-    """Run pre-deployment quality checks."""
-    print("🧪 Running pre-deployment checks...")
+def setup_git_config():
+    """Setup Git configuration with user identity."""
+    print("🔧 Setting up Git configuration...")
     
-    checks = [
-        ("python -m pytest tests/ -v", "Running test suite"),
-        ("python scripts/build.py", "Building and validating package"),
-    ]
+    # Set Git user name and email
+    if not run_command('git config user.name "madnansultandotme"', "Setting Git username"):
+        return False
     
-    for command, description in checks:
-        if not run_command(command, description):
-            return False
+    if not run_command('git config user.email "info.adnansultan@gmail.com"', "Setting Git email"):
+        return False
     
+    print("✅ Git configuration completed")
     return True
 
 
-def github_deployment():
+def deploy_to_github():
     """Deploy to GitHub."""
     print("\n🐙 GitHub Deployment")
-    print("=" * 50)
+    print("=" * 40)
+    
+    # Setup Git configuration first
+    if not setup_git_config():
+        return False
     
     # Check git status
     if not check_git_status():
         return False
     
-    # Add all files
-    if not run_command("git add .", "Adding all files to git"):
+    # Add and commit any remaining changes
+    if not run_command("git add .", "Adding files"):
         return False
     
-    # Check if there are changes to commit
-    result = subprocess.run("git status --porcelain", shell=True, capture_output=True, text=True)
-    if not result.stdout.strip():
-        print("📝 No changes to commit")
-    else:
-        # Commit changes
-        commit_message = "Initial release: ZestAPI Python framework v1.0.0"
-        if not run_command(f'git commit -m "{commit_message}"', "Committing changes"):
+    # Check if there's anything to commit
+    env = os.environ.copy()
+    env['HOME'] = '/c/Users/adnan'
+    result = subprocess.run("git diff --cached --quiet", shell=True, env=env)
+    if result.returncode != 0:
+        commit_msg = input("Enter commit message (or press Enter for 'Update project'): ")
+        if not commit_msg:
+            commit_msg = "Update project"
+        
+        if not run_command(f'git commit -m "{commit_msg}"', "Committing changes"):
             return False
     
-    # Set main branch
-    if not run_command("git branch -M main", "Setting main branch"):
-        return False
-    
     # Push to GitHub
-    if not run_command("git push -u origin main", "Pushing to GitHub"):
+    if not run_command("git push origin main", "Pushing to GitHub"):
         return False
     
     return True
 
 
-def pypi_deployment():
-    """Deploy to PyPI."""
-    print("\n📦 PyPI Deployment")
-    print("=" * 50)
+def build_and_check_package():
+    """Build and validate the package."""
+    print("\n📦 Package Building")
+    print("=" * 40)
     
-    # Check if twine is installed
-    result = subprocess.run("twine --version", shell=True, capture_output=True, text=True)
-    if result.returncode != 0:
-        print("📥 Installing twine...")
-        if not run_command("pip install twine", "Installing twine"):
-            return False
-    
-    # Check if dist directory exists and has files
-    dist_path = Path("dist")
-    if not dist_path.exists() or not list(dist_path.glob("*")):
-        print("📦 Building package...")
-        if not run_command("python scripts/build.py", "Building package"):
-            return False
-    
-    # Validate package
-    if not run_command("twine check dist/*", "Validating package"):
+    # Clean previous builds
+    if not run_command("make clean", "Cleaning previous builds"):
         return False
     
-    # Upload to PyPI
-    print("\n🚀 Ready to upload to PyPI!")
-    print("⚠️  This will publish your package publicly to PyPI.")
-    
-    response = input("Continue with PyPI upload? (y/N): ")
-    if response.lower() != 'y':
-        print("❌ PyPI upload cancelled.")
+    # Run tests
+    if not run_command("make test", "Running tests"):
         return False
     
-    if not run_command("twine upload dist/*", "Uploading to PyPI"):
+    # Build package
+    if not run_command("python scripts/build.py", "Building package"):
         return False
     
     return True
@@ -135,21 +117,39 @@ def pypi_deployment():
 
 def create_release_tag():
     """Create a release tag."""
-    print("\n🏷️  Creating Release Tag")
-    print("=" * 50)
+    print("\n🏷️  Release Tagging")
+    print("=" * 40)
     
-    version = "v1.0.0"  # You can make this configurable
+    # Get current version
+    try:
+        with open("zestapi/__init__.py", "r") as f:
+            content = f.read()
+            version_line = [line for line in content.split('\n') if '__version__' in line][0]
+            version = version_line.split('"')[1]
+    except:
+        print("❌ Could not determine version from __init__.py")
+        return False
+    
+    print(f"📋 Current version: {version}")
+    
+    # Check if tag already exists
+    result = subprocess.run(f"git tag -l v{version}", shell=True, capture_output=True, text=True)
+    if result.stdout.strip():
+        print(f"⚠️  Tag v{version} already exists")
+        response = input("Create new tag anyway? (y/N): ")
+        if response.lower() != 'y':
+            return False
     
     # Create tag
-    if not run_command(f"git tag {version}", f"Creating tag {version}"):
+    if not run_command(f"git tag v{version}", f"Creating tag v{version}"):
         return False
     
     # Push tag
-    if not run_command(f"git push origin {version}", f"Pushing tag {version}"):
+    if not run_command(f"git push origin v{version}", f"Pushing tag v{version}"):
         return False
     
-    print(f"✅ Release tag {version} created and pushed!")
-    print("🤖 This should trigger GitHub Actions for automated PyPI publishing.")
+    print(f"✅ Tag v{version} created and pushed")
+    print(f"🚀 GitHub Actions will automatically publish to PyPI")
     
     return True
 
@@ -158,72 +158,53 @@ def main():
     """Main deployment process."""
     print("🚀 ZestAPI Deployment Script")
     print("=" * 50)
-    print("This script will help you deploy ZestAPI to GitHub and PyPI.")
-    print()
     
-    # Pre-deployment checks
-    print("1️⃣  Running pre-deployment checks...")
-    if not pre_deployment_checks():
-        print("❌ Pre-deployment checks failed. Please fix issues and try again.")
+    if not Path("zestapi").exists():
+        print("❌ Error: Run this script from the ZestAPI project root directory")
         sys.exit(1)
     
-    print("\n✅ Pre-deployment checks passed!")
+    print("This script will:")
+    print("1. Deploy code to GitHub")
+    print("2. Build and validate package")
+    print("3. Create release tag (triggers auto-publish to PyPI)")
+    print()
     
-    # Choose deployment method
-    print("\n📋 Deployment Options:")
-    print("1. GitHub only")
-    print("2. GitHub + Manual PyPI")
-    print("3. GitHub + Automated PyPI (via GitHub Actions)")
-    print("4. Exit")
+    response = input("Continue with deployment? (y/N): ")
+    if response.lower() != 'y':
+        print("❌ Deployment cancelled")
+        sys.exit(0)
     
-    while True:
-        choice = input("\nSelect option (1-4): ").strip()
+    # Step 1: Deploy to GitHub
+    if not deploy_to_github():
+        print("❌ GitHub deployment failed")
+        sys.exit(1)
+    
+    # Step 2: Build and check package
+    if not build_and_check_package():
+        print("❌ Package building failed")
+        sys.exit(1)
+    
+    # Step 3: Create release tag
+    print("\n🎯 Ready to create release tag")
+    print("This will trigger automatic PyPI publishing via GitHub Actions")
+    response = input("Create release tag? (y/N): ")
+    
+    if response.lower() == 'y':
+        if not create_release_tag():
+            print("❌ Release tagging failed")
+            sys.exit(1)
         
-        if choice == "1":
-            # GitHub only
-            if github_deployment():
-                print("\n🎉 GitHub deployment completed successfully!")
-                print("📋 Next steps:")
-                print("  - Visit https://github.com/madnansultandotme/zestapi-python")
-                print("  - Configure repository settings")
-                print("  - Set up PyPI API token in GitHub Secrets")
-            break
-            
-        elif choice == "2":
-            # GitHub + Manual PyPI
-            if github_deployment() and pypi_deployment():
-                print("\n🎉 Full deployment completed successfully!")
-                print("📋 Your package is now available:")
-                print("  - GitHub: https://github.com/madnansultandotme/zestapi-python")
-                print("  - PyPI: https://pypi.org/project/zestapi/")
-                print("  - Install: pip install zestapi")
-            break
-            
-        elif choice == "3":
-            # GitHub + Automated PyPI
-            if github_deployment():
-                print("\n⚠️  For automated PyPI publishing, you need to:")
-                print("  1. Set up PyPI API token in GitHub repository secrets")
-                print("  2. Create a release tag to trigger publishing")
-                print()
-                
-                response = input("Create release tag now? (y/N): ")
-                if response.lower() == 'y':
-                    create_release_tag()
-                
-                print("\n🎉 GitHub deployment completed!")
-                print("📋 Next steps:")
-                print("  - Configure PyPI_API_TOKEN in GitHub Secrets")
-                print("  - GitHub Actions will handle PyPI publishing")
-            break
-            
-        elif choice == "4":
-            print("👋 Deployment cancelled.")
-            sys.exit(0)
-            
-        else:
-            print("❌ Invalid choice. Please select 1-4.")
-
+        print("\n🎉 Deployment completed successfully!")
+        print("📋 Next steps:")
+        print("  1. Check GitHub Actions workflow")
+        print("  2. Verify PyPI publication")
+        print("  3. Test: pip install zestapi")
+        print("  4. Create GitHub release with changelog")
+    else:
+        print("\n✅ Code deployed to GitHub successfully!")
+        print("📋 To publish to PyPI later:")
+        print("  1. Run: git tag v<version>")
+        print("  2. Run: git push origin v<version>")
 
 if __name__ == "__main__":
     main()

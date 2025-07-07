@@ -9,17 +9,22 @@ import os
 import sys
 import importlib.util
 
+
 def init_project():
     """Initialize a new ZestAPI project"""
     print("Initializing ZestAPI project...")
-    if os.path.exists("app") and os.path.exists("main.py") and os.path.exists("config.py"):
+    if (
+        os.path.exists("app")
+        and os.path.exists("main.py")
+        and os.path.exists("config.py")
+    ):
         print("Project structure already exists.")
     else:
         os.makedirs("app/routes", exist_ok=True)
         os.makedirs("app/plugins", exist_ok=True)
-        
+
         # Create main.py with ZestAPI app
-        main_content = '''from zestapi import ZestAPI, route, ORJSONResponse
+        main_content = """from zestapi import ZestAPI, route, ORJSONResponse
 import os
 
 app_instance = ZestAPI(
@@ -35,34 +40,35 @@ app = app_instance.create_app()
 
 if __name__ == "__main__":
     app_instance.run()
-'''
+"""
         with open("main.py", "w") as f:
             f.write(main_content)
-            
+
         # Create .env file
-        env_content = '''# ZestAPI Configuration
+        env_content = """# ZestAPI Configuration
 JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
 HOST=0.0.0.0
 PORT=8000
 DEBUG=false
 LOG_LEVEL=INFO
 RATE_LIMIT=100/minute
-'''
+"""
         with open(".env", "w") as f:
             f.write(env_content)
-            
+
         print("Basic project structure created.")
         print("Run 'python main.py' to start your ZestAPI server!")
+
 
 def generate_route(name):
     """Generate a new route file"""
     print(f"Generating route: {name}.py")
     route_path = os.path.join("app", "routes", f"{name}.py")
-    
+
     # Ensure routes directory exists
     os.makedirs(os.path.dirname(route_path), exist_ok=True)
-    
-    route_content = f'''from zestapi import route, ORJSONResponse
+
+    route_content = f"""from zestapi import route, ORJSONResponse
 
 @route("/{name}", methods=["GET"])
 async def {name}_index(request):
@@ -85,50 +91,53 @@ async def {name}_create(request):
         "message": f"Created new {name}",
         "data": data
     }}, status_code=201)
-'''
-    
+"""
+
     with open(route_path, "w") as f:
         f.write(route_content)
     print(f"Route {name}.py created at {route_path}")
+
 
 def view_route_map():
     """View the ZestAPI route map"""
     print("ZestAPI Route Map:")
     sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-    
+
     try:
         from zestapi.core.routing import discover_routes
+
         routes_dir = os.path.join(os.getcwd(), "app", "routes")
-        
+
         if not os.path.exists(routes_dir):
             print("  No routes directory found. Run 'zest init' first.")
             return
-            
+
         discovered_routes = discover_routes(routes_dir)
-        
+
         if not discovered_routes:
             print("  No routes discovered.")
             return
-            
+
         for route_obj in discovered_routes:
-            methods = getattr(route_obj, 'methods', 'N/A')
-            if hasattr(methods, '__iter__') and not isinstance(methods, str):
+            methods = getattr(route_obj, "methods", "N/A")
+            if hasattr(methods, "__iter__") and not isinstance(methods, str):
                 methods = list(methods)
             print(f"  Path: {route_obj.path}, Methods: {methods}")
-            
+
     except ImportError as e:
         print(f"  Error importing routing module: {e}")
     except Exception as e:
         print(f"  Error discovering routes: {e}")
 
+
 def generate_plugin(name):
     """Generate a new plugin"""
     print(f"Generating plugin: {name}.py")
     plugin_path = os.path.join("app", "plugins", f"{name}.py")
-    
+
     # Ensure plugins directory exists
     os.makedirs(os.path.dirname(plugin_path), exist_ok=True)
-    
+
     plugin_content = f'''from starlette.responses import JSONResponse
 
 class {name.title()}Plugin:
@@ -155,11 +164,12 @@ class {name.title()}Plugin:
             
         print(f"{name.title()}Plugin registered successfully.")
 '''
-    
+
     with open(plugin_path, "w") as f:
         f.write(plugin_content)
     print(f"Plugin {name}.py created at {plugin_path}")
     print(f"To enable this plugin, add '{name}' to ENABLED_PLUGINS in your .env file")
+
 
 def main():
     """Main CLI entry point"""
@@ -172,19 +182,27 @@ def main():
     init_parser = subparsers.add_parser("init", help="Initialize a new ZestAPI project")
 
     # generate command
-    generate_parser = subparsers.add_parser("generate", help="Generate ZestAPI components")
+    generate_parser = subparsers.add_parser(
+        "generate", help="Generate ZestAPI components"
+    )
     generate_subparsers = generate_parser.add_subparsers(dest="component")
-    
+
     # generate route
-    generate_route_parser = generate_subparsers.add_parser("route", help="Generate a new route file")
+    generate_route_parser = generate_subparsers.add_parser(
+        "route", help="Generate a new route file"
+    )
     generate_route_parser.add_argument("name", type=str, help="Name of the route")
-    
+
     # generate plugin
-    generate_plugin_parser = generate_subparsers.add_parser("plugin", help="Generate a new plugin")
+    generate_plugin_parser = generate_subparsers.add_parser(
+        "plugin", help="Generate a new plugin"
+    )
     generate_plugin_parser.add_argument("name", type=str, help="Name of the plugin")
 
     # route-map command
-    route_map_parser = subparsers.add_parser("route-map", help="View the ZestAPI route map")
+    route_map_parser = subparsers.add_parser(
+        "route-map", help="View the ZestAPI route map"
+    )
 
     # version command
     version_parser = subparsers.add_parser("version", help="Show ZestAPI version")
@@ -204,9 +222,11 @@ def main():
         view_route_map()
     elif args.command == "version":
         from zestapi import __version__
+
         print(f"ZestAPI {__version__}")
     else:
         parser.print_help()
+
 
 if __name__ == "__main__":
     main()

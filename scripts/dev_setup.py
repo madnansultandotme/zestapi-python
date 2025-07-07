@@ -11,7 +11,7 @@ from pathlib import Path
 def install_dev_dependencies():
     """Install development dependencies."""
     print("📦 Installing development dependencies...")
-    
+
     dev_packages = [
         "pytest>=7.0.0",
         "pytest-asyncio>=0.21.0",
@@ -22,20 +22,22 @@ def install_dev_dependencies():
         "mypy>=1.5.0",
         "build>=0.10.0",
         "twine>=4.0.0",
-        "pre-commit>=3.0.0"
+        "pre-commit>=3.0.0",
     ]
-    
+
     for package in dev_packages:
         print(f"  Installing {package}...")
-        result = subprocess.run([
-            sys.executable, "-m", "pip", "install", package
-        ], capture_output=True, text=True)
-        
+        result = subprocess.run(
+            [sys.executable, "-m", "pip", "install", package],
+            capture_output=True,
+            text=True,
+        )
+
         if result.returncode != 0:
             print(f"❌ Failed to install {package}")
             print(result.stderr)
             return False
-    
+
     print("✅ Development dependencies installed!")
     return True
 
@@ -43,7 +45,7 @@ def install_dev_dependencies():
 def setup_pre_commit():
     """Setup pre-commit hooks."""
     print("🔧 Setting up pre-commit hooks...")
-    
+
     # Create .pre-commit-config.yaml if it doesn't exist
     pre_commit_config = Path(".pre-commit-config.yaml")
     if not pre_commit_config.exists():
@@ -76,17 +78,15 @@ repos:
         with open(pre_commit_config, "w") as f:
             f.write(config_content.strip())
         print("  Created .pre-commit-config.yaml")
-    
+
     # Install pre-commit hooks
-    result = subprocess.run([
-        "pre-commit", "install"
-    ], capture_output=True, text=True)
-    
+    result = subprocess.run(["pre-commit", "install"], capture_output=True, text=True)
+
     if result.returncode != 0:
         print("❌ Failed to install pre-commit hooks")
         print(result.stderr)
         return False
-    
+
     print("✅ Pre-commit hooks installed!")
     return True
 
@@ -94,7 +94,7 @@ repos:
 def create_dev_env():
     """Create development environment file."""
     print("📝 Creating development environment file...")
-    
+
     env_file = Path(".env.dev")
     if not env_file.exists():
         env_content = """
@@ -111,7 +111,7 @@ RELOAD=true
         with open(env_file, "w") as f:
             f.write(env_content.strip())
         print("  Created .env.dev file")
-    
+
     print("✅ Development environment configured!")
     return True
 
@@ -120,19 +120,19 @@ def main():
     """Main development setup process."""
     print("🛠️  ZestAPI Development Setup")
     print("=" * 50)
-    
+
     # Install dev dependencies
     if not install_dev_dependencies():
         sys.exit(1)
-    
+
     # Setup pre-commit
     if not setup_pre_commit():
         print("⚠️  Pre-commit setup failed, continuing...")
-    
+
     # Create dev environment
     if not create_dev_env():
         sys.exit(1)
-    
+
     print("\n🎉 Development environment setup completed!")
     print("📋 Next steps:")
     print("  - Run 'python -m pytest tests/' to run tests")

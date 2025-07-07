@@ -30,12 +30,12 @@ __email__ = "info.adnansultan@gmail.com"
 __all__ = [
     "ZestAPI",
     "route",
-    "websocket_route", 
+    "websocket_route",
     "ORJSONResponse",
     "Settings",
     "create_access_token",
     "JWTAuthBackend",
     "ErrorHandlingMiddleware",
-    "RequestLoggingMiddleware", 
+    "RequestLoggingMiddleware",
     "RateLimitMiddleware",
 ]

@@ -8,6 +8,7 @@ app_instance = ZestAPI()
 # Global stream manager
 stream_manager = StreamManager()
 
+
 # Serve the video streaming interface
 async def video_interface(request):
     """Serve the video streaming HTML interface"""
@@ -604,25 +605,25 @@ async def video_interface(request):
     """
     return HTMLResponse(html_content)
 
+
 # WebSocket routes
 @websocket_route("/ws/viewer/{stream_id}")
 async def viewer_websocket(websocket):
     """WebSocket endpoint for viewing streams"""
     await websocket.accept()
-    
+
     stream_id = websocket.path_params["stream_id"]
-    
+
     # Add viewer to stream
     if stream_manager.add_viewer(stream_id, websocket):
         try:
             # Send stream info
             stream = stream_manager.get_stream(stream_id)
             if stream:
-                await websocket.send_text(json.dumps({
-                    "type": "stream_info",
-                    "data": stream.get_info()
-                }))
-            
+                await websocket.send_text(
+                    json.dumps({"type": "stream_info", "data": stream.get_info()})
+                )
+
             # Keep connection alive
             while True:
                 # Wait for messages (mostly for connection keep-alive)
@@ -630,7 +631,7 @@ async def viewer_websocket(websocket):
                     await websocket.receive_text()
                 except:
                     break
-                    
+
         except Exception as e:
             print(f"Viewer WebSocket error: {e}")
         finally:
@@ -639,38 +640,41 @@ async def viewer_websocket(websocket):
     else:
         await websocket.close(code=1000, reason="Stream not found")
 
+
 # REST API endpoints
 async def root(request):
-    return ORJSONResponse({
-        "message": "Welcome to ZestAPI Video Streaming",
-        "version": "1.0.0",
-        "endpoints": {
-            "interface": "GET /",
-            "streams": "GET /api/streams",
-            "create_stream": "POST /api/streams",
-            "stream_info": "GET /api/streams/{id}",
-            "stop_stream": "DELETE /api/streams/{id}",
-            "viewer_ws": "ws://localhost:8000/ws/viewer/{stream_id}"
+    return ORJSONResponse(
+        {
+            "message": "Welcome to ZestAPI Video Streaming",
+            "version": "1.0.0",
+            "endpoints": {
+                "interface": "GET /",
+                "streams": "GET /api/streams",
+                "create_stream": "POST /api/streams",
+                "stream_info": "GET /api/streams/{id}",
+                "stop_stream": "DELETE /api/streams/{id}",
+                "viewer_ws": "ws://localhost:8000/ws/viewer/{stream_id}",
+            },
         }
-    })
+    )
+
 
 async def list_streams(request):
     """Get list of active streams"""
     streams = stream_manager.list_streams()
-    return ORJSONResponse({
-        "streams": streams,
-        "total": len(streams)
-    })
+    return ORJSONResponse({"streams": streams, "total": len(streams)})
+
 
 async def get_stream_info(request):
     """Get specific stream information"""
     stream_id = request.path_params["stream_id"]
     stream = stream_manager.get_stream(stream_id)
-    
+
     if stream:
         return ORJSONResponse(stream.get_info())
     else:
         return ORJSONResponse({"error": "Stream not found"}, status_code=404)
+
 
 async def create_stream(request):
     """Create a new video stream"""
@@ -678,42 +682,48 @@ async def create_stream(request):
         body = await request.json()
         camera_index = body.get("camera_index", 0)
         quality = body.get("quality", "medium")
-        
+
         stream_id = stream_manager.create_stream(camera_index, quality)
         stream = stream_manager.get_stream(stream_id)
-        
+
         if stream is None:
-            return ORJSONResponse({
-                "error": "Failed to create stream"
-            }, status_code=500)
-        
-        return ORJSONResponse({
-            "message": "Stream created successfully",
-            "stream_id": stream_id,
-            **stream.get_info()
-        }, status_code=201)
-        
+            return ORJSONResponse({"error": "Failed to create stream"}, status_code=500)
+
+        return ORJSONResponse(
+            {
+                "message": "Stream created successfully",
+                "stream_id": stream_id,
+                **stream.get_info(),
+            },
+            status_code=201,
+        )
+
     except Exception as e:
-        return ORJSONResponse({
-            "error": str(e)
-        }, status_code=400)
+        return ORJSONResponse({"error": str(e)}, status_code=400)
+
 
 async def stop_stream(request):
     """Stop a video stream"""
     stream_id = request.path_params["stream_id"]
-    
+
     if stream_manager.stop_stream(stream_id):
         return ORJSONResponse({"message": "Stream stopped successfully"})
     else:
         return ORJSONResponse({"error": "Stream not found"}, status_code=404)
 
+
 async def health_check(request):
-    return ORJSONResponse({
-        "status": "healthy",
-        "service": "zestapi-video-streaming",
-        "active_streams": len(stream_manager.streams),
-        "total_viewers": sum(len(stream.viewers) for stream in stream_manager.streams.values())
-    })
+    return ORJSONResponse(
+        {
+            "status": "healthy",
+            "service": "zestapi-video-streaming",
+            "active_streams": len(stream_manager.streams),
+            "total_viewers": sum(
+                len(stream.viewers) for stream in stream_manager.streams.values()
+            ),
+        }
+    )
+
 
 # Add routes
 app_instance.add_route("/", video_interface)
@@ -728,7 +738,7 @@ if __name__ == "__main__":
     print("[*] Starting ZestAPI Video Streaming...")
     print("[*] Open http://localhost:8000 in your browser to start streaming!")
     print("[*] Make sure you have a camera connected and grant camera permissions.")
-    
+
     try:
         app_instance.run()
     finally:

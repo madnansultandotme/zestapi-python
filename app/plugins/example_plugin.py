@@ -1,6 +1,6 @@
-
 from starlette.responses import JSONResponse
 from app.routing import route
+
 
 class ExamplePlugin:
     def __init__(self, app):
@@ -12,5 +12,3 @@ class ExamplePlugin:
             return JSONResponse({"message": "Hello from example plugin!"})
 
         print("ExamplePlugin registered.")
-
-

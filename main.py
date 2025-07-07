@@ -1,4 +1,3 @@
-
 import uvicorn
 import os
 import orjson
@@ -18,7 +17,7 @@ from app.ratelimit import RateLimitMiddleware
 # Configure logging
 logging.basicConfig(
     level=getattr(logging, settings.log_level.upper()),
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 logger = logging.getLogger(__name__)
 
@@ -37,11 +36,9 @@ async def homepage(request):
 
 @route("/health")
 async def health_check(request):
-    return ORJSONResponse({
-        "status": "healthy",
-        "version": "1.0.0",
-        "timestamp": "2025-07-07T00:00:00Z"
-    })
+    return ORJSONResponse(
+        {"status": "healthy", "version": "1.0.0", "timestamp": "2025-07-07T00:00:00Z"}
+    )
 
 
 @websocket_route("/ws")
@@ -57,9 +54,9 @@ discovered_routes = discover_routes(routes_dir)
 
 # Add the homepage, health check and websocket routes explicitly
 all_routes = [
-    Route("/", homepage), 
+    Route("/", homepage),
     Route("/health", health_check),
-    WebSocketRoute("/ws", websocket_endpoint)
+    WebSocketRoute("/ws", websocket_endpoint),
 ]
 all_routes.extend(discovered_routes)
 
@@ -103,11 +100,4 @@ for plugin_name in settings.enabled_plugins:
 
 if __name__ == "__main__":
     logger.info("Starting ZestAPI server...")
-    uvicorn.run(
-        app, 
-        host=settings.host, 
-        port=settings.port,
-        reload=settings.reload
-    )
-
-
+    uvicorn.run(app, host=settings.host, port=settings.port, reload=settings.reload)

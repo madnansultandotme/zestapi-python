@@ -9,6 +9,7 @@ app_instance = ZestAPI()
 # Global chat manager
 chat_manager = ChatManager()
 
+
 # Serve the chat interface
 async def chat_interface(request):
     """Serve the chat HTML interface"""
@@ -502,64 +503,75 @@ async def chat_interface(request):
     """
     return HTMLResponse(html_content)
 
+
 @websocket_route("/ws")
 async def websocket_endpoint(websocket):
     """WebSocket endpoint for chat functionality"""
     await websocket.accept()
-    
+
     username = None
     current_room = None
-    
+
     try:
         while True:
             # Receive message from client
             data = await websocket.receive_text()
             message = json.loads(data)
-            
+
             message_type = message.get("type")
             message_data = message.get("data", {})
-            
+
             if message_type == "join_room":
                 username = message_data.get("username")
                 room_name = message_data.get("room")
-                
+
                 if username and room_name:
-                    room, join_message = chat_manager.join_room(username, room_name, websocket)
+                    room, join_message = chat_manager.join_room(
+                        username, room_name, websocket
+                    )
                     current_room = room
-                    
+
                     # Send recent messages to new user
                     recent_messages = room.get_recent_messages()
-                    await websocket.send_text(json.dumps({
-                        "type": "message_history",
-                        "data": {"messages": recent_messages}
-                    }))
-                    
+                    await websocket.send_text(
+                        json.dumps(
+                            {
+                                "type": "message_history",
+                                "data": {"messages": recent_messages},
+                            }
+                        )
+                    )
+
                     # Broadcast join message to others
-                    await room.broadcast({"type": "user_joined", "data": join_message}, username)
-                    
+                    await room.broadcast(
+                        {"type": "user_joined", "data": join_message}, username
+                    )
+
                     # Send updated user list to all
                     user_list_message = {
                         "type": "room_users",
-                        "data": {"users": room.get_user_list()}
+                        "data": {"users": room.get_user_list()},
                     }
                     await room.broadcast(user_list_message)
-            
+
             elif message_type == "leave_room":
                 if username and current_room:
                     room, leave_message = chat_manager.leave_current_room(username)
                     if room and leave_message:
                         # Broadcast leave message
-                        await room.broadcast({"type": "user_left", "data": leave_message})
-                        
+                        await room.broadcast(
+                            {"type": "user_left", "data": leave_message}
+                        )
+
                         # Send updated user list
                         user_list_message = {
                             "type": "room_users",
-                            "data": {"users": room.get_user_list()}
+                            "data": {"users": room.get_user_list()},
                         }
                         await room.broadcast(user_list_message)
-                    
+
                     current_room = None
-            
+
             elif message_type == "send_message":
                 if username and current_room:
                     message_content = message_data.get("message", "").strip()
@@ -569,37 +581,34 @@ async def websocket_endpoint(websocket):
                             "username": username,
                             "message": message_content,
                             "timestamp": datetime.utcnow().isoformat(),
-                            "room": current_room.name
+                            "room": current_room.name,
                         }
-                        
+
                         # Add to room history
                         current_room.add_message(chat_message)
-                        
+
                         # Broadcast to all users in room
-                        await current_room.broadcast({
-                            "type": "new_message",
-                            "data": chat_message
-                        })
-            
+                        await current_room.broadcast(
+                            {"type": "new_message", "data": chat_message}
+                        )
+
             elif message_type == "typing_start":
                 if username and current_room:
                     typing_users = current_room.set_typing(username, True)
-                    await current_room.broadcast({
-                        "type": "user_typing",
-                        "data": {"users": typing_users}
-                    })
-            
+                    await current_room.broadcast(
+                        {"type": "user_typing", "data": {"users": typing_users}}
+                    )
+
             elif message_type == "typing_stop":
                 if username and current_room:
                     typing_users = current_room.set_typing(username, False)
-                    await current_room.broadcast({
-                        "type": "user_typing",
-                        "data": {"users": typing_users}
-                    })
-    
+                    await current_room.broadcast(
+                        {"type": "user_typing", "data": {"users": typing_users}}
+                    )
+
     except Exception as e:
         print(f"WebSocket error: {e}")
-    
+
     finally:
         # Clean up on disconnect
         if username and current_room:
@@ -609,45 +618,47 @@ async def websocket_endpoint(websocket):
                     await room.broadcast({"type": "user_left", "data": leave_message})
                     user_list_message = {
                         "type": "room_users",
-                        "data": {"users": room.get_user_list()}
+                        "data": {"users": room.get_user_list()},
                     }
                     await room.broadcast(user_list_message)
                 except:
                     pass
 
+
 # API endpoints
 async def root(request):
-    return ORJSONResponse({
-        "message": "Welcome to ZestAPI WebSocket Chat",
-        "version": "1.0.0",
-        "endpoints": {
-            "chat": "GET /",
-            "websocket": "ws://localhost:8000/ws"
-        },
-        "features": [
-            "Real-time messaging",
-            "Multiple chat rooms",
-            "User presence tracking",
-            "Typing indicators",
-            "Message history"
-        ]
-    })
+    return ORJSONResponse(
+        {
+            "message": "Welcome to ZestAPI WebSocket Chat",
+            "version": "1.0.0",
+            "endpoints": {"chat": "GET /", "websocket": "ws://localhost:8000/ws"},
+            "features": [
+                "Real-time messaging",
+                "Multiple chat rooms",
+                "User presence tracking",
+                "Typing indicators",
+                "Message history",
+            ],
+        }
+    )
+
 
 async def get_rooms(request):
     """Get list of active chat rooms"""
     rooms = chat_manager.get_room_list()
-    return ORJSONResponse({
-        "rooms": rooms,
-        "total": len(rooms)
-    })
+    return ORJSONResponse({"rooms": rooms, "total": len(rooms)})
+
 
 async def health_check(request):
-    return ORJSONResponse({
-        "status": "healthy",
-        "service": "zestapi-websocket-chat",
-        "active_rooms": len(chat_manager.rooms),
-        "total_users": sum(len(room.users) for room in chat_manager.rooms.values())
-    })
+    return ORJSONResponse(
+        {
+            "status": "healthy",
+            "service": "zestapi-websocket-chat",
+            "active_rooms": len(chat_manager.rooms),
+            "total_users": sum(len(room.users) for room in chat_manager.rooms.values()),
+        }
+    )
+
 
 # Add routes
 app_instance.add_route("/", chat_interface)

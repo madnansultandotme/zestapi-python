@@ -1,4 +1,3 @@
-
 from jose import jwt, JWTError
 from datetime import datetime, timedelta, timezone
 from starlette.authentication import AuthCredentials, SimpleUser, AuthenticationBackend
@@ -11,6 +10,7 @@ from app.settings import settings
 
 ALGORITHM = "HS256"
 
+
 class JWTAuthBackend(AuthenticationBackend):
     async def authenticate(self, conn: HTTPConnection):
         if "Authorization" not in conn.headers:
@@ -20,7 +20,9 @@ class JWTAuthBackend(AuthenticationBackend):
         try:
             scheme, credentials = auth.split()
             if scheme.lower() == "bearer":
-                payload = jwt.decode(credentials, settings.jwt_secret, algorithms=[ALGORITHM])
+                payload = jwt.decode(
+                    credentials, settings.jwt_secret, algorithms=[ALGORITHM]
+                )
                 username = payload.get("sub")
                 if username is None:
                     return  # Return None instead of raising exception for missing subject
@@ -36,7 +38,9 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
     else:
-        expire = datetime.now(timezone.utc) + timedelta(minutes=settings.jwt_access_token_expire_minutes)
+        expire = datetime.now(timezone.utc) + timedelta(
+            minutes=settings.jwt_access_token_expire_minutes
+        )
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, settings.jwt_secret, algorithm=ALGORITHM)
     return encoded_jwt
@@ -45,5 +49,3 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 def requires_auth(func):
     func.__requires_auth__ = True
     return func
-
-

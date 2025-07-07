@@ -1,6 +1,7 @@
 """
 Conftest file for pytest configuration and shared fixtures.
 """
+
 import pytest
 import asyncio
 from typing import Generator, AsyncGenerator
@@ -27,7 +28,7 @@ async def app() -> AsyncGenerator[ZestAPICore, None]:
 async def client(app: ZestAPICore):
     """Create a test client for the ZestAPI application."""
     from httpx import AsyncClient
-    
+
     async with AsyncClient(app=app.app, base_url="http://testserver") as client:
         yield client
 
@@ -35,11 +36,7 @@ async def client(app: ZestAPICore):
 @pytest.fixture
 def sample_user_data():
     """Sample user data for testing."""
-    return {
-        "name": "John Doe",
-        "email": "john@example.com",
-        "age": 30
-    }
+    return {"name": "John Doe", "email": "john@example.com", "age": 30}
 
 
 @pytest.fixture

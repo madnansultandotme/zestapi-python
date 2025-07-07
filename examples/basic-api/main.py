@@ -7,23 +7,22 @@ app_instance = ZestAPI()
 users_db = {}
 user_id_counter = 1
 
+
 # Manual route registration (alternative to file-based discovery)
 async def root(request):
-    return ORJSONResponse({
-        "message": "Welcome to ZestAPI Basic Example",
-        "version": "1.0.0",
-        "docs": "/docs",
-        "endpoints": {
-            "users": "/users",
-            "health": "/health"
+    return ORJSONResponse(
+        {
+            "message": "Welcome to ZestAPI Basic Example",
+            "version": "1.0.0",
+            "docs": "/docs",
+            "endpoints": {"users": "/users", "health": "/health"},
         }
-    })
+    )
+
 
 async def health_check(request):
-    return ORJSONResponse({
-        "status": "healthy",
-        "service": "zestapi-basic-example"
-    })
+    return ORJSONResponse({"status": "healthy", "service": "zestapi-basic-example"})
+
 
 # Add routes manually
 app_instance.add_route("/", root)

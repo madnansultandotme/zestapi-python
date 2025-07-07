@@ -1,7 +1,7 @@
-
 import importlib.util
 import os
 from starlette.routing import Route, WebSocketRoute
+
 
 def discover_routes(routes_dir):
     discovered_routes = []
@@ -16,7 +16,11 @@ def discover_routes(routes_dir):
 
                 # Determine the path prefix based on directory structure
                 relative_path = os.path.relpath(root, routes_dir)
-                path_prefix = "/" + relative_path.replace(os.sep, "/") if relative_path != "." else ""
+                path_prefix = (
+                    "/" + relative_path.replace(os.sep, "/")
+                    if relative_path != "."
+                    else ""
+                )
 
                 for attr_name in dir(module):
                     attr = getattr(module, attr_name)
@@ -27,23 +31,30 @@ def discover_routes(routes_dir):
                         is_websocket = route_info.get("websocket", False)
 
                         if is_websocket:
-                            discovered_routes.append(WebSocketRoute(path, attr, name=attr_name))
+                            discovered_routes.append(
+                                WebSocketRoute(path, attr, name=attr_name)
+                            )
                         else:
-                            discovered_routes.append(Route(path, attr, methods=methods, name=attr_name))
+                            discovered_routes.append(
+                                Route(path, attr, methods=methods, name=attr_name)
+                            )
     return discovered_routes
+
 
 def route(path, methods=None):
     if methods is None:
         methods = ["GET"]
+
     def decorator(func):
         func.__route__ = {"path": path, "methods": methods}
         return func
+
     return decorator
+
 
 def websocket_route(path):
     def decorator(func):
         func.__route__ = {"path": path, "websocket": True}
         return func
+
     return decorator
-
-

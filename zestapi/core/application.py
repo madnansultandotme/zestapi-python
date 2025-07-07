@@ -61,7 +61,7 @@ class ZestAPI:
             )
             logger.info(f"Logging configured at {self.settings.log_level.upper()} level")
         except Exception as e:
-            print(f"Warning: Failed to setup logging: {e}")
+            logger.warning(f"Failed to setup logging: {e}")
             logging.basicConfig(level=logging.INFO)
             
     def _validate_settings(self) -> None:
@@ -139,7 +139,7 @@ class ZestAPI:
                 raise ValueError("Router must have 'routes' attribute")
         except Exception as e:
             logger.error(f"Failed to include router: {e}")
-            raise
+            raise e
         
     def add_middleware(self, middleware_class, **kwargs) -> None:
         """Add middleware to the application"""
@@ -149,7 +149,7 @@ class ZestAPI:
                 logger.debug(f"Middleware added: {middleware_class.__name__}")
             except Exception as e:
                 logger.error(f"Failed to add middleware {middleware_class.__name__}: {e}")
-                raise
+                raise e
         else:
             logger.warning("Cannot add middleware - app not created yet")
             

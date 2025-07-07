@@ -1,0 +1,51 @@
+name: Lint
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/pyproject.toml') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e ".[dev]" -c constraints.txt
+    
+    - name: Run black
+      run: |
+        black --check --diff zestapi/ tests/ examples/
+    
+    - name: Run isort
+      run: |
+        isort --check-only --diff zestapi/ tests/ examples/
+    
+    - name: Run flake8
+      run: |
+        flake8 zestapi/ tests/ examples/
+    
+    - name: Run mypy
+      run: |
+        mypy zestapi/ 

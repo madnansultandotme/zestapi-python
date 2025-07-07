@@ -207,7 +207,7 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
         except Exception as e:
             # Log the exception before re-raising
             logger.error(f"Request failed: {e}", extra=log_data, exc_info=True)
-            raise
+            raise e
         
         # Log response details
         process_time = time.time() - start_time

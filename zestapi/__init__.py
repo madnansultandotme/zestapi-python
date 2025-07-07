@@ -17,7 +17,7 @@ Key Features:
 
 from .core.application import ZestAPI
 from .core.routing import route, websocket_route
-from .core.responses import ORJSONResponse, HTMLResponse
+from .core.responses import ORJSONResponse
 from .core.settings import Settings
 from .core.security import create_access_token, JWTAuthBackend
 from .core.middleware import ErrorHandlingMiddleware, RequestLoggingMiddleware
@@ -32,7 +32,6 @@ __all__ = [
     "route",
     "websocket_route", 
     "ORJSONResponse",
-    "HTMLResponse",
     "Settings",
     "create_access_token",
     "JWTAuthBackend",

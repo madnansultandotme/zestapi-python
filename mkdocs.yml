@@ -1,0 +1,32 @@
+site_name: ZestAPI Documentation
+site_url: https://madnansultandotme.github.io/zestapi-python/
+docs_dir: docs
+repo_url: https://github.com/madnansultandotme/zestapi-python
+repo_name: madnansultandotme/zestapi-python
+theme:
+  name: material
+  logo: null
+  favicon: null
+nav:
+  - Home: DOCS.md
+  - User Guide: USER_GUIDE.md
+  - Examples:
+      - Basic API: examples/basic-api.md
+      - Auth Example: examples/auth-example.md
+      - E-commerce API: examples/ecommerce-api.md
+      - WebSocket Chat: examples/websocket-chat.md
+      - Video Streaming: examples/video-streaming.md
+      - Plugin System: examples/plugin-system.md
+      - Production Ready: examples/production-ready.md
+  - Project Structure: PROJECT_STRUCTURE.md
+  - Production Guide: PRODUCTION_GUIDE.md
+  - Security: SECURITY.md
+  - Changelog: CHANGELOG.md
+  - Contributing: CONTRIBUTING.md
+  - Release Checklist: RELEASE_CHECKLIST.md
+  - LLM Guide: LLM_GUIDE.md
+  - Completion Report: COMPLETION_REPORT.md
+  - Release Summary: RELEASE_SUMMARY.md
+  - Project Summary: PROJECT_SUMMARY.md
+  - Examples Complete: EXAMPLES_COMPLETE.md
+  - Plugins Guide: plugins/PLUGIN_DEVELOPMENT_GUIDE.md 

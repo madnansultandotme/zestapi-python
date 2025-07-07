@@ -470,11 +470,11 @@ If ZestAPI helps you build better APIs, please consider:
 - **📖 [Complete Documentation](docs/DOCS.md)** - Full framework guide
 - **🤖 [LLM-Friendly Guide](docs/LLM_GUIDE.md)** - AI assistant optimized docs
 - **🏭 [Production Guide](docs/PRODUCTION_GUIDE.md)** - Enterprise deployment
-- **� [Project Structure](PROJECT_STRUCTURE.md)** - Professional organization
+- **📁 [Project Structure](PROJECT_STRUCTURE.md)** - Professional organization
 - **🔒 [Security Policy](SECURITY.md)** - Security guidelines and reporting
-- **�🐛 [Report Issues](https://github.com/madnansultandotme/zestapi-python/issues)** - Bug reports & feature requests
-- **💡 [Discussions](https://github.com/madnansultandotme/zestapi-python/discussions)** - Community support
+- **🐛 [Report Issues](https://github.com/madnansultandotme/zestapi-python/issues)** - Bug reports & feature requests
 - **🔧 [Contributing](CONTRIBUTING.md)** - How to contribute
+- **📧 Email**: info.adnansultan@gmail.com
 
 ---
 

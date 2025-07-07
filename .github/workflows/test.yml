@@ -35,20 +35,31 @@ jobs:
         pip install build twine
         pip install -e ".[test]" -c constraints.txt
     
-    - name: Run tests
+    - name: Run tests with coverage
       run: |
         coverage run -m pytest tests/ -v --tb=short
         coverage report
+        coverage xml
     
-    - name: Test CLI
+    - name: Test CLI functionality
       run: |
         python -m zestapi.cli version
+        python -m zestapi.cli --help
         
-    - name: Test package import
+    - name: Test package import and basic functionality
       run: |
         python -c "import zestapi; print(f'ZestAPI {zestapi.__version__} imported successfully')"
+        python -c "from zestapi import Application; app = Application(); print('Application created successfully')"
         
-    - name: Validate package build
+    - name: Test examples
       run: |
-        python -m build
-        twine check dist/*
+        cd examples/basic-api && python -c "import sys; sys.path.append('.'); from main import app; print('Basic API example works')"
+        cd ../ecommerce-api && python -c "import sys; sys.path.append('.'); from main import app; print('Ecommerce API example works')"
+    
+    - name: Upload coverage reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage-reports-${{ matrix.python-version }}
+        path: |
+          .coverage
+          coverage.xml

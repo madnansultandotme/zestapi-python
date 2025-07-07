@@ -94,7 +94,7 @@ async def {name}_create(request):
 def view_route_map():
     """View the ZestAPI route map"""
     print("ZestAPI Route Map:")
-    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__))))
+    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
     
     try:
         from zestapi.core.routing import discover_routes

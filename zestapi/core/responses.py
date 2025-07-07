@@ -1,5 +1,5 @@
 import orjson
-from starlette.responses import JSONResponse, HTMLResponse
+from starlette.responses import JSONResponse
 
 class ORJSONResponse(JSONResponse):
     """High-performance JSON response using orjson for serialization"""

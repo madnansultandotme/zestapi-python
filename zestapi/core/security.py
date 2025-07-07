@@ -2,10 +2,6 @@
 from jose import jwt, JWTError
 from datetime import datetime, timedelta, timezone
 from starlette.authentication import AuthCredentials, SimpleUser, AuthenticationBackend
-from starlette.middleware import Middleware
-from starlette.middleware.authentication import AuthenticationMiddleware
-from starlette.responses import JSONResponse
-from starlette.exceptions import HTTPException
 from starlette.requests import HTTPConnection
 from .settings import settings
 

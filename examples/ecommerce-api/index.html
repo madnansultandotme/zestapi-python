@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/examples/basic-api/">
+        <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/examples/ecommerce-api/">
       
       
-        <link rel="prev" href="../../USER_GUIDE/">
+        <link rel="prev" href="../auth-example/">
       
       
-        <link rel="next" href="../auth-example/">
+        <link rel="next" href="../websocket-chat/">
       
       
       <link rel="icon" href="../../None">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Basic API - ZestAPI Documentation</title>
+        <title>E-commerce API - ZestAPI Documentation</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#basic-api-example" class="md-skip">
+        <a href="#e-commerce-api-example" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Basic API
+              E-commerce API
             
           </span>
         </div>
@@ -301,32 +301,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Basic API
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../basic-api/" class="md-nav__link">
         
   
   
@@ -337,62 +315,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#features-demonstrated" class="md-nav__link">
-    <span class="md-ellipsis">
-      Features Demonstrated
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setup
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api-endpoints" class="md-nav__link">
-    <span class="md-ellipsis">
-      API Endpoints
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Testing
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -425,10 +347,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../ecommerce-api/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    E-commerce API
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -439,6 +383,233 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#products" class="md-nav__link">
+    <span class="md-ellipsis">
+      Products
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shopping-cart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shopping Cart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Orders
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Endpoints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#products_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Products
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Categories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orders_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Orders
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-a-new-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register a new user
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get products
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-item-to-cart-requires-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add item to cart (requires authentication)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-order-from-cart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create order from cart
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -834,20 +1005,53 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#features-demonstrated" class="md-nav__link">
+  <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
-      Features Demonstrated
+      Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#products" class="md-nav__link">
+    <span class="md-ellipsis">
+      Products
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#shopping-cart" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup
+      Shopping Cart
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Orders
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -858,12 +1062,150 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="API Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#products_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Products
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Categories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orders_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Orders
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
-      Testing
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-a-new-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register a new user
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get products
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-item-to-cart-requires-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add item to cart (requires authentication)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-order-from-cart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create order from cart
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Notes
     </span>
   </a>
   
@@ -888,43 +1230,132 @@
   
 
 
-<h1 id="basic-api-example">Basic API Example</h1>
-<p>A simple REST API demonstrating ZestAPI's core features.</p>
-<h2 id="features-demonstrated">Features Demonstrated</h2>
+<h1 id="e-commerce-api-example">E-commerce API Example</h1>
+<p>A comprehensive e-commerce API built with ZestAPI demonstrating:</p>
 <ul>
-<li>File-based route discovery</li>
-<li>CRUD operations</li>
-<li>Request validation with Pydantic</li>
-<li>Error handling</li>
-<li>JSON responses</li>
+<li><strong>Product Management</strong>: CRUD operations for products with categories</li>
+<li><strong>Shopping Cart</strong>: Add/remove items, update quantities</li>
+<li><strong>Order Management</strong>: Create orders, track status, order history</li>
+<li><strong>User Authentication</strong>: JWT-based authentication</li>
+<li><strong>Inventory Management</strong>: Stock tracking and validation</li>
+<li><strong>Payment Processing</strong>: Mock payment integration</li>
+<li><strong>Search &amp; Filtering</strong>: Product search with filters</li>
 </ul>
-<h2 id="setup">Setup</h2>
-<pre><code class="language-bash">cd basic-api/
-pip install -r requirements.txt
-python main.py
-</code></pre>
+<h2 id="features">Features</h2>
+<h3 id="products">Products</h3>
+<ul>
+<li>Create, read, update, delete products</li>
+<li>Category management</li>
+<li>Inventory tracking</li>
+<li>Product search and filtering</li>
+<li>Image URL support</li>
+</ul>
+<h3 id="shopping-cart">Shopping Cart</h3>
+<ul>
+<li>Add products to cart</li>
+<li>Update item quantities</li>
+<li>Remove items from cart</li>
+<li>Calculate totals with tax</li>
+</ul>
+<h3 id="orders">Orders</h3>
+<ul>
+<li>Create orders from cart</li>
+<li>Order status tracking (pending, processing, shipped, delivered, cancelled)</li>
+<li>Order history</li>
+<li>Order details with line items</li>
+</ul>
+<h3 id="authentication">Authentication</h3>
+<ul>
+<li>User registration and login</li>
+<li>JWT token authentication</li>
+<li>Protected routes for user-specific operations</li>
+</ul>
 <h2 id="api-endpoints">API Endpoints</h2>
+<h3 id="authentication_1">Authentication</h3>
 <ul>
-<li><code>GET /</code> - Welcome message</li>
-<li><code>GET /health</code> - Health check</li>
-<li><code>GET /users</code> - List all users</li>
-<li><code>GET /users/{user_id}</code> - Get user by ID</li>
-<li><code>POST /users</code> - Create new user</li>
-<li><code>PUT /users/{user_id}</code> - Update user</li>
-<li><code>DELETE /users/{user_id}</code> - Delete user</li>
+<li><code>POST /auth/register</code> - Register new user</li>
+<li><code>POST /auth/login</code> - User login</li>
+<li><code>POST /auth/logout</code> - User logout</li>
 </ul>
-<h2 id="testing">Testing</h2>
-<pre><code class="language-bash"># List users
-curl http://localhost:8000/users
-
-# Create user
-curl -X POST http://localhost:8000/users \
-  -H &quot;Content-Type: application/json&quot; \
-  -d '{&quot;name&quot;: &quot;John Doe&quot;, &quot;email&quot;: &quot;john@example.com&quot;, &quot;age&quot;: 30}'
-
-# Get user
-curl http://localhost:8000/users/1
+<h3 id="products_1">Products</h3>
+<ul>
+<li><code>GET /products</code> - List all products (with search/filter)</li>
+<li><code>GET /products/{id}</code> - Get product by ID</li>
+<li><code>POST /products</code> - Create new product (admin only)</li>
+<li><code>PUT /products/{id}</code> - Update product (admin only)</li>
+<li><code>DELETE /products/{id}</code> - Delete product (admin only)</li>
+</ul>
+<h3 id="categories">Categories</h3>
+<ul>
+<li><code>GET /categories</code> - List all categories</li>
+<li><code>POST /categories</code> - Create category (admin only)</li>
+</ul>
+<h3 id="cart">Cart</h3>
+<ul>
+<li><code>GET /cart</code> - Get user's cart</li>
+<li><code>POST /cart/items</code> - Add item to cart</li>
+<li><code>PUT /cart/items/{item_id}</code> - Update cart item quantity</li>
+<li><code>DELETE /cart/items/{item_id}</code> - Remove item from cart</li>
+<li><code>DELETE /cart</code> - Clear entire cart</li>
+</ul>
+<h3 id="orders_1">Orders</h3>
+<ul>
+<li><code>GET /orders</code> - Get user's order history</li>
+<li><code>GET /orders/{id}</code> - Get specific order details</li>
+<li><code>POST /orders</code> - Create order from cart</li>
+<li><code>PUT /orders/{id}/status</code> - Update order status (admin only)</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash">cd examples/ecommerce-api
+pip install -r requirements.txt
 </code></pre>
+<h2 id="running">Running</h2>
+<pre><code class="language-bash">python main.py
+</code></pre>
+<p>The API will be available at <code>http://localhost:8000</code></p>
+<h2 id="usage-examples">Usage Examples</h2>
+<h3 id="register-a-new-user">Register a new user</h3>
+<pre><code class="language-bash">curl -X POST http://localhost:8000/auth/register \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;email&quot;: &quot;user@example.com&quot;, &quot;password&quot;: &quot;password123&quot;, &quot;full_name&quot;: &quot;John Doe&quot;}'
+</code></pre>
+<h3 id="login">Login</h3>
+<pre><code class="language-bash">curl -X POST http://localhost:8000/auth/login \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;email&quot;: &quot;user@example.com&quot;, &quot;password&quot;: &quot;password123&quot;}'
+</code></pre>
+<h3 id="get-products">Get products</h3>
+<pre><code class="language-bash">curl http://localhost:8000/products
+</code></pre>
+<h3 id="add-item-to-cart-requires-authentication">Add item to cart (requires authentication)</h3>
+<pre><code class="language-bash">curl -X POST http://localhost:8000/cart/items \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Authorization: Bearer YOUR_JWT_TOKEN&quot; \
+  -d '{&quot;product_id&quot;: 1, &quot;quantity&quot;: 2}'
+</code></pre>
+<h3 id="create-order-from-cart">Create order from cart</h3>
+<pre><code class="language-bash">curl -X POST http://localhost:8000/orders \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Authorization: Bearer YOUR_JWT_TOKEN&quot; \
+  -d '{&quot;shipping_address&quot;: &quot;123 Main St, City, State 12345&quot;}'
+</code></pre>
+<h2 id="default-data">Default Data</h2>
+<p>The example includes sample data for testing:
+- Sample products in various categories
+- Admin user (admin@example.com / admin123)
+- Regular user (user@example.com / user123)</p>
+<h2 id="production-notes">Production Notes</h2>
+<p>This is an example application. For production use:
+- Replace in-memory storage with a real database
+- Implement proper payment processing
+- Add proper logging and monitoring
+- Implement proper error handling
+- Add input sanitization
+- Use environment variables for secrets
+- Add API rate limiting
+- Implement proper inventory management
+- Add email notifications
+- Implement proper admin panel</p>
 
 
 

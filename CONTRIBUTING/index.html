@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/RELEASE_SUMMARY/">
+        <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/CONTRIBUTING/">
       
       
-        <link rel="prev" href="../COMPLETION_REPORT/">
+        <link rel="prev" href="../CHANGELOG/">
       
       
-        <link rel="next" href="../PROJECT_SUMMARY/">
+        <link rel="next" href="../RELEASE_CHECKLIST/">
       
       
       <link rel="icon" href="../None">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Release Summary - ZestAPI Documentation</title>
+        <title>Contributing - ZestAPI Documentation</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#zestapi-framework-final-release-ready" class="md-skip">
+        <a href="#contributing-to-zestapi" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Release Summary
+              Contributing
             
           </span>
         </div>
@@ -555,10 +555,32 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../CONTRIBUTING/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -569,6 +591,458 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#development-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-development-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Development Environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch Naming
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commit Messages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Standards
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Standards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-code-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Code Style
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type Hints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull Request Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pull Request Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-submitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before Submitting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pr-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      PR Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pr-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      PR Template
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feature Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-new-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding New Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Areas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Areas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#routes-and-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Routes and Routing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settings-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Settings and Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bug-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Reports
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bug Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reporting-bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reporting Bugs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixing-bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixing Bugs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Community">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-of-conduct" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code of Conduct
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Release Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-numbering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Numbering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#release-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -643,32 +1117,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Release Summary
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../RELEASE_SUMMARY/" class="md-nav__link">
         
   
   
@@ -679,296 +1131,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#framework-status-production-ready-for-public-release" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 Framework Status: PRODUCTION READY FOR PUBLIC RELEASE
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#final-validation-results" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Final Validation Results
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="✅ Final Validation Results">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#package-validation-44-checks-passed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Package Validation: 4/4 CHECKS PASSED ✅
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#test-suite-1414-tests-passed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test Suite: 14/14 TESTS PASSED ✅
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-success-ready-for-pypi" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build Success: READY FOR PYPI ✅
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comprehensive-documentation-delivered" class="md-nav__link">
-    <span class="md-ellipsis">
-      📋 Comprehensive Documentation Delivered
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📋 Comprehensive Documentation Delivered">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#for-developers" class="md-nav__link">
-    <span class="md-ellipsis">
-      For Developers
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#for-ai-assistants" class="md-nav__link">
-    <span class="md-ellipsis">
-      For AI Assistants
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#production-grade-features-implemented" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 Production-Grade Features Implemented
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔧 Production-Grade Features Implemented">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#enhanced-error-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enhanced Error Handling
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#security-production-readiness" class="md-nav__link">
-    <span class="md-ellipsis">
-      Security &amp; Production Readiness
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#developer-experience" class="md-nav__link">
-    <span class="md-ellipsis">
-      Developer Experience
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture-highlights" class="md-nav__link">
-    <span class="md-ellipsis">
-      🏗️ Architecture Highlights
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🏗️ Architecture Highlights">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#core-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      Core Framework
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#middleware-stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      Middleware Stack
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#production-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      Production Features
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ready-for-release" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Ready For Release
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🎯 Ready For Release">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#public-release-readiness" class="md-nav__link">
-    <span class="md-ellipsis">
-      Public Release Readiness
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#enterprise-adoption-ready" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enterprise Adoption Ready
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ai-development-workflow-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      AI Development Workflow Integration
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps-for-public-release" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 Next Steps for Public Release
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#framework-advantages" class="md-nav__link">
-    <span class="md-ellipsis">
-      📊 Framework Advantages
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📊 Framework Advantages">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vs-flask" class="md-nav__link">
-    <span class="md-ellipsis">
-      vs Flask
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vs-fastapi" class="md-nav__link">
-    <span class="md-ellipsis">
-      vs FastAPI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vs-both" class="md-nav__link">
-    <span class="md-ellipsis">
-      vs Both
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎉 Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1066,46 +1228,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#framework-status-production-ready-for-public-release" class="md-nav__link">
+  <a href="#development-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      🚀 Framework Status: PRODUCTION READY FOR PUBLIC RELEASE
+      Development Setup
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#final-validation-results" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Final Validation Results
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="✅ Final Validation Results">
+    <nav class="md-nav" aria-label="Development Setup">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#package-validation-44-checks-passed" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Package Validation: 4/4 CHECKS PASSED ✅
+      Prerequisites
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#test-suite-1414-tests-passed" class="md-nav__link">
+  <a href="#setup-development-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      Test Suite: 14/14 TESTS PASSED ✅
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-success-ready-for-pypi" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build Success: READY FOR PYPI ✅
+      Setup Development Environment
     </span>
   </a>
   
@@ -1117,28 +1261,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comprehensive-documentation-delivered" class="md-nav__link">
+  <a href="#development-workflow" class="md-nav__link">
     <span class="md-ellipsis">
-      📋 Comprehensive Documentation Delivered
+      Development Workflow
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📋 Comprehensive Documentation Delivered">
+    <nav class="md-nav" aria-label="Development Workflow">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#for-developers" class="md-nav__link">
+  <a href="#branch-naming" class="md-nav__link">
     <span class="md-ellipsis">
-      For Developers
+      Branch Naming
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-ai-assistants" class="md-nav__link">
+  <a href="#commit-messages" class="md-nav__link">
     <span class="md-ellipsis">
-      For AI Assistants
+      Commit Messages
     </span>
   </a>
   
@@ -1150,37 +1294,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#production-grade-features-implemented" class="md-nav__link">
+  <a href="#code-standards" class="md-nav__link">
     <span class="md-ellipsis">
-      🔧 Production-Grade Features Implemented
+      Code Standards
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔧 Production-Grade Features Implemented">
+    <nav class="md-nav" aria-label="Code Standards">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enhanced-error-handling" class="md-nav__link">
+  <a href="#python-code-style" class="md-nav__link">
     <span class="md-ellipsis">
-      Enhanced Error Handling
+      Python Code Style
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#security-production-readiness" class="md-nav__link">
+  <a href="#type-hints" class="md-nav__link">
     <span class="md-ellipsis">
-      Security &amp; Production Readiness
+      Type Hints
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#developer-experience" class="md-nav__link">
+  <a href="#documentation" class="md-nav__link">
     <span class="md-ellipsis">
-      Developer Experience
+      Documentation
     </span>
   </a>
   
@@ -1192,37 +1336,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#architecture-highlights" class="md-nav__link">
+  <a href="#testing" class="md-nav__link">
     <span class="md-ellipsis">
-      🏗️ Architecture Highlights
+      Testing
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🏗️ Architecture Highlights">
+    <nav class="md-nav" aria-label="Testing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#core-framework" class="md-nav__link">
+  <a href="#writing-tests" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Framework
+      Writing Tests
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#middleware-stack" class="md-nav__link">
+  <a href="#test-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      Middleware Stack
+      Test Structure
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#production-features" class="md-nav__link">
+  <a href="#running-tests" class="md-nav__link">
     <span class="md-ellipsis">
-      Production Features
+      Running Tests
     </span>
   </a>
   
@@ -1234,37 +1378,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ready-for-release" class="md-nav__link">
+  <a href="#pull-request-process" class="md-nav__link">
     <span class="md-ellipsis">
-      🎯 Ready For Release
+      Pull Request Process
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🎯 Ready For Release">
+    <nav class="md-nav" aria-label="Pull Request Process">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#public-release-readiness" class="md-nav__link">
+  <a href="#before-submitting" class="md-nav__link">
     <span class="md-ellipsis">
-      Public Release Readiness
+      Before Submitting
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enterprise-adoption-ready" class="md-nav__link">
+  <a href="#pr-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Enterprise Adoption Ready
+      PR Requirements
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ai-development-workflow-integration" class="md-nav__link">
+  <a href="#pr-template" class="md-nav__link">
     <span class="md-ellipsis">
-      AI Development Workflow Integration
+      PR Template
     </span>
   </a>
   
@@ -1276,46 +1420,103 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps-for-public-release" class="md-nav__link">
+  <a href="#feature-development" class="md-nav__link">
     <span class="md-ellipsis">
-      🚀 Next Steps for Public Release
+      Feature Development
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Feature Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-new-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding New Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Areas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Areas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#routes-and-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Routes and Routing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settings-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Settings and Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#framework-advantages" class="md-nav__link">
+  <a href="#bug-reports" class="md-nav__link">
     <span class="md-ellipsis">
-      📊 Framework Advantages
+      Bug Reports
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📊 Framework Advantages">
+    <nav class="md-nav" aria-label="Bug Reports">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vs-flask" class="md-nav__link">
+  <a href="#reporting-bugs" class="md-nav__link">
     <span class="md-ellipsis">
-      vs Flask
+      Reporting Bugs
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#vs-fastapi" class="md-nav__link">
+  <a href="#fixing-bugs" class="md-nav__link">
     <span class="md-ellipsis">
-      vs FastAPI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vs-both" class="md-nav__link">
-    <span class="md-ellipsis">
-      vs Both
+      Fixing Bugs
     </span>
   </a>
   
@@ -1327,11 +1528,134 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#documentation_1" class="md-nav__link">
     <span class="md-ellipsis">
-      🎉 Conclusion
+      Documentation
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Community">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-of-conduct" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code of Conduct
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Release Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-numbering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Numbering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#release-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1354,184 +1678,302 @@
   
 
 
-<h1 id="zestapi-framework-final-release-ready">🎉 ZestAPI Framework - FINAL RELEASE READY</h1>
-<h2 id="framework-status-production-ready-for-public-release">🚀 Framework Status: <strong>PRODUCTION READY FOR PUBLIC RELEASE</strong></h2>
-<p>The ZestAPI framework has been successfully finalized and is now ready for public release with comprehensive production features, robust error handling, and LLM-friendly documentation.</p>
-<h2 id="final-validation-results">✅ Final Validation Results</h2>
-<h3 id="package-validation-44-checks-passed"><strong>Package Validation</strong>: 4/4 CHECKS PASSED ✅</h3>
+<h1 id="contributing-to-zestapi">Contributing to ZestAPI</h1>
+<p>We welcome contributions to ZestAPI! This document provides guidelines for contributing to the project.</p>
+<h2 id="development-setup">Development Setup</h2>
+<h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li>✅ Package Structure - All required files present</li>
-<li>✅ Module Imports - All imports working correctly</li>
-<li>✅ CLI Functionality - All CLI commands functional</li>
-<li>✅ Package Build - Successfully builds for PyPI</li>
+<li>Python 3.10 or higher</li>
+<li>Git</li>
 </ul>
-<h3 id="test-suite-1414-tests-passed"><strong>Test Suite</strong>: 14/14 TESTS PASSED ✅</h3>
-<pre><code class="language-bash">pytest test_package.py -v
-# ====================== 14 passed, 1 warning in 1.75s ======================
-</code></pre>
-<h3 id="build-success-ready-for-pypi"><strong>Build Success</strong>: READY FOR PYPI ✅</h3>
-<pre><code class="language-bash">python -m build
-# Successfully built:
-# ├── dist/zestapi-1.0.0-py3-none-any.whl
-# └── dist/zestapi-1.0.0.tar.gz
-</code></pre>
-<h2 id="comprehensive-documentation-delivered">📋 Comprehensive Documentation Delivered</h2>
-<h3 id="for-developers"><strong>For Developers</strong></h3>
-<ul>
-<li>✅ <strong>README.md</strong> - Complete framework overview and usage</li>
-<li>✅ <strong>PRODUCTION_GUIDE.md</strong> - Comprehensive production deployment guide</li>
-<li>✅ <strong>PRODUCTION_CHECKLIST.md</strong> - Step-by-step deployment validation</li>
-<li>✅ <strong>COMPLETION_REPORT.md</strong> - Detailed project completion summary</li>
-</ul>
-<h3 id="for-ai-assistants"><strong>For AI Assistants</strong></h3>
-<ul>
-<li>✅ <strong>LLM_GUIDE.md</strong> - Optimized for AI assistant consumption</li>
-<li>✅ Pattern-based examples with copy-paste ready code</li>
-<li>✅ Common use cases and best practices documented</li>
-<li>✅ Framework comparison and advantages clearly explained</li>
-</ul>
-<h2 id="production-grade-features-implemented">🔧 Production-Grade Features Implemented</h2>
-<h3 id="enhanced-error-handling"><strong>Enhanced Error Handling</strong></h3>
-<ul>
-<li>✅ Comprehensive exception management with request tracking</li>
-<li>✅ Production-safe error responses with debug mode support</li>
-<li>✅ Smart exception-to-HTTP status code mapping</li>
-<li>✅ Request ID tracking for distributed tracing</li>
-<li>✅ Structured logging with performance monitoring</li>
-</ul>
-<h3 id="security-production-readiness"><strong>Security &amp; Production Readiness</strong></h3>
-<ul>
-<li>✅ JWT secret validation with production enforcement</li>
-<li>✅ CORS configuration with security defaults</li>
-<li>✅ Rate limiting with configurable strategies</li>
-<li>✅ Settings validation and secure configuration management</li>
-<li>✅ Type safety with comprehensive type hints</li>
-</ul>
-<h3 id="developer-experience"><strong>Developer Experience</strong></h3>
-<ul>
-<li>✅ Auto-discovery of routes and plugins</li>
-<li>✅ CLI tooling for project scaffolding</li>
-<li>✅ Hot reload development server</li>
-<li>✅ Clear error messages with actionable hints</li>
-<li>✅ WebSocket support with ASGI 3.0 compliance</li>
-</ul>
-<h2 id="architecture-highlights">🏗️ Architecture Highlights</h2>
-<h3 id="core-framework"><strong>Core Framework</strong></h3>
-<ul>
-<li><strong>Base</strong>: Starlette ASGI 3.0 compliant</li>
-<li><strong>Validation</strong>: Pydantic v2 for data validation  </li>
-<li><strong>Serialization</strong>: orjson for high-performance JSON</li>
-<li><strong>Authentication</strong>: JWT with python-jose</li>
-<li><strong>Rate Limiting</strong>: Configurable with multiple strategies</li>
-</ul>
-<h3 id="middleware-stack"><strong>Middleware Stack</strong></h3>
-<ul>
-<li><strong>Error Handling</strong>: Production-grade exception management</li>
-<li><strong>Request Logging</strong>: Structured logging with request tracing</li>
-<li><strong>CORS</strong>: Configurable cross-origin resource sharing</li>
-<li><strong>Authentication</strong>: JWT middleware with configurable backend</li>
-<li><strong>Rate Limiting</strong>: Request throttling with various strategies</li>
-</ul>
-<h3 id="production-features"><strong>Production Features</strong></h3>
-<ul>
-<li><strong>Settings Management</strong>: Environment-based configuration</li>
-<li><strong>Health Checks</strong>: Built-in health endpoints</li>
-<li><strong>Performance Monitoring</strong>: Request timing and metrics</li>
-<li><strong>Security Headers</strong>: Production security defaults</li>
-<li><strong>Error Recovery</strong>: Graceful degradation and fallbacks</li>
-</ul>
-<h2 id="ready-for-release">🎯 Ready For Release</h2>
-<h3 id="public-release-readiness"><strong>Public Release Readiness</strong></h3>
-<ul>
-<li>✅ <strong>PyPI Publication</strong>: Package validates and builds successfully</li>
-<li>✅ <strong>Production Deployment</strong>: Enterprise-ready with security features</li>
-<li>✅ <strong>Documentation</strong>: Complete for both humans and AI assistants</li>
-<li>✅ <strong>Testing</strong>: Comprehensive test suite with 100% pass rate</li>
-</ul>
-<h3 id="enterprise-adoption-ready"><strong>Enterprise Adoption Ready</strong></h3>
-<ul>
-<li>✅ <strong>Security</strong>: Production-grade security features</li>
-<li>✅ <strong>Scalability</strong>: ASGI-based architecture supports high concurrency</li>
-<li>✅ <strong>Monitoring</strong>: Built-in observability and metrics</li>
-<li>✅ <strong>Deployment</strong>: Docker, Kubernetes, and cloud deployment guides</li>
-</ul>
-<h3 id="ai-development-workflow-integration"><strong>AI Development Workflow Integration</strong></h3>
-<ul>
-<li>✅ <strong>LLM Documentation</strong>: Optimized for AI assistant consumption</li>
-<li>✅ <strong>Pattern Library</strong>: Consistent development patterns</li>
-<li>✅ <strong>Quick Reference</strong>: Minimal context required for effective use</li>
-<li>✅ <strong>Code Examples</strong>: Working implementations ready for adaptation</li>
-</ul>
-<h2 id="next-steps-for-public-release">🚀 Next Steps for Public Release</h2>
+<h3 id="setup-development-environment">Setup Development Environment</h3>
 <ol>
 <li>
-<p><strong>PyPI Publication</strong>
+<p><strong>Fork and Clone</strong>
    <code>bash
-   # Package is ready for upload
-   twine upload dist/*</code></p>
+   git clone https://github.com/madnansultandotme/zestapi-python.git
+   cd zestapi-python</code></p>
 </li>
 <li>
-<p><strong>GitHub Repository Setup</strong></p>
-</li>
-<li>Create public repository</li>
-<li>Upload source code with documentation</li>
-<li>Configure GitHub Actions for CI/CD</li>
-<li>
-<p>Set up issue templates and contributing guidelines</p>
+<p><strong>Create Virtual Environment</strong>
+   <code>bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate</code></p>
 </li>
 <li>
-<p><strong>Community Documentation</strong></p>
-</li>
-<li>Create project website with documentation</li>
-<li>Set up community forums or Discord</li>
-<li>Create example projects and tutorials</li>
-<li>
-<p>Announce on Python community platforms</p>
+<p><strong>Install Dependencies</strong>
+   <code>bash
+   pip install -r requirements.txt
+   pip install -e .  # Install in development mode</code></p>
 </li>
 <li>
-<p><strong>Marketing and Adoption</strong></p>
+<p><strong>Run Tests</strong>
+   <code>bash
+   pytest test_package.py -v</code></p>
 </li>
-<li>Blog posts comparing advantages over Flask/FastAPI</li>
-<li>Conference presentations and demos</li>
-<li>Integration with popular development tools</li>
-<li>Community outreach and developer engagement</li>
 </ol>
-<h2 id="framework-advantages">📊 Framework Advantages</h2>
-<h3 id="vs-flask"><strong>vs Flask</strong></h3>
+<h2 id="development-workflow">Development Workflow</h2>
+<h3 id="branch-naming">Branch Naming</h3>
 <ul>
-<li>✅ <strong>Modern</strong>: ASGI 3.0 vs WSGI</li>
-<li>✅ <strong>Performance</strong>: Async-first architecture</li>
-<li>✅ <strong>Security</strong>: Built-in JWT and rate limiting</li>
-<li>✅ <strong>Auto-Discovery</strong>: No manual route registration</li>
-<li>✅ <strong>Production</strong>: Enterprise features out-of-the-box</li>
+<li><code>feature/description</code> - For new features</li>
+<li><code>bugfix/description</code> - For bug fixes</li>
+<li><code>docs/description</code> - For documentation changes</li>
+<li><code>refactor/description</code> - For code refactoring</li>
 </ul>
-<h3 id="vs-fastapi"><strong>vs FastAPI</strong></h3>
+<h3 id="commit-messages">Commit Messages</h3>
+<p>Follow conventional commit format:</p>
+<pre><code>type(scope): description
+
+feat(auth): add JWT token refresh functionality
+fix(routes): resolve path parameter parsing issue
+docs(readme): update installation instructions
+</code></pre>
+<p>Types: <code>feat</code>, <code>fix</code>, <code>docs</code>, <code>style</code>, <code>refactor</code>, <code>test</code>, <code>chore</code></p>
+<h2 id="code-standards">Code Standards</h2>
+<h3 id="python-code-style">Python Code Style</h3>
 <ul>
-<li>✅ <strong>Simplicity</strong>: Less boilerplate, more intuitive</li>
-<li>✅ <strong>Auto-Discovery</strong>: File-based routing vs manual routers</li>
-<li>✅ <strong>Error Handling</strong>: Comprehensive exception management</li>
-<li>✅ <strong>CLI Tools</strong>: Built-in project scaffolding</li>
-<li>✅ <strong>Plugin System</strong>: Extensible architecture</li>
+<li>Follow PEP 8</li>
+<li>Use Black for formatting: <code>black .</code></li>
+<li>Use isort for imports: <code>isort .</code></li>
+<li>Maximum line length: 88 characters</li>
 </ul>
-<h3 id="vs-both"><strong>vs Both</strong></h3>
+<h3 id="type-hints">Type Hints</h3>
 <ul>
-<li>✅ <strong>LLM Integration</strong>: AI-assistant optimized documentation</li>
-<li>✅ <strong>Production Checklist</strong>: Step-by-step deployment validation</li>
-<li>✅ <strong>Security Defaults</strong>: Secure by default configuration</li>
-<li>✅ <strong>Complete Package</strong>: Everything needed for production deployment</li>
+<li>All functions should have type hints</li>
+<li>Use <code>typing</code> module for complex types</li>
+<li>Example:
+  ```python
+  from typing import List, Optional, Dict, Any</li>
 </ul>
+<p>def process_users(users: List[Dict[str, Any]]) -&gt; Optional[str]:
+      # Implementation
+      pass
+  ```</p>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li>All public functions/classes need docstrings</li>
+<li>
+<p>Use Google-style docstrings:
+  ```python
+  def create_user(name: str, email: str) -&gt; Dict[str, Any]:
+      """Create a new user with validation.</p>
+<p>Args:
+      name: User's full name
+      email: User's email address</p>
+<p>Returns:
+      Dictionary containing user data</p>
+<p>Raises:
+      ValueError: If email format is invalid
+  """
+  ```</p>
+</li>
+</ul>
+<h2 id="testing">Testing</h2>
+<h3 id="writing-tests">Writing Tests</h3>
+<ul>
+<li>Tests go in <code>test_*.py</code> files</li>
+<li>Use pytest for all tests</li>
+<li>Aim for high test coverage</li>
+<li>Test both success and error cases</li>
+</ul>
+<h3 id="test-structure">Test Structure</h3>
+<pre><code class="language-python">import pytest
+from zestapi import ZestAPI
+
+def test_feature_description():
+    &quot;&quot;&quot;Test that feature works correctly.&quot;&quot;&quot;
+    # Arrange
+    app = ZestAPI()
+
+    # Act
+    result = app.some_method()
+
+    # Assert
+    assert result == expected_value
+</code></pre>
+<h3 id="running-tests">Running Tests</h3>
+<pre><code class="language-bash"># Run all tests
+pytest
+
+# Run with coverage
+pytest --cov=zestapi
+
+# Run specific test file
+pytest test_package.py -v
+</code></pre>
+<h2 id="pull-request-process">Pull Request Process</h2>
+<h3 id="before-submitting">Before Submitting</h3>
+<ol>
+<li>
+<p><strong>Code Quality</strong>
+   <code>bash
+   black .                    # Format code
+   isort .                   # Sort imports
+   pytest test_package.py    # Run tests</code></p>
+</li>
+<li>
+<p><strong>Documentation</strong></p>
+</li>
+<li>Update relevant documentation</li>
+<li>Add docstrings for new functions</li>
+<li>
+<p>Update README if needed</p>
+</li>
+<li>
+<p><strong>Testing</strong></p>
+</li>
+<li>Add tests for new functionality</li>
+<li>Ensure all tests pass</li>
+<li>Test manually if needed</li>
+</ol>
+<h3 id="pr-requirements">PR Requirements</h3>
+<ul>
+<li>[ ] Tests pass locally</li>
+<li>[ ] Code follows style guidelines</li>
+<li>[ ] Documentation updated</li>
+<li>[ ] Self-review completed</li>
+<li>[ ] Descriptive commit messages</li>
+<li>[ ] PR description explains changes</li>
+</ul>
+<h3 id="pr-template">PR Template</h3>
+<p>Use the provided PR template when submitting:
+- Describe the change
+- Link related issues
+- Include testing information
+- Note any breaking changes</p>
+<h2 id="feature-development">Feature Development</h2>
+<h3 id="adding-new-features">Adding New Features</h3>
+<ol>
+<li><strong>Create Issue</strong></li>
+<li>Describe the feature</li>
+<li>Discuss implementation approach</li>
+<li>
+<p>Get feedback from maintainers</p>
+</li>
+<li>
+<p><strong>Implementation</strong></p>
+</li>
+<li>Create feature branch</li>
+<li>Implement with tests</li>
+<li>Update documentation</li>
+<li>
+<p>Follow code standards</p>
+</li>
+<li>
+<p><strong>Integration</strong></p>
+</li>
+<li>Ensure backward compatibility</li>
+<li>Add migration guide if needed</li>
+<li>Update changelog</li>
+</ol>
+<h3 id="core-areas">Core Areas</h3>
+<h4 id="routes-and-routing">Routes and Routing</h4>
+<ul>
+<li>File: <code>zestapi/core/routing.py</code></li>
+<li>Auto-discovery system</li>
+<li>Route registration and handling</li>
+</ul>
+<h4 id="middleware">Middleware</h4>
+<ul>
+<li>File: <code>zestapi/core/middleware.py</code></li>
+<li>Error handling, logging, security</li>
+<li>Custom middleware support</li>
+</ul>
+<h4 id="authentication">Authentication</h4>
+<ul>
+<li>File: <code>zestapi/core/security.py</code></li>
+<li>JWT implementation</li>
+<li>Authentication backends</li>
+</ul>
+<h4 id="settings-and-configuration">Settings and Configuration</h4>
+<ul>
+<li>File: <code>zestapi/core/settings.py</code></li>
+<li>Environment variable handling</li>
+<li>Configuration validation</li>
+</ul>
+<h2 id="bug-reports">Bug Reports</h2>
+<h3 id="reporting-bugs">Reporting Bugs</h3>
+<p>Use the bug report template with:
+- Clear description
+- Steps to reproduce
+- Expected vs actual behavior
+- Environment details
+- Code examples</p>
+<h3 id="fixing-bugs">Fixing Bugs</h3>
+<ol>
+<li>Create issue if not exists</li>
+<li>Create bugfix branch</li>
+<li>Write test that reproduces bug</li>
+<li>Fix the issue</li>
+<li>Ensure test passes</li>
+<li>Submit PR</li>
+</ol>
+<h2 id="documentation_1">Documentation</h2>
+<h3 id="types-of-documentation">Types of Documentation</h3>
+<ul>
+<li><strong>API Documentation</strong>: Docstrings in code</li>
+<li><strong>User Guide</strong>: <code>docs/</code> directory</li>
+<li><strong>Examples</strong>: <code>examples/</code> directory</li>
+<li><strong>README</strong>: Project overview</li>
+</ul>
+<h3 id="documentation-guidelines">Documentation Guidelines</h3>
+<ul>
+<li>Write for beginners and experts</li>
+<li>Include code examples</li>
+<li>Keep examples up to date</li>
+<li>Use clear, concise language</li>
+</ul>
+<h2 id="community">Community</h2>
+<h3 id="communication">Communication</h3>
+<ul>
+<li>GitHub Issues for bugs and features</li>
+<li>GitHub Discussions for questions</li>
+<li>Code reviews for learning</li>
+</ul>
+<h3 id="code-of-conduct">Code of Conduct</h3>
+<ul>
+<li>Be respectful and inclusive</li>
+<li>Focus on constructive feedback</li>
+<li>Help newcomers learn</li>
+<li>Celebrate contributions</li>
+</ul>
+<h2 id="release-process">Release Process</h2>
+<h3 id="version-numbering">Version Numbering</h3>
+<p>Follow semantic versioning (SemVer):
+- <code>MAJOR.MINOR.PATCH</code>
+- Major: Breaking changes
+- Minor: New features (backward compatible)
+- Patch: Bug fixes</p>
+<h3 id="release-checklist">Release Checklist</h3>
+<ul>
+<li>[ ] Update version in <code>pyproject.toml</code></li>
+<li>[ ] Update CHANGELOG.md</li>
+<li>[ ] Run full test suite</li>
+<li>[ ] Update documentation</li>
+<li>[ ] Create release tag</li>
+<li>[ ] Publish to PyPI</li>
+</ul>
+<h2 id="getting-help">Getting Help</h2>
+<h3 id="resources">Resources</h3>
+<ul>
+<li>Documentation: <code>docs/</code> directory</li>
+<li>Examples: <code>examples/</code> directory</li>
+<li>Issues: GitHub Issues</li>
+<li>Discussions: GitHub Discussions</li>
+</ul>
+<h3 id="questions">Questions</h3>
+<p>Before asking:
+1. Check existing documentation
+2. Search closed issues
+3. Look at examples
+4. Review FAQ</p>
+<p>When asking:
+- Provide context
+- Include code examples
+- Specify environment details
+- Show what you've tried</p>
 <hr />
-<h2 id="conclusion">🎉 Conclusion</h2>
-<p><strong>ZestAPI is now a complete, production-ready Python web framework</strong> that successfully achieves its goal of being better than Flask and FastAPI. With enhanced error handling, comprehensive documentation, enterprise-grade features, and AI-assistant optimization, the framework is ready to:</p>
-<ul>
-<li><strong>Transform Python Web Development</strong> with its intuitive API and powerful features</li>
-<li><strong>Accelerate AI Development Workflows</strong> with LLM-optimized documentation</li>
-<li><strong>Enable Enterprise Adoption</strong> with production-ready security and deployment guides</li>
-<li><strong>Build Developer Communities</strong> around modern, efficient web development practices</li>
-</ul>
-<p><strong>🚀 ZestAPI is ready to revolutionize Python web development and establish itself as the next-generation framework of choice for developers and AI assistants alike!</strong></p>
-<hr />
-<p><em>Framework completed with comprehensive error handling, production readiness, and LLM integration. Ready for public release and PyPI publication.</em></p>
+<p>Thank you for contributing to ZestAPI! 🎉</p>
 
 
 

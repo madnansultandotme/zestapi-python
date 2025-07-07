@@ -8,19 +8,25 @@
       
       
       
+        <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/examples/plugin-system/">
       
       
+        <link rel="prev" href="../video-streaming/">
       
-      <link rel="icon" href="/zestapi-python/None">
+      
+        <link rel="next" href="../production-ready/">
+      
+      
+      <link rel="icon" href="../../None">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>ZestAPI Documentation</title>
+        <title>Plugin System - ZestAPI Documentation</title>
       
     
     
-      <link rel="stylesheet" href="/zestapi-python/assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
       
 
@@ -39,7 +45,7 @@
       
     
     
-    <script>__md_scope=new URL("/zestapi-python/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -57,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#plugin-system-example" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -69,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/zestapi-python/." title="ZestAPI Documentation" class="md-header__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
+    <a href="../.." title="ZestAPI Documentation" class="md-header__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -89,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Plugin System
             
           </span>
         </div>
@@ -179,7 +190,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/zestapi-python/." title="ZestAPI Documentation" class="md-nav__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
+    <a href="../.." title="ZestAPI Documentation" class="md-nav__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -209,7 +220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/DOCS/" class="md-nav__link">
+      <a href="../../DOCS/" class="md-nav__link">
         
   
   
@@ -231,7 +242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/USER_GUIDE/" class="md-nav__link">
+      <a href="../../USER_GUIDE/" class="md-nav__link">
         
   
   
@@ -250,18 +261,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -277,7 +290,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Examples
@@ -291,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/examples/basic-api/" class="md-nav__link">
+      <a href="../basic-api/" class="md-nav__link">
         
   
   
@@ -314,7 +327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/examples/auth-example/" class="md-nav__link">
+      <a href="../auth-example/" class="md-nav__link">
         
   
   
@@ -337,7 +350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/examples/ecommerce-api/" class="md-nav__link">
+      <a href="../ecommerce-api/" class="md-nav__link">
         
   
   
@@ -360,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/examples/websocket-chat/" class="md-nav__link">
+      <a href="../websocket-chat/" class="md-nav__link">
         
   
   
@@ -383,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/examples/video-streaming/" class="md-nav__link">
+      <a href="../video-streaming/" class="md-nav__link">
         
   
   
@@ -403,10 +416,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/zestapi-python/examples/plugin-system/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Plugin System
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -417,6 +452,128 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#included-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Included Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Included Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-logger-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Logger Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-key-authentication-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Key Authentication Plugin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing the Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing the Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-request-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Request Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-api-key-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test API Key Authentication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -429,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/examples/production-ready/" class="md-nav__link">
+      <a href="../production-ready/" class="md-nav__link">
         
   
   
@@ -459,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/PROJECT_STRUCTURE/" class="md-nav__link">
+      <a href="../../PROJECT_STRUCTURE/" class="md-nav__link">
         
   
   
@@ -481,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/PRODUCTION_GUIDE/" class="md-nav__link">
+      <a href="../../PRODUCTION_GUIDE/" class="md-nav__link">
         
   
   
@@ -503,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/SECURITY/" class="md-nav__link">
+      <a href="../../SECURITY/" class="md-nav__link">
         
   
   
@@ -525,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/CHANGELOG/" class="md-nav__link">
+      <a href="../../CHANGELOG/" class="md-nav__link">
         
   
   
@@ -547,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
         
   
   
@@ -569,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/RELEASE_CHECKLIST/" class="md-nav__link">
+      <a href="../../RELEASE_CHECKLIST/" class="md-nav__link">
         
   
   
@@ -591,7 +748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/LLM_GUIDE/" class="md-nav__link">
+      <a href="../../LLM_GUIDE/" class="md-nav__link">
         
   
   
@@ -613,7 +770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/COMPLETION_REPORT/" class="md-nav__link">
+      <a href="../../COMPLETION_REPORT/" class="md-nav__link">
         
   
   
@@ -635,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/RELEASE_SUMMARY/" class="md-nav__link">
+      <a href="../../RELEASE_SUMMARY/" class="md-nav__link">
         
   
   
@@ -657,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/PROJECT_SUMMARY/" class="md-nav__link">
+      <a href="../../PROJECT_SUMMARY/" class="md-nav__link">
         
   
   
@@ -679,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/EXAMPLES_COMPLETE/" class="md-nav__link">
+      <a href="../../EXAMPLES_COMPLETE/" class="md-nav__link">
         
   
   
@@ -701,7 +858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/zestapi-python/plugins/PLUGIN_DEVELOPMENT_GUIDE/" class="md-nav__link">
+      <a href="../../plugins/PLUGIN_DEVELOPMENT_GUIDE/" class="md-nav__link">
         
   
   
@@ -733,6 +890,118 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#included-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Included Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Included Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-logger-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Logger Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-key-authentication-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Key Authentication Plugin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing the Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing the Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-request-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Request Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-api-key-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test API Key Authentication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -744,8 +1013,83 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+  
+  
+
+
+<h1 id="plugin-system-example">Plugin System Example</h1>
+<p>This example demonstrates how to create and use plugins in ZestAPI.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Example Plugin</strong>: A complete plugin implementation with middleware</li>
+<li><strong>Plugin Registration</strong>: How to register and configure plugins</li>
+<li><strong>Custom Middleware</strong>: Plugin-based middleware for request processing</li>
+<li><strong>Configuration</strong>: Environment and file-based plugin configuration</li>
+<li><strong>Lifecycle Management</strong>: Plugin initialization and cleanup</li>
+</ul>
+<h2 id="included-plugins">Included Plugins</h2>
+<h3 id="request-logger-plugin">Request Logger Plugin</h3>
+<ul>
+<li>Logs all incoming requests with timestamps</li>
+<li>Configurable log levels and formats</li>
+<li>Request/response timing</li>
+<li>Custom headers injection</li>
+</ul>
+<h3 id="api-key-authentication-plugin">API Key Authentication Plugin</h3>
+<ul>
+<li>Simple API key authentication</li>
+<li>Configurable API keys</li>
+<li>Request filtering based on paths</li>
+<li>Custom error responses</li>
+</ul>
+<h2 id="plugin-structure">Plugin Structure</h2>
+<pre><code>app/plugins/example_plugin/
+├── __init__.py          # Plugin exports
+├── plugin.py            # Main plugin class
+├── middleware.py        # Custom middleware
+├── config.py           # Configuration
+└── README.md           # Plugin documentation
+</code></pre>
+<h2 id="running">Running</h2>
+<pre><code class="language-bash">cd examples/plugin-system
+pip install -r requirements.txt
+python main.py
+</code></pre>
+<h2 id="testing-the-plugins">Testing the Plugins</h2>
+<h3 id="test-request-logging">Test Request Logging</h3>
+<pre><code class="language-bash">curl http://localhost:8000/
+curl http://localhost:8000/api/test
+</code></pre>
+<h3 id="test-api-key-authentication">Test API Key Authentication</h3>
+<pre><code class="language-bash"># Without API key (should fail)
+curl http://localhost:8000/protected
+
+# With API key (should succeed)
+curl -H &quot;X-API-Key: test-api-key-123&quot; http://localhost:8000/protected
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<p>Plugins can be configured via environment variables:</p>
+<pre><code class="language-bash">export LOGGER_PLUGIN_LEVEL=DEBUG
+export API_KEY_PLUGIN_KEYS=key1,key2,key3
+export API_KEY_PLUGIN_HEADER=X-Custom-API-Key
+</code></pre>
+<p>Or via configuration files (see config/ directory).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -781,10 +1125,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "/zestapi-python/", "features": [], "search": "/zestapi-python/assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/zestapi-python/assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>

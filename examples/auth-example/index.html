@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/examples/auth-example/">
       
       
+        <link rel="prev" href="../basic-api/">
+      
+      
+        <link rel="next" href="../ecommerce-api/">
       
       
       <link rel="icon" href="../../None">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Authentication Example - ZestAPI Documentation</title>
+        <title>Auth Example - ZestAPI Documentation</title>
       
     
     
@@ -96,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Authentication Example
+              Auth Example
             
           </span>
         </div>
@@ -238,7 +242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../USER_GUIDE.md" class="md-nav__link">
+      <a href="../../USER_GUIDE/" class="md-nav__link">
         
   
   
@@ -257,18 +261,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -284,7 +290,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Examples
@@ -298,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic-api/README.md" class="md-nav__link">
+      <a href="../basic-api/" class="md-nav__link">
         
   
   
@@ -318,10 +324,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../README.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Auth Example
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -332,6 +360,128 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Endpoints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protected-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protected Routes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sign-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sign Up
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-protected-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Protected Route
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Features
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -344,7 +494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ecommerce-api/README.md" class="md-nav__link">
+      <a href="../ecommerce-api/" class="md-nav__link">
         
   
   
@@ -367,7 +517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../websocket-chat/README.md" class="md-nav__link">
+      <a href="../websocket-chat/" class="md-nav__link">
         
   
   
@@ -390,7 +540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../video-streaming/README.md" class="md-nav__link">
+      <a href="../video-streaming/" class="md-nav__link">
         
   
   
@@ -413,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../plugin-system/README.md" class="md-nav__link">
+      <a href="../plugin-system/" class="md-nav__link">
         
   
   
@@ -436,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../production-ready/README.md" class="md-nav__link">
+      <a href="../production-ready/" class="md-nav__link">
         
   
   
@@ -466,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PROJECT_STRUCTURE.md" class="md-nav__link">
+      <a href="../../PROJECT_STRUCTURE/" class="md-nav__link">
         
   
   
@@ -510,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../SECURITY.md" class="md-nav__link">
+      <a href="../../SECURITY/" class="md-nav__link">
         
   
   
@@ -532,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CHANGELOG.md" class="md-nav__link">
+      <a href="../../CHANGELOG/" class="md-nav__link">
         
   
   
@@ -554,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CONTRIBUTING.md" class="md-nav__link">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
         
   
   

@@ -8,25 +8,25 @@
       
       
       
-        <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/RELEASE_CHECKLIST/">
+        <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/examples/websocket-chat/">
       
       
-        <link rel="prev" href="../CONTRIBUTING/">
+        <link rel="prev" href="../ecommerce-api/">
       
       
-        <link rel="next" href="../LLM_GUIDE/">
+        <link rel="next" href="../video-streaming/">
       
       
-      <link rel="icon" href="../None">
+      <link rel="icon" href="../../None">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>Release Checklist - ZestAPI Documentation</title>
+        <title>WebSocket Chat - ZestAPI Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
       
 
@@ -45,7 +45,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#zestapi-framework-release-checklist" class="md-skip">
+        <a href="#websocket-chat-application" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ZestAPI Documentation" class="md-header__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
+    <a href="../.." title="ZestAPI Documentation" class="md-header__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Release Checklist
+              WebSocket Chat
             
           </span>
         </div>
@@ -190,7 +190,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ZestAPI Documentation" class="md-nav__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
+    <a href="../.." title="ZestAPI Documentation" class="md-nav__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -220,7 +220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DOCS/" class="md-nav__link">
+      <a href="../../DOCS/" class="md-nav__link">
         
   
   
@@ -242,7 +242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../USER_GUIDE/" class="md-nav__link">
+      <a href="../../USER_GUIDE/" class="md-nav__link">
         
   
   
@@ -261,18 +261,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -288,7 +290,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Examples
@@ -302,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/basic-api/" class="md-nav__link">
+      <a href="../basic-api/" class="md-nav__link">
         
   
   
@@ -325,7 +327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/auth-example/" class="md-nav__link">
+      <a href="../auth-example/" class="md-nav__link">
         
   
   
@@ -348,7 +350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/ecommerce-api/" class="md-nav__link">
+      <a href="../ecommerce-api/" class="md-nav__link">
         
   
   
@@ -368,10 +370,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../examples/websocket-chat/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Chat
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -382,6 +406,155 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#websocket-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WebSocket Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-to-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client to Server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-to-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server to Client
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Format
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technical Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#websocket-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#room-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Room Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Considerations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -394,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/video-streaming/" class="md-nav__link">
+      <a href="../video-streaming/" class="md-nav__link">
         
   
   
@@ -417,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/plugin-system/" class="md-nav__link">
+      <a href="../plugin-system/" class="md-nav__link">
         
   
   
@@ -440,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/production-ready/" class="md-nav__link">
+      <a href="../production-ready/" class="md-nav__link">
         
   
   
@@ -470,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PROJECT_STRUCTURE/" class="md-nav__link">
+      <a href="../../PROJECT_STRUCTURE/" class="md-nav__link">
         
   
   
@@ -492,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PRODUCTION_GUIDE/" class="md-nav__link">
+      <a href="../../PRODUCTION_GUIDE/" class="md-nav__link">
         
   
   
@@ -514,7 +687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../SECURITY/" class="md-nav__link">
+      <a href="../../SECURITY/" class="md-nav__link">
         
   
   
@@ -536,7 +709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CHANGELOG/" class="md-nav__link">
+      <a href="../../CHANGELOG/" class="md-nav__link">
         
   
   
@@ -558,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CONTRIBUTING/" class="md-nav__link">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
         
   
   
@@ -577,32 +750,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Release Checklist
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../RELEASE_CHECKLIST/" class="md-nav__link">
         
   
   
@@ -613,149 +764,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#phase-1-core-framework-development" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 1: Core Framework Development
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phase-2-production-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 2: Production Features
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phase-3-developer-experience" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 3: Developer Experience
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phase-4-testing-quality-assurance" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 4: Testing &amp; Quality Assurance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phase-5-packaging-distribution" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 5: Packaging &amp; Distribution
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phase-6-documentation-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 6: Documentation &amp; Examples
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phase-7-deployment-infrastructure" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 7: Deployment &amp; Infrastructure
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#final-validation-results" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Final Validation Results
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#release-status-ready-for-production" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Release Status: READY FOR PRODUCTION
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🎯 Release Status: READY FOR PRODUCTION">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Metrics:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#whats-been-accomplished" class="md-nav__link">
-    <span class="md-ellipsis">
-      What's Been Accomplished:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#next-steps-for-publication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Next Steps for Publication:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#framework-comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      Framework Comparison:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -767,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../LLM_GUIDE/" class="md-nav__link">
+      <a href="../../LLM_GUIDE/" class="md-nav__link">
         
   
   
@@ -789,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../COMPLETION_REPORT/" class="md-nav__link">
+      <a href="../../COMPLETION_REPORT/" class="md-nav__link">
         
   
   
@@ -811,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../RELEASE_SUMMARY/" class="md-nav__link">
+      <a href="../../RELEASE_SUMMARY/" class="md-nav__link">
         
   
   
@@ -833,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PROJECT_SUMMARY/" class="md-nav__link">
+      <a href="../../PROJECT_SUMMARY/" class="md-nav__link">
         
   
   
@@ -855,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../EXAMPLES_COMPLETE/" class="md-nav__link">
+      <a href="../../EXAMPLES_COMPLETE/" class="md-nav__link">
         
   
   
@@ -877,7 +885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../plugins/PLUGIN_DEVELOPMENT_GUIDE/" class="md-nav__link">
+      <a href="../../plugins/PLUGIN_DEVELOPMENT_GUIDE/" class="md-nav__link">
         
   
   
@@ -919,118 +927,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#phase-1-core-framework-development" class="md-nav__link">
+  <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
-      ✅ Phase 1: Core Framework Development
+      Features
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#phase-2-production-features" class="md-nav__link">
+  <a href="#websocket-events" class="md-nav__link">
     <span class="md-ellipsis">
-      ✅ Phase 2: Production Features
+      WebSocket Events
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phase-3-developer-experience" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 3: Developer Experience
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phase-4-testing-quality-assurance" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 4: Testing &amp; Quality Assurance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phase-5-packaging-distribution" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 5: Packaging &amp; Distribution
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phase-6-documentation-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 6: Documentation &amp; Examples
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phase-7-deployment-infrastructure" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Phase 7: Deployment &amp; Infrastructure
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#final-validation-results" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Final Validation Results
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#release-status-ready-for-production" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Release Status: READY FOR PRODUCTION
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🎯 Release Status: READY FOR PRODUCTION">
+    <nav class="md-nav" aria-label="WebSocket Events">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-metrics" class="md-nav__link">
+  <a href="#client-to-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Metrics:
+      Client to Server
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#whats-been-accomplished" class="md-nav__link">
+  <a href="#server-to-client" class="md-nav__link">
     <span class="md-ellipsis">
-      What's Been Accomplished:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#next-steps-for-publication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Next Steps for Publication:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#framework-comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      Framework Comparison:
+      Server to Client
     </span>
   </a>
   
@@ -1038,6 +965,93 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Format
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technical Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#websocket-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#room-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Room Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Considerations
+    </span>
+  </a>
   
 </li>
       
@@ -1060,122 +1074,95 @@
   
 
 
-<h1 id="zestapi-framework-release-checklist">ZestAPI Framework - Release Checklist ✅</h1>
-<h2 id="phase-1-core-framework-development">✅ Phase 1: Core Framework Development</h2>
+<h1 id="websocket-chat-application">WebSocket Chat Application</h1>
+<p>A real-time chat application built with ZestAPI demonstrating WebSocket functionality.</p>
+<h2 id="features">Features</h2>
 <ul>
-<li>✅ <strong>ASGI 3.0 Compliance</strong>: Full ASGI implementation with Starlette backend</li>
-<li>✅ <strong>Modern Python Features</strong>: Pydantic v2 validation, orjson serialization, async/await</li>
-<li>✅ <strong>Auto-routing System</strong>: Directory-based route discovery, dynamic parameters</li>
-<li>✅ <strong>Security Features</strong>: JWT authentication, rate limiting, CORS, PII masking capabilities</li>
-<li>✅ <strong>Plugin System</strong>: Auto-discovery from <code>/plugins</code>, register interface</li>
-<li>✅ <strong>WebSocket Support</strong>: Real-time communication capabilities</li>
-<li>✅ <strong>CLI Tooling</strong>: Project initialization, route/plugin generation, route mapping</li>
+<li><strong>Real-time messaging</strong>: Instant message delivery using WebSockets</li>
+<li><strong>Multiple chat rooms</strong>: Join different chat rooms</li>
+<li><strong>User management</strong>: Set username and track online users</li>
+<li><strong>Message history</strong>: View recent messages when joining a room</li>
+<li><strong>Typing indicators</strong>: See when other users are typing</li>
+<li><strong>User list</strong>: See who's currently online in each room</li>
+<li><strong>Modern UI</strong>: Clean, responsive chat interface</li>
 </ul>
-<h2 id="phase-2-production-features">✅ Phase 2: Production Features</h2>
+<h2 id="websocket-events">WebSocket Events</h2>
+<h3 id="client-to-server">Client to Server</h3>
 <ul>
-<li>✅ <strong>Error Handling</strong>: Comprehensive middleware with logging and custom error responses</li>
-<li>✅ <strong>Request/Response Middleware</strong>: Logging, CORS, compression support</li>
-<li>✅ <strong>Rate Limiting</strong>: Multiple strategies (fixed window, sliding window, token bucket)</li>
-<li>✅ <strong>Configuration Management</strong>: Environment variables, Pydantic settings, .env support</li>
-<li>✅ <strong>Security Hardening</strong>: JWT with configurable algorithms, secure headers</li>
-<li>✅ <strong>Performance</strong>: orjson for fast serialization, async-first design</li>
+<li><code>join_room</code> - Join a chat room</li>
+<li><code>leave_room</code> - Leave a chat room</li>
+<li><code>send_message</code> - Send a message to the current room</li>
+<li><code>typing_start</code> - Indicate user is typing</li>
+<li><code>typing_stop</code> - Indicate user stopped typing</li>
 </ul>
-<h2 id="phase-3-developer-experience">✅ Phase 3: Developer Experience</h2>
+<h3 id="server-to-client">Server to Client</h3>
 <ul>
-<li>✅ <strong>CLI Interface</strong>: </li>
-<li><code>zest init &lt;project&gt;</code> - Create new projects</li>
-<li><code>zest generate route &lt;name&gt;</code> - Generate route templates</li>
-<li><code>zest generate plugin &lt;name&gt;</code> - Generate plugin templates</li>
-<li><code>zest route-map</code> - Show all registered routes</li>
-<li><code>zest version</code> - Show framework version</li>
-<li>✅ <strong>Project Templates</strong>: Standardized project structure</li>
-<li>✅ <strong>Auto-discovery</strong>: Routes and plugins discovered automatically</li>
-<li>✅ <strong>Type Safety</strong>: Full typing support with mypy compatibility</li>
+<li><code>user_joined</code> - User joined the room</li>
+<li><code>user_left</code> - User left the room</li>
+<li><code>new_message</code> - New message received</li>
+<li><code>user_typing</code> - Someone is typing</li>
+<li><code>user_stopped_typing</code> - Someone stopped typing</li>
+<li><code>room_users</code> - List of users in current room</li>
+<li><code>error</code> - Error message</li>
 </ul>
-<h2 id="phase-4-testing-quality-assurance">✅ Phase 4: Testing &amp; Quality Assurance</h2>
-<ul>
-<li>✅ <strong>Unit Tests</strong>: 14 comprehensive tests covering all major functionality</li>
-<li>✅ <strong>Integration Tests</strong>: CLI, route discovery, middleware chain</li>
-<li>✅ <strong>Package Tests</strong>: Separate test suite for packaged distribution</li>
-<li>✅ <strong>Demo Project</strong>: Working example with generated routes and plugins</li>
-<li>✅ <strong>Error Scenarios</strong>: Authentication failures, rate limiting, validation errors</li>
-<li>✅ <strong>Performance</strong>: Fast startup, efficient routing, minimal overhead</li>
-</ul>
-<h2 id="phase-5-packaging-distribution">✅ Phase 5: Packaging &amp; Distribution</h2>
-<ul>
-<li>✅ <strong>PyPI Package</strong>: Modern pyproject.toml configuration</li>
-<li>✅ <strong>Distribution Files</strong>: Both wheel (.whl) and source (.tar.gz) distributions</li>
-<li>✅ <strong>Entry Points</strong>: CLI accessible via <code>zest</code> command after installation</li>
-<li>✅ <strong>Dependencies</strong>: Minimal, well-defined dependency tree</li>
-<li>✅ <strong>Platform Support</strong>: Windows, macOS, Linux (Python 3.10+)</li>
-<li>✅ <strong>Twine Validation</strong>: All distribution files pass PyPI compliance checks</li>
-</ul>
-<h2 id="phase-6-documentation-examples">✅ Phase 6: Documentation &amp; Examples</h2>
-<ul>
-<li>✅ <strong>README.md</strong>: Clear project overview with quickstart examples</li>
-<li>✅ <strong>DOCS.md</strong>: Comprehensive documentation covering:</li>
-<li>Installation and setup</li>
-<li>Core concepts and architecture</li>
-<li>Route definition and discovery</li>
-<li>Security and authentication</li>
-<li>Middleware and plugins</li>
-<li>Configuration management</li>
-<li>CLI usage and commands</li>
-<li>Deployment scenarios (Docker, AWS Lambda)</li>
-<li>✅ <strong>Code Examples</strong>: Working examples for all major features</li>
-<li>✅ <strong>Demo Project</strong>: Fully functional example application</li>
-</ul>
-<h2 id="phase-7-deployment-infrastructure">✅ Phase 7: Deployment &amp; Infrastructure</h2>
-<ul>
-<li>✅ <strong>Dockerfile</strong>: Production-ready containerization</li>
-<li>✅ <strong>Docker Compose</strong>: Development environment setup</li>
-<li>✅ <strong>AWS Lambda</strong>: Mangum integration for serverless deployment</li>
-<li>✅ <strong>Environment Configuration</strong>: .env file support, environment variables</li>
-<li>✅ <strong>Production Settings</strong>: Security headers, rate limiting, logging</li>
-</ul>
-<h2 id="final-validation-results">✅ Final Validation Results</h2>
-<pre><code>🚀 ZestAPI Package Validation
-==================================================
-Package Structure    ✅ PASSED
-Module Imports       ✅ PASSED  
-CLI Functionality    ✅ PASSED
-Package Build        ✅ PASSED
-==================================================
-Overall: 4/4 checks passed
-🎉 All validations passed! Package is ready for release.
+<h2 id="message-format">Message Format</h2>
+<pre><code class="language-json">{
+  &quot;type&quot;: &quot;event_type&quot;,
+  &quot;data&quot;: {
+    &quot;room&quot;: &quot;room_name&quot;,
+    &quot;username&quot;: &quot;user_name&quot;,
+    &quot;message&quot;: &quot;message_content&quot;,
+    &quot;timestamp&quot;: &quot;2024-01-01T12:00:00Z&quot;
+  }
+}
 </code></pre>
-<h2 id="release-status-ready-for-production">🎯 Release Status: <strong>READY FOR PRODUCTION</strong></h2>
-<h3 id="key-metrics">Key Metrics:</h3>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash">cd examples/websocket-chat
+pip install -r requirements.txt
+</code></pre>
+<h2 id="running">Running</h2>
+<pre><code class="language-bash">python main.py
+</code></pre>
+<p>The chat application will be available at <code>http://localhost:8000</code></p>
+<h2 id="usage">Usage</h2>
+<ol>
+<li>Open <code>http://localhost:8000</code> in your browser</li>
+<li>Enter your username</li>
+<li>Select or create a chat room</li>
+<li>Start chatting in real-time!</li>
+</ol>
+<h2 id="technical-details">Technical Details</h2>
+<h3 id="websocket-connection">WebSocket Connection</h3>
 <ul>
-<li>✅ <strong>14/14 tests passing</strong> (100% test success rate)</li>
-<li>✅ <strong>4/4 validation checks passed</strong></li>
-<li>✅ <strong>Zero critical issues</strong></li>
-<li>✅ <strong>PyPI compliance verified</strong></li>
-<li>✅ <strong>Full feature coverage achieved</strong></li>
+<li>Endpoint: <code>ws://localhost:8000/ws</code></li>
+<li>Protocol: JSON-based message exchange</li>
+<li>Automatic reconnection on connection loss</li>
 </ul>
-<h3 id="whats-been-accomplished">What's Been Accomplished:</h3>
-<ol>
-<li><strong>Complete Framework</strong>: All planned features implemented and tested</li>
-<li><strong>Production Ready</strong>: Error handling, security, rate limiting, logging</li>
-<li><strong>Developer Friendly</strong>: Intuitive CLI, auto-discovery, comprehensive docs</li>
-<li><strong>Package Ready</strong>: PyPI-compliant distribution with proper metadata</li>
-<li><strong>Fully Tested</strong>: Comprehensive test coverage across all components</li>
-<li><strong>Well Documented</strong>: Clear documentation and working examples</li>
-</ol>
-<h3 id="next-steps-for-publication">Next Steps for Publication:</h3>
-<ol>
-<li><strong>PyPI Upload</strong>: <code>twine upload dist/*</code> (when ready to publish)</li>
-<li><strong>Git Repository</strong>: Create public GitHub repository</li>
-<li><strong>CI/CD Pipeline</strong>: Set up automated testing and deployment</li>
-<li><strong>Community</strong>: Announce release, gather feedback, iterate</li>
-</ol>
-<h3 id="framework-comparison">Framework Comparison:</h3>
-<p>ZestAPI delivers on its promise to be <strong>better than Flask and FastAPI</strong> through:
-- <strong>Simpler than Flask</strong>: Auto-discovery eliminates boilerplate
-- <strong>Faster than FastAPI</strong>: orjson + optimized middleware
-- <strong>More batteries included</strong>: Security, rate limiting, plugins out of the box
-- <strong>Better DX</strong>: Powerful CLI tools and intuitive project structure</p>
-<p><strong>The ZestAPI framework is now complete and ready for public release! 🎉</strong></p>
+<h3 id="room-management">Room Management</h3>
+<ul>
+<li>Dynamic room creation</li>
+<li>Persistent message history (in-memory)</li>
+<li>User presence tracking</li>
+<li>Room-based message broadcasting</li>
+</ul>
+<h3 id="message-types">Message Types</h3>
+<ul>
+<li><strong>Text messages</strong>: Regular chat messages</li>
+<li><strong>System messages</strong>: Join/leave notifications</li>
+<li><strong>Typing indicators</strong>: Real-time typing status</li>
+<li><strong>User lists</strong>: Online user updates</li>
+</ul>
+<h2 id="production-considerations">Production Considerations</h2>
+<p>For production deployment:
+- Use Redis for message persistence and pub/sub
+- Implement user authentication
+- Add message encryption
+- Implement rate limiting
+- Add message moderation
+- Use horizontal scaling with sticky sessions
+- Add monitoring and logging
+- Implement proper error handling
+- Add file/image sharing capabilities</p>
 
 
 
@@ -1224,10 +1211,10 @@ Overall: 4/4 checks passed
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>

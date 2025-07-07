@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/examples/basic-api/">
+        <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/examples/video-streaming/">
       
       
-        <link rel="prev" href="../../USER_GUIDE/">
+        <link rel="prev" href="../websocket-chat/">
       
       
-        <link rel="next" href="../auth-example/">
+        <link rel="next" href="../plugin-system/">
       
       
       <link rel="icon" href="../../None">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Basic API - ZestAPI Documentation</title>
+        <title>Video Streaming - ZestAPI Documentation</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#basic-api-example" class="md-skip">
+        <a href="#video-streaming-application" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Basic API
+              Video Streaming
             
           </span>
         </div>
@@ -301,32 +301,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Basic API
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../basic-api/" class="md-nav__link">
         
   
   
@@ -337,62 +315,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#features-demonstrated" class="md-nav__link">
-    <span class="md-ellipsis">
-      Features Demonstrated
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setup
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api-endpoints" class="md-nav__link">
-    <span class="md-ellipsis">
-      API Endpoints
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Testing
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -471,10 +393,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../video-streaming/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Video Streaming
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -485,6 +429,272 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Events
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting a Stream
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-a-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing a Stream
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream Controls
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Endpoints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      REST API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frame-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frame Format
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technical Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#video-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Capture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frame-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frame Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Communication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bandwidth-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bandwidth Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Deployment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -834,20 +1044,113 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#features-demonstrated" class="md-nav__link">
+  <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
-      Features Demonstrated
+      Features
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
+  <a href="#architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup
+      Architecture
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Events
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting a Stream
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-a-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing a Stream
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream Controls
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -858,12 +1161,129 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="API Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      REST API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
+  <a href="#frame-format" class="md-nav__link">
     <span class="md-ellipsis">
-      Testing
+      Frame Format
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technical Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#video-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Capture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frame-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frame Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Communication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bandwidth-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bandwidth Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Deployment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Notes
     </span>
   </a>
   
@@ -888,43 +1308,151 @@
   
 
 
-<h1 id="basic-api-example">Basic API Example</h1>
-<p>A simple REST API demonstrating ZestAPI's core features.</p>
-<h2 id="features-demonstrated">Features Demonstrated</h2>
+<h1 id="video-streaming-application">Video Streaming Application</h1>
+<p>A real-time video streaming application built with ZestAPI demonstrating WebSocket-based video transmission.</p>
+<h2 id="features">Features</h2>
 <ul>
-<li>File-based route discovery</li>
-<li>CRUD operations</li>
-<li>Request validation with Pydantic</li>
-<li>Error handling</li>
-<li>JSON responses</li>
+<li><strong>Real-time Video Streaming</strong>: Stream camera feed via WebSockets</li>
+<li><strong>Multiple Stream Support</strong>: Support for multiple simultaneous streams</li>
+<li><strong>Frame Rate Control</strong>: Adjustable frame rate and quality</li>
+<li><strong>Multiple Viewers</strong>: Multiple clients can view the same stream</li>
+<li><strong>Stream Management</strong>: Start/stop streams, list active streams</li>
+<li><strong>Quality Settings</strong>: Adjustable video quality and compression</li>
+<li><strong>Browser-based Viewer</strong>: HTML5 video player interface</li>
+<li><strong>Stream Recording</strong>: Optional recording capability</li>
 </ul>
-<h2 id="setup">Setup</h2>
-<pre><code class="language-bash">cd basic-api/
+<h2 id="architecture">Architecture</h2>
+<h3 id="components">Components</h3>
+<ul>
+<li><strong>Stream Producer</strong>: Camera capture and frame encoding</li>
+<li><strong>WebSocket Server</strong>: Real-time frame transmission</li>
+<li><strong>Stream Manager</strong>: Handle multiple streams and viewers</li>
+<li><strong>Web Interface</strong>: Browser-based video player</li>
+</ul>
+<h3 id="websocket-events">WebSocket Events</h3>
+<ul>
+<li><code>start_stream</code> - Start a new video stream</li>
+<li><code>stop_stream</code> - Stop video stream</li>
+<li><code>join_stream</code> - Join as viewer</li>
+<li><code>leave_stream</code> - Leave stream</li>
+<li><code>frame_data</code> - Video frame transmission</li>
+<li><code>stream_info</code> - Stream metadata</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash">cd examples/video-streaming
 pip install -r requirements.txt
-python main.py
 </code></pre>
-<h2 id="api-endpoints">API Endpoints</h2>
+<h2 id="requirements">Requirements</h2>
 <ul>
-<li><code>GET /</code> - Welcome message</li>
-<li><code>GET /health</code> - Health check</li>
-<li><code>GET /users</code> - List all users</li>
-<li><code>GET /users/{user_id}</code> - Get user by ID</li>
-<li><code>POST /users</code> - Create new user</li>
-<li><code>PUT /users/{user_id}</code> - Update user</li>
-<li><code>DELETE /users/{user_id}</code> - Delete user</li>
+<li><strong>Camera</strong>: Webcam or external camera</li>
+<li><strong>OpenCV</strong>: For video capture and processing</li>
+<li><strong>Browser</strong>: Modern browser with WebSocket support</li>
 </ul>
-<h2 id="testing">Testing</h2>
-<pre><code class="language-bash"># List users
-curl http://localhost:8000/users
-
-# Create user
-curl -X POST http://localhost:8000/users \
-  -H &quot;Content-Type: application/json&quot; \
-  -d '{&quot;name&quot;: &quot;John Doe&quot;, &quot;email&quot;: &quot;john@example.com&quot;, &quot;age&quot;: 30}'
-
-# Get user
-curl http://localhost:8000/users/1
+<h2 id="running">Running</h2>
+<pre><code class="language-bash">python main.py
 </code></pre>
+<p>The streaming application will be available at <code>http://localhost:8000</code></p>
+<h2 id="usage">Usage</h2>
+<h3 id="starting-a-stream">Starting a Stream</h3>
+<ol>
+<li>Open <code>http://localhost:8000</code> in your browser</li>
+<li>Click "Start Stream" to begin camera capture</li>
+<li>Adjust quality settings if needed</li>
+<li>Share the stream URL with viewers</li>
+</ol>
+<h3 id="viewing-a-stream">Viewing a Stream</h3>
+<ol>
+<li>Open the stream URL in your browser</li>
+<li>Select the stream from the available list</li>
+<li>Video will start playing automatically</li>
+</ol>
+<h3 id="stream-controls">Stream Controls</h3>
+<ul>
+<li><strong>Quality</strong>: Low (320p), Medium (480p), High (720p)</li>
+<li><strong>Frame Rate</strong>: 15, 24, 30 FPS</li>
+<li><strong>Compression</strong>: JPEG quality (50-95%)</li>
+</ul>
+<h2 id="api-endpoints">API Endpoints</h2>
+<h3 id="rest-api">REST API</h3>
+<ul>
+<li><code>GET /</code> - Web interface</li>
+<li><code>GET /api/streams</code> - List active streams</li>
+<li><code>GET /api/streams/{stream_id}</code> - Get stream info</li>
+<li><code>POST /api/streams</code> - Create new stream</li>
+<li><code>DELETE /api/streams/{stream_id}</code> - Stop stream</li>
+</ul>
+<h3 id="websocket">WebSocket</h3>
+<ul>
+<li><code>ws://localhost:8000/ws/stream/{stream_id}</code> - Stream endpoint</li>
+<li><code>ws://localhost:8000/ws/viewer/{stream_id}</code> - Viewer endpoint</li>
+</ul>
+<h2 id="frame-format">Frame Format</h2>
+<p>Video frames are transmitted as base64-encoded JPEG images:</p>
+<pre><code class="language-json">{
+  &quot;type&quot;: &quot;frame&quot;,
+  &quot;data&quot;: {
+    &quot;stream_id&quot;: &quot;stream_123&quot;,
+    &quot;timestamp&quot;: 1234567890,
+    &quot;frame&quot;: &quot;base64_encoded_jpeg_data&quot;,
+    &quot;frame_number&quot;: 42,
+    &quot;quality&quot;: &quot;medium&quot;
+  }
+}
+</code></pre>
+<h2 id="technical-details">Technical Details</h2>
+<h3 id="video-capture">Video Capture</h3>
+<ul>
+<li>Uses OpenCV for camera access</li>
+<li>Supports multiple camera indices</li>
+<li>Configurable resolution and frame rate</li>
+<li>Automatic fallback to available cameras</li>
+</ul>
+<h3 id="frame-processing">Frame Processing</h3>
+<ul>
+<li>JPEG compression for efficient transmission</li>
+<li>Configurable quality levels</li>
+<li>Frame skipping for bandwidth management</li>
+<li>Adaptive quality based on connection</li>
+</ul>
+<h3 id="websocket-communication">WebSocket Communication</h3>
+<ul>
+<li>Binary frame transmission for efficiency</li>
+<li>JSON metadata for frame info</li>
+<li>Automatic reconnection handling</li>
+<li>Bandwidth monitoring</li>
+</ul>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<h3 id="bandwidth-usage">Bandwidth Usage</h3>
+<ul>
+<li><strong>Low Quality (320p)</strong>: ~500 KB/s per viewer</li>
+<li><strong>Medium Quality (480p)</strong>: ~1 MB/s per viewer  </li>
+<li><strong>High Quality (720p)</strong>: ~2 MB/s per viewer</li>
+</ul>
+<h3 id="scalability">Scalability</h3>
+<ul>
+<li>Single server handles 10-20 concurrent viewers</li>
+<li>Use load balancer for more viewers</li>
+<li>Consider WebRTC for peer-to-peer streaming</li>
+<li>Use CDN for global distribution</li>
+</ul>
+<h2 id="production-deployment">Production Deployment</h2>
+<p>For production use:
+- Use HTTPS/WSS for secure transmission
+- Implement authentication and authorization
+- Add stream recording capabilities
+- Monitor bandwidth and performance
+- Implement proper error handling
+- Add stream quality adaptation
+- Use professional streaming protocols (RTMP, WebRTC)
+- Add stream analytics and monitoring</p>
+<h2 id="security-notes">Security Notes</h2>
+<ul>
+<li>Camera access requires HTTPS in production</li>
+<li>Implement proper access controls</li>
+<li>Validate all incoming data</li>
+<li>Monitor for abuse and bandwidth limits</li>
+<li>Consider encryption for sensitive streams</li>
+</ul>
 
 
 

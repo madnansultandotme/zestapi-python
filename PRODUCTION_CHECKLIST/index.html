@@ -1,0 +1,1187 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/PRODUCTION_CHECKLIST/">
+      
+      
+      
+      
+      <link rel="icon" href="../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>🚀 ZestAPI Production Deployment Checklist - ZestAPI Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#zestapi-production-deployment-checklist" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ZestAPI Documentation" class="md-header__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZestAPI Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🚀 ZestAPI Production Deployment Checklist
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/madnansultandotme/zestapi-python" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    madnansultandotme/zestapi-python
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ZestAPI Documentation" class="md-nav__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ZestAPI Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/madnansultandotme/zestapi-python" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    madnansultandotme/zestapi-python
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../USER_GUIDE.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/basic-api/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basic API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/auth-example/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auth Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ecommerce-api/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    E-commerce API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/websocket-chat/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Chat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/video-streaming/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Video Streaming
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/plugin-system/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Plugin System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/production-ready/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Production Ready
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PROJECT_STRUCTURE.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRODUCTION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Production Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RELEASE_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../COMPLETION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Completion Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RELEASE_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PROJECT_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXAMPLES_COMPLETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Examples Complete
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugins/PLUGIN_DEVELOPMENT_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Plugins Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-deployment-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Pre-Deployment Checklist
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ Pre-Deployment Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Security Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ Environment Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Performance &amp; Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Deployment &amp; Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛡️ Security Validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛡️ Security Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwt-configuration-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWT Configuration Test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cors-configuration-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      CORS Configuration Test
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-production-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐳 Docker Production Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Environment Variables Template
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-production-issues-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Common Production Issues &amp; Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚨 Common Production Issues &amp; Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-jwt-authentication-failing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: JWT Authentication Failing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-cors-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: CORS Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-rate-limiting-too-aggressive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Rate Limiting Too Aggressive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-performance-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Performance Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-deployment-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Post-Deployment Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📈 Post-Deployment Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-metrics-to-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Metrics to Monitor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-monitoring-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Monitoring Stack
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-deployment-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Production Deployment Validation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="zestapi-production-deployment-checklist">🚀 ZestAPI Production Deployment Checklist</h1>
+<p>This checklist ensures your ZestAPI application is properly configured for production deployment.</p>
+<h2 id="pre-deployment-checklist">✅ Pre-Deployment Checklist</h2>
+<h3 id="security-configuration">🔐 Security Configuration</h3>
+<ul>
+<li>[ ] <strong>JWT Secret</strong>: Set <code>JWT_SECRET</code> to a strong, unique value (minimum 32 characters)</li>
+<li>[ ] <strong>Debug Mode</strong>: Ensure <code>DEBUG=false</code> in production environment</li>
+<li>[ ] <strong>CORS Origins</strong>: Configure <code>CORS_ORIGINS</code> to specific domains (not <code>["*"]</code>)</li>
+<li>[ ] <strong>Rate Limiting</strong>: Set appropriate <code>RATE_LIMIT</code> for your use case</li>
+<li>[ ] <strong>HTTPS</strong>: Ensure your deployment uses HTTPS (SSL/TLS certificates)</li>
+</ul>
+<h3 id="environment-setup">🏗️ Environment Setup</h3>
+<ul>
+<li>[ ] <strong>Environment Variables</strong>: All sensitive data in environment variables</li>
+<li>[ ] <strong>Database Connections</strong>: Production database configured and tested</li>
+<li>[ ] <strong>Logging</strong>: Configure appropriate <code>LOG_LEVEL</code> (WARNING or ERROR)</li>
+<li>[ ] <strong>Error Monitoring</strong>: Set up error tracking (Sentry, etc.)</li>
+<li>[ ] <strong>Health Checks</strong>: Implement <code>/health</code> endpoint for load balancers</li>
+</ul>
+<h3 id="performance-monitoring">📊 Performance &amp; Monitoring</h3>
+<ul>
+<li>[ ] <strong>Resource Limits</strong>: Configure appropriate CPU/memory limits</li>
+<li>[ ] <strong>Worker Processes</strong>: Use multiple workers for production (uvicorn/gunicorn)</li>
+<li>[ ] <strong>Load Balancer</strong>: Configure reverse proxy (Nginx, Traefik, etc.)</li>
+<li>[ ] <strong>Metrics</strong>: Set up application metrics collection</li>
+<li>[ ] <strong>Alerting</strong>: Configure alerts for errors and performance issues</li>
+</ul>
+<h3 id="deployment-operations">🔄 Deployment &amp; Operations</h3>
+<ul>
+<li>[ ] <strong>Container Security</strong>: Use minimal base images, security scanning</li>
+<li>[ ] <strong>Backup Strategy</strong>: Regular backups of application data</li>
+<li>[ ] <strong>Rolling Updates</strong>: Zero-downtime deployment strategy</li>
+<li>[ ] <strong>Rollback Plan</strong>: Quick rollback procedure documented</li>
+<li>[ ] <strong>Documentation</strong>: Deployment and operations documentation updated</li>
+</ul>
+<h2 id="security-validation">🛡️ Security Validation</h2>
+<h3 id="jwt-configuration-test">JWT Configuration Test</h3>
+<pre><code class="language-python"># Validate JWT secret strength
+import os
+jwt_secret = os.getenv(&quot;JWT_SECRET&quot;, &quot;&quot;)
+assert len(jwt_secret) &gt;= 32, &quot;JWT_SECRET must be at least 32 characters&quot;
+assert jwt_secret != &quot;your-secret-key&quot;, &quot;Must use custom JWT_SECRET&quot;
+</code></pre>
+<h3 id="cors-configuration-test">CORS Configuration Test</h3>
+<pre><code class="language-python"># Validate CORS settings
+cors_origins = os.getenv(&quot;CORS_ORIGINS&quot;, &quot;&quot;).split(&quot;,&quot;)
+assert &quot;*&quot; not in cors_origins, &quot;CORS should not allow all origins in production&quot;
+</code></pre>
+<h2 id="docker-production-example">🐳 Docker Production Example</h2>
+<pre><code class="language-dockerfile">FROM python:3.11-slim
+
+# Security: Create non-root user
+RUN useradd --create-home --shell /bin/bash app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application
+WORKDIR /app
+COPY --chown=app:app . .
+
+# Switch to non-root user
+USER app
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD python -c &quot;import requests; requests.get('http://localhost:8000/health')&quot;
+
+# Production command
+CMD [&quot;uvicorn&quot;, &quot;main:app&quot;, &quot;--host&quot;, &quot;0.0.0.0&quot;, &quot;--port&quot;, &quot;8000&quot;, &quot;--workers&quot;, &quot;4&quot;]
+</code></pre>
+<h2 id="environment-variables-template">🔧 Environment Variables Template</h2>
+<pre><code class="language-bash"># Production Environment Template
+# Copy to .env and customize for your environment
+
+# Security (REQUIRED)
+JWT_SECRET=your-super-secure-production-secret-key-minimum-32-chars
+DEBUG=false
+
+# Server Configuration
+HOST=0.0.0.0
+PORT=8000
+LOG_LEVEL=WARNING
+
+# Rate Limiting
+RATE_LIMIT=1000/minute
+
+# CORS (Adjust for your domains)
+CORS_ORIGINS=https://yourdomain.com,https://api.yourdomain.com
+CORS_ALLOW_CREDENTIALS=true
+CORS_ALLOW_METHODS=GET,POST,PUT,DELETE,OPTIONS
+CORS_ALLOW_HEADERS=*
+
+# Database (if applicable)
+DATABASE_URL=postgresql://user:password@db:5432/database
+
+# Monitoring (optional)
+SENTRY_DSN=https://your-sentry-dsn.sentry.io
+</code></pre>
+<h2 id="common-production-issues-solutions">🚨 Common Production Issues &amp; Solutions</h2>
+<h3 id="issue-jwt-authentication-failing">Issue: JWT Authentication Failing</h3>
+<p><strong>Symptoms</strong>: 401 errors, "Invalid token" messages
+<strong>Solution</strong>: 
+- Verify <code>JWT_SECRET</code> is set correctly
+- Check token expiration times
+- Ensure consistent secret across all instances</p>
+<h3 id="issue-cors-errors">Issue: CORS Errors</h3>
+<p><strong>Symptoms</strong>: Browser console errors, blocked requests
+<strong>Solution</strong>:
+- Set specific origins instead of <code>*</code>
+- Include all necessary headers
+- Verify preflight OPTIONS handling</p>
+<h3 id="issue-rate-limiting-too-aggressive">Issue: Rate Limiting Too Aggressive</h3>
+<p><strong>Symptoms</strong>: Legitimate requests being blocked
+<strong>Solution</strong>:
+- Adjust <code>RATE_LIMIT</code> configuration
+- Implement user-specific rate limiting
+- Consider IP whitelisting for known clients</p>
+<h3 id="issue-performance-issues">Issue: Performance Issues</h3>
+<p><strong>Symptoms</strong>: Slow response times, high CPU usage
+<strong>Solution</strong>:
+- Increase worker processes
+- Optimize database queries
+- Add caching layer
+- Profile application bottlenecks</p>
+<h2 id="post-deployment-monitoring">📈 Post-Deployment Monitoring</h2>
+<h3 id="key-metrics-to-monitor">Key Metrics to Monitor</h3>
+<ul>
+<li><strong>Response Times</strong>: P95, P99 latencies</li>
+<li><strong>Error Rates</strong>: 4xx, 5xx error percentages  </li>
+<li><strong>Throughput</strong>: Requests per second</li>
+<li><strong>Resource Usage</strong>: CPU, Memory, Disk I/O</li>
+<li><strong>Database Performance</strong>: Query times, connection pools</li>
+</ul>
+<h3 id="recommended-monitoring-stack">Recommended Monitoring Stack</h3>
+<ul>
+<li><strong>Metrics</strong>: Prometheus + Grafana</li>
+<li><strong>Logging</strong>: ELK Stack (Elasticsearch, Logstash, Kibana)</li>
+<li><strong>Error Tracking</strong>: Sentry or similar</li>
+<li><strong>Uptime Monitoring</strong>: Pingdom, UptimeRobot, or DataDog</li>
+</ul>
+<h2 id="production-deployment-validation">✅ Production Deployment Validation</h2>
+<p>After deployment, verify:</p>
+<pre><code class="language-bash"># Health check
+curl https://your-domain.com/health
+
+# CORS headers
+curl -H &quot;Origin: https://your-frontend-domain.com&quot; \
+     -H &quot;Access-Control-Request-Method: POST&quot; \
+     -H &quot;Access-Control-Request-Headers: X-Requested-With&quot; \
+     -X OPTIONS \
+     https://your-domain.com/api/endpoint
+
+# Rate limiting headers
+curl -I https://your-domain.com/api/endpoint
+
+# Security headers
+curl -I https://your-domain.com/
+</code></pre>
+<hr />
+<p>🎉 <strong>Congratulations!</strong> Your ZestAPI application is production-ready when all items are checked off.</p>
+<p>For additional support, refer to:
+- <a href="../PRODUCTION_GUIDE/">Production Guide</a>
+- <a href="../LLM_GUIDE/">LLM Guide</a> 
+- <a href="README.md">Framework Documentation</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

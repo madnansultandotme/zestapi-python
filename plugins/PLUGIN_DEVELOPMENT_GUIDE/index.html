@@ -1,0 +1,2605 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://madnansultandotme.github.io/zestapi-python/plugins/PLUGIN_DEVELOPMENT_GUIDE/">
+      
+      
+        <link rel="prev" href="../../EXAMPLES_COMPLETE/">
+      
+      
+      
+      <link rel="icon" href="../../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Plugins Guide - ZestAPI Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#zestapi-plugin-development-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ZestAPI Documentation" class="md-header__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZestAPI Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plugins Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/madnansultandotme/zestapi-python" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    madnansultandotme/zestapi-python
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ZestAPI Documentation" class="md-nav__button md-logo" aria-label="ZestAPI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ZestAPI Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/madnansultandotme/zestapi-python" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    madnansultandotme/zestapi-python
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DOCS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../USER_GUIDE.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/basic-api/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basic API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/auth-example/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auth Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/ecommerce-api/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    E-commerce API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/websocket-chat/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Chat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/video-streaming/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Video Streaming
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/plugin-system/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Plugin System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/production-ready/README.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Production Ready
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PROJECT_STRUCTURE.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRODUCTION_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Production Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SECURITY.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CHANGELOG.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RELEASE_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LLM_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../COMPLETION_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Completion Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RELEASE_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PROJECT_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EXAMPLES_COMPLETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Examples Complete
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Plugins Guide
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Plugins Guide
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Discovery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-middleware-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Middleware Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-route-extension-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Route Extension Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-service-integration-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Service Integration Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-validation-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Validation Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-authentication-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Authentication Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-utility-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Utility Plugins
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-your-first-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Your First Plugin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Your First Plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-plugin-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create Plugin Directory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-plugin-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Create Plugin Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Create Plugin Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__init__py" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pluginpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      plugin.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      config.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-plugin-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Create Plugin Manifest
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Create Plugin Manifest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pluginyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      plugin.yaml
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-register-the-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Register the Plugin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Register the Plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-your-main-application-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      In your main application (main.py):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Lifecycle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Lifecycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Initialization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Runtime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Cleanup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecycle-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lifecycle Hooks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleware-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Plugins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-extension-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Extension Plugins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-integration-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Integration Plugins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration and Settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-based-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment-based Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-based-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      File-based Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publishing-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Publishing Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package-structure-for-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Structure for Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setuppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      setup.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypi-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      PyPI Distribution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-plugin-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Plugin Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Compatibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-database-connection-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Database Connection Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cors-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. CORS Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-metrics-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Metrics Plugin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Discovery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-middleware-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Middleware Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-route-extension-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Route Extension Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-service-integration-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Service Integration Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-validation-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Validation Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-authentication-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Authentication Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-utility-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Utility Plugins
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-your-first-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Your First Plugin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Your First Plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-plugin-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create Plugin Directory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-plugin-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Create Plugin Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Create Plugin Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__init__py" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pluginpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      plugin.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      config.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-plugin-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Create Plugin Manifest
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Create Plugin Manifest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pluginyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      plugin.yaml
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-register-the-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Register the Plugin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Register the Plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-your-main-application-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      In your main application (main.py):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Lifecycle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Lifecycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Initialization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Runtime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Cleanup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecycle-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lifecycle Hooks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleware-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Plugins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-extension-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Extension Plugins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-integration-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Integration Plugins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration and Settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-based-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment-based Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-based-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      File-based Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publishing-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Publishing Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package-structure-for-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Structure for Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setuppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      setup.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypi-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      PyPI Distribution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-plugin-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Plugin Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Compatibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-database-connection-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Database Connection Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cors-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. CORS Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-metrics-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Metrics Plugin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="zestapi-plugin-development-guide">ZestAPI Plugin Development Guide</h1>
+<p>This comprehensive guide covers how to create, configure, and deploy plugins for ZestAPI. Plugins allow you to extend the framework with custom functionality, middleware, and integrations.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#plugin-architecture">Plugin Architecture</a></li>
+<li><a href="#plugin-types">Plugin Types</a></li>
+<li><a href="#creating-your-first-plugin">Creating Your First Plugin</a></li>
+<li><a href="#plugin-structure">Plugin Structure</a></li>
+<li><a href="#plugin-lifecycle">Plugin Lifecycle</a></li>
+<li><a href="#middleware-plugins">Middleware Plugins</a></li>
+<li><a href="#route-extension-plugins">Route Extension Plugins</a></li>
+<li><a href="#service-integration-plugins">Service Integration Plugins</a></li>
+<li><a href="#configuration-and-settings">Configuration and Settings</a></li>
+<li><a href="#testing-plugins">Testing Plugins</a></li>
+<li><a href="#publishing-plugins">Publishing Plugins</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+<li><a href="#example-plugins">Example Plugins</a></li>
+</ol>
+<h2 id="plugin-architecture">Plugin Architecture</h2>
+<p>ZestAPI uses a modular plugin architecture that allows developers to:</p>
+<ul>
+<li><strong>Extend Core Functionality</strong>: Add new features to the framework</li>
+<li><strong>Custom Middleware</strong>: Create request/response processing middleware</li>
+<li><strong>Third-party Integrations</strong>: Connect with external services and APIs</li>
+<li><strong>Custom Validators</strong>: Add specialized data validation</li>
+<li><strong>Authentication Providers</strong>: Implement custom auth mechanisms</li>
+<li><strong>Database Connectors</strong>: Add support for different databases</li>
+</ul>
+<h3 id="plugin-discovery">Plugin Discovery</h3>
+<p>ZestAPI automatically discovers plugins in:
+1. The <code>app/plugins/</code> directory
+2. Installed Python packages with the <code>zestapi_plugin</code> entry point
+3. Plugins registered via configuration</p>
+<h2 id="plugin-types">Plugin Types</h2>
+<h3 id="1-middleware-plugins">1. Middleware Plugins</h3>
+<p>Process requests and responses at various stages of the request lifecycle.</p>
+<h3 id="2-route-extension-plugins">2. Route Extension Plugins</h3>
+<p>Add new routes, endpoints, or modify existing routing behavior.</p>
+<h3 id="3-service-integration-plugins">3. Service Integration Plugins</h3>
+<p>Connect with external services like databases, caches, message queues, etc.</p>
+<h3 id="4-validation-plugins">4. Validation Plugins</h3>
+<p>Provide custom validation logic for request data.</p>
+<h3 id="5-authentication-plugins">5. Authentication Plugins</h3>
+<p>Implement custom authentication and authorization mechanisms.</p>
+<h3 id="6-utility-plugins">6. Utility Plugins</h3>
+<p>Provide helper functions and utilities for other parts of the application.</p>
+<h2 id="creating-your-first-plugin">Creating Your First Plugin</h2>
+<p>Let's create a simple rate limiting plugin:</p>
+<h3 id="step-1-create-plugin-directory">Step 1: Create Plugin Directory</h3>
+<pre><code class="language-bash">mkdir app/plugins/rate_limiter
+cd app/plugins/rate_limiter
+</code></pre>
+<h3 id="step-2-create-plugin-files">Step 2: Create Plugin Files</h3>
+<p>Create the following files:</p>
+<h4 id="__init__py"><code>__init__.py</code></h4>
+<pre><code class="language-python">&quot;&quot;&quot;
+Rate Limiter Plugin for ZestAPI
+Provides configurable rate limiting functionality
+&quot;&quot;&quot;
+
+from .plugin import RateLimiterPlugin
+
+__version__ = &quot;1.0.0&quot;
+__plugin_name__ = &quot;rate_limiter&quot;
+__plugin_class__ = RateLimiterPlugin
+
+# Export the plugin class
+__all__ = [&quot;RateLimiterPlugin&quot;]
+</code></pre>
+<h4 id="pluginpy"><code>plugin.py</code></h4>
+<pre><code class="language-python">from typing import Dict, Any, Optional
+from datetime import datetime, timedelta
+import asyncio
+from zestapi.core.plugin import BasePlugin
+from zestapi.core.middleware import BaseMiddleware
+
+class RateLimiterMiddleware(BaseMiddleware):
+    def __init__(self, requests_per_minute: int = 60, window_size: int = 60):
+        self.requests_per_minute = requests_per_minute
+        self.window_size = window_size
+        self.client_requests: Dict[str, list] = {}
+
+    async def process_request(self, request):
+        client_ip = self.get_client_ip(request)
+        current_time = datetime.utcnow()
+
+        # Clean old requests
+        self.cleanup_old_requests(client_ip, current_time)
+
+        # Check rate limit
+        if self.is_rate_limited(client_ip, current_time):
+            from zestapi import ORJSONResponse
+            return ORJSONResponse(
+                {&quot;error&quot;: &quot;Rate limit exceeded&quot;}, 
+                status_code=429
+            )
+
+        # Record this request
+        self.record_request(client_ip, current_time)
+        return None  # Continue processing
+
+    def get_client_ip(self, request) -&gt; str:
+        # Try to get real IP from headers
+        forwarded_for = request.headers.get(&quot;X-Forwarded-For&quot;)
+        if forwarded_for:
+            return forwarded_for.split(&quot;,&quot;)[0].strip()
+
+        real_ip = request.headers.get(&quot;X-Real-IP&quot;)
+        if real_ip:
+            return real_ip
+
+        # Fallback to client address
+        return request.client.host if request.client else &quot;unknown&quot;
+
+    def cleanup_old_requests(self, client_ip: str, current_time: datetime):
+        if client_ip in self.client_requests:
+            cutoff_time = current_time - timedelta(seconds=self.window_size)
+            self.client_requests[client_ip] = [
+                req_time for req_time in self.client_requests[client_ip]
+                if req_time &gt; cutoff_time
+            ]
+
+    def is_rate_limited(self, client_ip: str, current_time: datetime) -&gt; bool:
+        if client_ip not in self.client_requests:
+            return False
+
+        return len(self.client_requests[client_ip]) &gt;= self.requests_per_minute
+
+    def record_request(self, client_ip: str, current_time: datetime):
+        if client_ip not in self.client_requests:
+            self.client_requests[client_ip] = []
+        self.client_requests[client_ip].append(current_time)
+
+class RateLimiterPlugin(BasePlugin):
+    name = &quot;rate_limiter&quot;
+    version = &quot;1.0.0&quot;
+    description = &quot;Configurable rate limiting for API endpoints&quot;
+
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        super().__init__(config)
+        self.requests_per_minute = self.config.get(&quot;requests_per_minute&quot;, 60)
+        self.window_size = self.config.get(&quot;window_size&quot;, 60)
+        self.middleware = None
+
+    async def initialize(self, app):
+        &quot;&quot;&quot;Initialize the plugin with the ZestAPI app instance&quot;&quot;&quot;
+        self.middleware = RateLimiterMiddleware(
+            requests_per_minute=self.requests_per_minute,
+            window_size=self.window_size
+        )
+
+        # Register middleware with the app
+        app.add_middleware(self.middleware)
+
+        self.logger.info(f&quot;Rate limiter initialized: {self.requests_per_minute} requests per minute&quot;)
+
+    async def cleanup(self):
+        &quot;&quot;&quot;Cleanup when plugin is unloaded&quot;&quot;&quot;
+        if self.middleware:
+            self.middleware.client_requests.clear()
+        self.logger.info(&quot;Rate limiter cleanup completed&quot;)
+
+    def get_status(self) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Get plugin status information&quot;&quot;&quot;
+        client_count = len(self.middleware.client_requests) if self.middleware else 0
+        return {
+            &quot;active&quot;: self.is_active,
+            &quot;requests_per_minute&quot;: self.requests_per_minute,
+            &quot;window_size&quot;: self.window_size,
+            &quot;tracked_clients&quot;: client_count
+        }
+</code></pre>
+<h4 id="configpy"><code>config.py</code></h4>
+<pre><code class="language-python">from typing import Dict, Any
+from pydantic import BaseModel, field_validator
+
+class RateLimiterConfig(BaseModel):
+    &quot;&quot;&quot;Configuration for Rate Limiter Plugin&quot;&quot;&quot;
+
+    requests_per_minute: int = 60
+    window_size: int = 60  # seconds
+    enabled: bool = True
+    excluded_paths: list = []
+
+    @field_validator('requests_per_minute')
+    @classmethod
+    def validate_requests_per_minute(cls, v):
+        if v &lt;= 0:
+            raise ValueError('requests_per_minute must be positive')
+        return v
+
+    @field_validator('window_size')
+    @classmethod
+    def validate_window_size(cls, v):
+        if v &lt;= 0:
+            raise ValueError('window_size must be positive')
+        return v
+
+# Default configuration
+DEFAULT_CONFIG = {
+    &quot;requests_per_minute&quot;: 60,
+    &quot;window_size&quot;: 60,
+    &quot;enabled&quot;: True,
+    &quot;excluded_paths&quot;: [&quot;/health&quot;, &quot;/metrics&quot;]
+}
+</code></pre>
+<h3 id="step-3-create-plugin-manifest">Step 3: Create Plugin Manifest</h3>
+<h4 id="pluginyaml"><code>plugin.yaml</code></h4>
+<pre><code class="language-yaml">name: rate_limiter
+version: 1.0.0
+description: Configurable rate limiting for API endpoints
+author: Your Name
+email: info.adnansultan@gmail.com
+license: MIT
+homepage: https://github.com/madnansultandotme/zestapi-rate-limiter
+
+# Plugin metadata
+type: middleware
+category: security
+tags:
+  - rate-limiting
+  - security
+  - middleware
+
+# Dependencies
+dependencies:
+  zestapi: &quot;&gt;=1.0.0&quot;
+
+# Configuration schema
+config_schema: config.RateLimiterConfig
+
+# Entry points
+entry_points:
+  middleware:
+    - RateLimiterMiddleware
+
+# Supported ZestAPI versions
+zestapi_version: &quot;&gt;=1.0.0&quot;
+
+# Plugin capabilities
+capabilities:
+  - middleware
+  - configurable
+  - async
+</code></pre>
+<h3 id="step-4-register-the-plugin">Step 4: Register the Plugin</h3>
+<h4 id="in-your-main-application-mainpy">In your main application (<code>main.py</code>):</h4>
+<pre><code class="language-python">from zestapi import ZestAPI
+from app.plugins.rate_limiter import RateLimiterPlugin
+
+app_instance = ZestAPI()
+
+# Register the plugin
+rate_limiter_config = {
+    &quot;requests_per_minute&quot;: 100,
+    &quot;window_size&quot;: 60
+}
+
+app_instance.register_plugin(RateLimiterPlugin(rate_limiter_config))
+
+if __name__ == &quot;__main__&quot;:
+    import uvicorn
+    uvicorn.run(app_instance, host=&quot;0.0.0.0&quot;, port=8000)
+</code></pre>
+<h2 id="plugin-structure">Plugin Structure</h2>
+<h3 id="required-files">Required Files</h3>
+<p>Every plugin should have the following structure:</p>
+<pre><code>app/plugins/your_plugin/
+├── __init__.py          # Plugin exports and metadata
+├── plugin.py            # Main plugin class
+├── config.py           # Configuration models
+├── plugin.yaml         # Plugin manifest
+├── README.md           # Documentation
+├── requirements.txt    # Dependencies
+└── tests/              # Plugin tests
+    ├── __init__.py
+    ├── test_plugin.py
+    └── conftest.py
+</code></pre>
+<h3 id="optional-files">Optional Files</h3>
+<pre><code>app/plugins/your_plugin/
+├── middleware.py       # Custom middleware
+├── routes.py          # Additional routes
+├── services.py        # Service integrations
+├── validators.py      # Custom validators
+├── exceptions.py      # Custom exceptions
+├── utils.py           # Utility functions
+└── assets/            # Static assets
+    ├── templates/
+    └── static/
+</code></pre>
+<h2 id="plugin-lifecycle">Plugin Lifecycle</h2>
+<p>Plugins go through several lifecycle stages:</p>
+<h3 id="1-discovery">1. Discovery</h3>
+<p>ZestAPI discovers plugins during application startup.</p>
+<h3 id="2-loading">2. Loading</h3>
+<p>Plugin classes are imported and instantiated.</p>
+<h3 id="3-initialization">3. Initialization</h3>
+<p>The <code>initialize()</code> method is called with the app instance.</p>
+<h3 id="4-registration">4. Registration</h3>
+<p>Plugin components (middleware, routes, etc.) are registered.</p>
+<h3 id="5-runtime">5. Runtime</h3>
+<p>Plugin operates during request processing.</p>
+<h3 id="6-cleanup">6. Cleanup</h3>
+<p>The <code>cleanup()</code> method is called during shutdown.</p>
+<h3 id="lifecycle-hooks">Lifecycle Hooks</h3>
+<pre><code class="language-python">class MyPlugin(BasePlugin):
+    async def initialize(self, app):
+        &quot;&quot;&quot;Called when plugin is loaded&quot;&quot;&quot;
+        pass
+
+    async def on_startup(self, app):
+        &quot;&quot;&quot;Called when application starts&quot;&quot;&quot;
+        pass
+
+    async def on_shutdown(self, app):
+        &quot;&quot;&quot;Called when application shuts down&quot;&quot;&quot;
+        pass
+
+    async def cleanup(self):
+        &quot;&quot;&quot;Called when plugin is unloaded&quot;&quot;&quot;
+        pass
+</code></pre>
+<h2 id="middleware-plugins">Middleware Plugins</h2>
+<p>Middleware plugins process requests and responses:</p>
+<pre><code class="language-python">from zestapi.core.middleware import BaseMiddleware
+
+class AuthMiddleware(BaseMiddleware):
+    async def process_request(self, request):
+        &quot;&quot;&quot;Process incoming request&quot;&quot;&quot;
+        # Return response to short-circuit, or None to continue
+        token = request.headers.get(&quot;Authorization&quot;)
+        if not token:
+            return ORJSONResponse({&quot;error&quot;: &quot;Auth required&quot;}, status_code=401)
+        return None
+
+    async def process_response(self, request, response):
+        &quot;&quot;&quot;Process outgoing response&quot;&quot;&quot;
+        response.headers[&quot;X-Custom-Header&quot;] = &quot;Plugin-Added&quot;
+        return response
+
+    async def process_exception(self, request, exception):
+        &quot;&quot;&quot;Handle exceptions&quot;&quot;&quot;
+        self.logger.error(f&quot;Request failed: {exception}&quot;)
+        return None  # Let default handler process
+</code></pre>
+<h2 id="route-extension-plugins">Route Extension Plugins</h2>
+<p>Add new routes to your application:</p>
+<pre><code class="language-python">from zestapi import route, ORJSONResponse
+
+class APIDocsPlugin(BasePlugin):
+    async def initialize(self, app):
+        # Add routes
+        app.add_route(&quot;/docs&quot;, self.serve_docs)
+        app.add_route(&quot;/docs/openapi.json&quot;, self.openapi_spec)
+
+    async def serve_docs(self, request):
+        &quot;&quot;&quot;Serve API documentation&quot;&quot;&quot;
+        return HTMLResponse(self.generate_docs_html())
+
+    async def openapi_spec(self, request):
+        &quot;&quot;&quot;Serve OpenAPI specification&quot;&quot;&quot;
+        return ORJSONResponse(self.generate_openapi_spec())
+</code></pre>
+<h2 id="service-integration-plugins">Service Integration Plugins</h2>
+<p>Connect with external services:</p>
+<pre><code class="language-python">import redis
+from typing import Optional
+
+class RedisPlugin(BasePlugin):
+    def __init__(self, config):
+        super().__init__(config)
+        self.redis_client: Optional[redis.Redis] = None
+
+    async def initialize(self, app):
+        # Connect to Redis
+        self.redis_client = redis.Redis(
+            host=self.config.get(&quot;host&quot;, &quot;localhost&quot;),
+            port=self.config.get(&quot;port&quot;, 6379),
+            db=self.config.get(&quot;db&quot;, 0)
+        )
+
+        # Make client available to app
+        app.state.redis = self.redis_client
+
+        # Test connection
+        await self.redis_client.ping()
+        self.logger.info(&quot;Connected to Redis&quot;)
+
+    async def cleanup(self):
+        if self.redis_client:
+            await self.redis_client.close()
+</code></pre>
+<h2 id="configuration-and-settings">Configuration and Settings</h2>
+<h3 id="environment-based-configuration">Environment-based Configuration</h3>
+<pre><code class="language-python">import os
+from typing import Dict, Any
+
+class PluginConfig:
+    @classmethod
+    def from_env(cls, prefix: str = &quot;PLUGIN_&quot;) -&gt; Dict[str, Any]:
+        config = {}
+        for key, value in os.environ.items():
+            if key.startswith(prefix):
+                config_key = key[len(prefix):].lower()
+                config[config_key] = value
+        return config
+
+# Usage
+config = PluginConfig.from_env(&quot;RATE_LIMITER_&quot;)
+plugin = RateLimiterPlugin(config)
+</code></pre>
+<h3 id="file-based-configuration">File-based Configuration</h3>
+<pre><code class="language-python">import yaml
+import json
+from pathlib import Path
+
+class ConfigLoader:
+    @staticmethod
+    def load_yaml(file_path: str) -&gt; Dict[str, Any]:
+        with open(file_path, 'r') as f:
+            return yaml.safe_load(f)
+
+    @staticmethod
+    def load_json(file_path: str) -&gt; Dict[str, Any]:
+        with open(file_path, 'r') as f:
+            return json.load(f)
+
+# Usage
+config = ConfigLoader.load_yaml(&quot;config/rate_limiter.yaml&quot;)
+plugin = RateLimiterPlugin(config)
+</code></pre>
+<h2 id="testing-plugins">Testing Plugins</h2>
+<h3 id="unit-tests">Unit Tests</h3>
+<pre><code class="language-python">import pytest
+from unittest.mock import Mock, AsyncMock
+from your_plugin import YourPlugin
+
+class TestYourPlugin:
+    @pytest.fixture
+    def plugin_config(self):
+        return {
+            &quot;enabled&quot;: True,
+            &quot;setting1&quot;: &quot;value1&quot;
+        }
+
+    @pytest.fixture
+    def plugin(self, plugin_config):
+        return YourPlugin(plugin_config)
+
+    @pytest.mark.asyncio
+    async def test_plugin_initialization(self, plugin):
+        app_mock = Mock()
+        await plugin.initialize(app_mock)
+        assert plugin.is_active
+
+    @pytest.mark.asyncio
+    async def test_plugin_functionality(self, plugin):
+        # Test your plugin's functionality
+        result = await plugin.some_method()
+        assert result == expected_value
+</code></pre>
+<h3 id="integration-tests">Integration Tests</h3>
+<pre><code class="language-python">import pytest
+from httpx import AsyncClient
+from zestapi import ZestAPI
+from your_plugin import YourPlugin
+
+@pytest.mark.asyncio
+async def test_plugin_integration():
+    app = ZestAPI()
+    plugin = YourPlugin({&quot;enabled&quot;: True})
+    app.register_plugin(plugin)
+
+    async with AsyncClient(app=app, base_url=&quot;http://test&quot;) as client:
+        response = await client.get(&quot;/&quot;)
+        assert response.status_code == 200
+</code></pre>
+<h2 id="publishing-plugins">Publishing Plugins</h2>
+<h3 id="package-structure-for-distribution">Package Structure for Distribution</h3>
+<pre><code>zestapi-your-plugin/
+├── setup.py
+├── pyproject.toml
+├── README.md
+├── LICENSE
+├── CHANGELOG.md
+├── src/
+│   └── zestapi_your_plugin/
+│       ├── __init__.py
+│       ├── plugin.py
+│       ├── config.py
+│       └── middleware.py
+├── tests/
+└── docs/
+</code></pre>
+<h3 id="setuppy">setup.py</h3>
+<pre><code class="language-python">from setuptools import setup, find_packages
+
+setup(
+    name=&quot;zestapi-your-plugin&quot;,
+    version=&quot;1.0.0&quot;,
+    description=&quot;Your plugin description&quot;,
+    author=&quot;Muhammad Adnan Sultan&quot;,
+    author_email=&quot;info.adnansultan@gmail.com&quot;,
+    url=&quot;https://github.com/madnansultandotme/zestapi-your-plugin&quot;,
+    packages=find_packages(where=&quot;src&quot;),
+    package_dir={&quot;&quot;: &quot;src&quot;},
+    install_requires=[
+        &quot;zestapi&gt;=1.0.0&quot;,
+    ],
+    entry_points={
+        &quot;zestapi.plugins&quot;: [
+            &quot;your_plugin = zestapi_your_plugin:YourPlugin&quot;,
+        ],
+    },
+    classifiers=[
+        &quot;Development Status :: 5 - Production/Stable&quot;,
+        &quot;Intended Audience :: Developers&quot;,
+        &quot;License :: OSI Approved :: MIT License&quot;,
+        &quot;Programming Language :: Python :: 3.8+&quot;,
+        &quot;Framework :: ZestAPI&quot;,
+    ],
+    python_requires=&quot;&gt;=3.8&quot;,
+)
+</code></pre>
+<h3 id="pypi-distribution">PyPI Distribution</h3>
+<pre><code class="language-bash"># Build package
+python setup.py sdist bdist_wheel
+
+# Upload to PyPI
+pip install twine
+twine upload dist/*
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="1-plugin-design">1. Plugin Design</h3>
+<ul>
+<li><strong>Single Responsibility</strong>: Each plugin should have a clear, single purpose</li>
+<li><strong>Configurable</strong>: Make your plugin configurable via environment variables or config files</li>
+<li><strong>Async-First</strong>: Use async/await for all I/O operations</li>
+<li><strong>Error Handling</strong>: Implement proper error handling and logging</li>
+</ul>
+<h3 id="2-performance">2. Performance</h3>
+<ul>
+<li><strong>Lazy Loading</strong>: Load resources only when needed</li>
+<li><strong>Connection Pooling</strong>: Use connection pools for external services</li>
+<li><strong>Caching</strong>: Cache expensive operations when appropriate</li>
+<li><strong>Resource Cleanup</strong>: Always clean up resources in the cleanup method</li>
+</ul>
+<h3 id="3-security">3. Security</h3>
+<ul>
+<li><strong>Input Validation</strong>: Validate all configuration and input data</li>
+<li><strong>Secure Defaults</strong>: Use secure default configurations</li>
+<li><strong>Sensitive Data</strong>: Don't log sensitive information</li>
+<li><strong>Permissions</strong>: Request minimal necessary permissions</li>
+</ul>
+<h3 id="4-compatibility">4. Compatibility</h3>
+<ul>
+<li><strong>Version Pinning</strong>: Specify compatible ZestAPI versions</li>
+<li><strong>Backwards Compatibility</strong>: Maintain backwards compatibility when possible</li>
+<li><strong>Deprecation Warnings</strong>: Warn users about deprecated features</li>
+</ul>
+<h3 id="5-documentation">5. Documentation</h3>
+<ul>
+<li><strong>README</strong>: Include comprehensive setup and usage instructions</li>
+<li><strong>API Docs</strong>: Document all public methods and configuration options</li>
+<li><strong>Examples</strong>: Provide working examples</li>
+<li><strong>Changelog</strong>: Maintain a changelog for version history</li>
+</ul>
+<h2 id="example-plugins">Example Plugins</h2>
+<h3 id="1-database-connection-plugin">1. Database Connection Plugin</h3>
+<pre><code class="language-python">from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker
+
+class DatabasePlugin(BasePlugin):
+    async def initialize(self, app):
+        database_url = self.config.get(&quot;database_url&quot;)
+        self.engine = create_async_engine(database_url)
+        self.session_factory = sessionmaker(
+            self.engine, class_=AsyncSession, expire_on_commit=False
+        )
+        app.state.db = self.session_factory
+</code></pre>
+<h3 id="2-cors-plugin">2. CORS Plugin</h3>
+<pre><code class="language-python">class CORSPlugin(BasePlugin):
+    async def initialize(self, app):
+        middleware = CORSMiddleware(
+            allow_origins=self.config.get(&quot;allow_origins&quot;, [&quot;*&quot;]),
+            allow_credentials=self.config.get(&quot;allow_credentials&quot;, True),
+            allow_methods=self.config.get(&quot;allow_methods&quot;, [&quot;*&quot;]),
+            allow_headers=self.config.get(&quot;allow_headers&quot;, [&quot;*&quot;]),
+        )
+        app.add_middleware(middleware)
+</code></pre>
+<h3 id="3-metrics-plugin">3. Metrics Plugin</h3>
+<pre><code class="language-python">from prometheus_client import Counter, Histogram
+
+class MetricsPlugin(BasePlugin):
+    def __init__(self, config):
+        super().__init__(config)
+        self.request_count = Counter('http_requests_total', 'Total HTTP requests')
+        self.request_duration = Histogram('http_request_duration_seconds', 'HTTP request duration')
+
+    async def initialize(self, app):
+        app.add_middleware(MetricsMiddleware(self))
+        app.add_route(&quot;/metrics&quot;, self.metrics_endpoint)
+</code></pre>
+<p>This comprehensive guide provides everything you need to create powerful, production-ready plugins for ZestAPI. Start with simple plugins and gradually add more sophisticated features as you become familiar with the plugin system.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

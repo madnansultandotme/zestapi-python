@@ -57,7 +57,7 @@ jobs:
         cd ../ecommerce-api && python -c "import sys; sys.path.append('.'); from main import app; print('Ecommerce API example works')"
     
     - name: Upload coverage reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: coverage-reports-${{ matrix.python-version }}
         path: |

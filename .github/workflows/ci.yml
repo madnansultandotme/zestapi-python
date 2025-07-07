@@ -46,7 +46,7 @@ jobs:
         python -m zestapi.cli --help
     
     - name: Upload coverage reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: coverage-reports-${{ matrix.python-version }}
         path: |
@@ -115,7 +115,7 @@ jobs:
         safety check --output safety-report.txt || true
     
     - name: Upload security reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: security-reports
@@ -151,7 +151,7 @@ jobs:
         twine check dist/*
     
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dist
         path: dist/
@@ -178,7 +178,7 @@ jobs:
         mkdocs build --strict
     
     - name: Upload documentation artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: documentation
         path: site/

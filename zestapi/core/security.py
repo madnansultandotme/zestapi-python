@@ -1,7 +1,9 @@
-from jose import jwt, JWTError
 from datetime import datetime, timedelta, timezone
+
+from jose import JWTError, jwt
 from starlette.authentication import AuthCredentials, AuthenticationBackend, SimpleUser
 from starlette.requests import HTTPConnection
+
 from .settings import settings
 
 ALGORITHM = "HS256"

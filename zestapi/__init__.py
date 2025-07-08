@@ -27,8 +27,12 @@ __version__ = "1.0.0"
 __author__ = "Muhammad Adnan Sultan"
 __email__ = "info.adnansultan@gmail.com"
 
+# Alias for backward compatibility
+Application = ZestAPI
+
 __all__ = [
     "ZestAPI",
+    "Application",  # Alias for backward compatibility
     "route",
     "websocket_route",
     "ORJSONResponse",

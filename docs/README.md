@@ -85,10 +85,10 @@ my-api/
 
 ## 📚 Documentation
 
-- **[📖 Complete Documentation](docs/DOCS.md)** - Full framework documentation
-- **[🤖 LLM Guide](docs/LLM_GUIDE.md)** - AI-assistant friendly quick reference  
-- **[🏭 Production Guide](docs/PRODUCTION_GUIDE.md)** - Production deployment guide
-- **[✅ Production Checklist](docs/PRODUCTION_CHECKLIST.md)** - Deployment validation
+- **[📖 Complete Documentation](DOCS.md)** - Full framework documentation
+- **[🤖 LLM Guide](LLM_GUIDE.md)** - AI-assistant friendly quick reference  
+- **[🏭 Production Guide](PRODUCTION_GUIDE.md)** - Production deployment guide
+- **[✅ Production Checklist](PRODUCTION_CHECKLIST.md)** - Deployment validation
 - **[📁 Project Structure](PROJECT_STRUCTURE.md)** - Professional project organization
 - **[🎯 Examples](examples/)** - Complete example applications
 - **[🤝 Contributing](CONTRIBUTING.md)** - How to contribute to ZestAPI
@@ -467,9 +467,9 @@ If ZestAPI helps you build better APIs, please consider:
 
 ## 📞 Get Help & Connect
 
-- **📖 [Complete Documentation](docs/DOCS.md)** - Full framework guide
-- **🤖 [LLM-Friendly Guide](docs/LLM_GUIDE.md)** - AI assistant optimized docs
-- **🏭 [Production Guide](docs/PRODUCTION_GUIDE.md)** - Enterprise deployment
+- **📖 [Complete Documentation](DOCS.md)** - Full framework guide
+- **🤖 [LLM-Friendly Guide](LLM_GUIDE.md)** - AI assistant optimized docs
+- **🏭 [Production Guide](PRODUCTION_GUIDE.md)** - Enterprise deployment
 - **📁 [Project Structure](PROJECT_STRUCTURE.md)** - Professional organization
 - **🔒 [Security Policy](SECURITY.md)** - Security guidelines and reporting
 - **🐛 [Report Issues](https://github.com/madnansultandotme/zestapi-python/issues)** - Bug reports & feature requests

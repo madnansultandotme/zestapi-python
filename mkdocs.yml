@@ -10,6 +10,9 @@ theme:
 nav:
   - Home: DOCS.md
   - User Guide: USER_GUIDE.md
+  - README: README.md
+  - Production Checklist: PRODUCTION_CHECKLIST.md
+  - Project Completion Report: PROJECT_COMPLETION_REPORT.md
   - Examples:
       - Basic API: examples/basic-api.md
       - Auth Example: examples/auth-example.md

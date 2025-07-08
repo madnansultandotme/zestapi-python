@@ -13,16 +13,22 @@ def discover_routes(routes_dir):
                 file_path = os.path.join(root, file)
                 try:
                     spec = importlib.util.spec_from_file_location(
-                        module_name, file_path
+                        module_name,
+                        file_path,
                     )
                     if spec and spec.loader:
-                        module = importlib.util.module_from_spec(spec)
-                        spec.loader.exec_module(module)
+                        module = importlib.util.module_from_spec(
+                            spec
+                        )
+                        spec.loader.exec_module(
+                            module
+                        )
 
                         # Determine the path prefix based on directory structure
                         relative_path = os.path.relpath(root, routes_dir)
                         path_prefix = (
-                            "/" + relative_path.replace(os.sep, "/")
+                            "/"
+                            + relative_path.replace(os.sep, "/")
                             if relative_path != "."
                             else ""
                         )
@@ -31,18 +37,30 @@ def discover_routes(routes_dir):
                             attr = getattr(module, attr_name)
                             if callable(attr) and hasattr(attr, "__route__"):
                                 route_info = getattr(attr, "__route__")
-                                path = path_prefix + route_info["path"]
+                                path = (
+                                    path_prefix
+                                    + route_info["path"]
+                                )
                                 methods = route_info["methods"]
-                                is_websocket = route_info.get("websocket", False)
+                                is_websocket = route_info.get(
+                                    "websocket", False
+                                )
 
                                 if is_websocket:
                                     discovered_routes.append(
-                                        WebSocketRoute(path, attr, name=attr_name)
+                                        WebSocketRoute(
+                                            path,
+                                            attr,
+                                            name=attr_name,
+                                        )
                                     )
                                 else:
                                     discovered_routes.append(
                                         Route(
-                                            path, attr, methods=methods, name=attr_name
+                                            path,
+                                            attr,
+                                            methods=methods,
+                                            name=attr_name,
                                         )
                                     )
                 except Exception as e:
@@ -50,7 +68,9 @@ def discover_routes(routes_dir):
                     import logging
 
                     logger = logging.getLogger(__name__)
-                    logger.warning(f"Failed to load route file {file_path}: {e}")
+                    logger.warning(
+                        f"Failed to load route file {file_path}: {e}"
+                    )
                     continue
     return discovered_routes
 

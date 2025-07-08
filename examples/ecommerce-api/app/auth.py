@@ -1,4 +1,8 @@
-import bcrypt
+try:
+    import bcrypt
+except ImportError:
+    print("Warning: bcrypt not installed. Install with: pip install bcrypt")
+    bcrypt = None
 
 try:
     from jose import JWTError, jwt
@@ -17,11 +21,19 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 def hash_password(password: str) -> str:
     """Hash a password using bcrypt."""
+    if bcrypt is None:
+        # Fallback to simple hashing (NOT SECURE - for demo only)
+        import hashlib
+        return hashlib.sha256(password.encode()).hexdigest()
     return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     """Verify a password against its hash."""
+    if bcrypt is None:
+        # Fallback to simple verification (NOT SECURE - for demo only)
+        import hashlib
+        return hashlib.sha256(plain_password.encode()).hexdigest() == hashed_password
     return bcrypt.checkpw(
         plain_password.encode("utf-8"), hashed_password.encode("utf-8")
     )

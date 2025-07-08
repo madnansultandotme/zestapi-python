@@ -2,8 +2,6 @@
 Tests for ZestAPI security features.
 """
 
-import pytest
-
 from zestapi.core.security import JWTAuthBackend, create_access_token
 
 

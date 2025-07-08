@@ -1,21 +1,16 @@
 import importlib.util
 import logging
-import os
 import sys
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional
 
 from starlette.applications import Starlette
-from starlette.exceptions import HTTPException
 from starlette.middleware.authentication import AuthenticationMiddleware
 from starlette.middleware.cors import CORSMiddleware
-from starlette.requests import Request
-from starlette.responses import Response
 from starlette.routing import BaseRoute, Route, WebSocketRoute
 
 from .middleware import ErrorHandlingMiddleware, RequestLoggingMiddleware
 from .ratelimit import RateLimitMiddleware
-from .responses import ORJSONResponse
 from .routing import discover_routes
 from .security import JWTAuthBackend
 from .settings import Settings
@@ -27,8 +22,8 @@ class ZestAPI:
     """
     Main ZestAPI application class
 
-    This class provides a high-level interface for creating ZestAPI applications
-    with sensible defaults and best practices built-in.
+    This class provides a high-level interface for creating ZestAPI
+    applications with sensible defaults and best practices built-in.
     """
 
     def __init__(
@@ -67,7 +62,8 @@ class ZestAPI:
                 ],
             )
             logger.info(
-                f"Logging configured at {self.settings.log_level.upper()} level"
+                f"Logging configured at {self.settings.log_level.upper()} "
+                f"level"
             )
         except Exception as e:
             logger.warning(f"Failed to setup logging: {e}")
@@ -81,7 +77,9 @@ class ZestAPI:
         ):
             if not self.settings.debug:
                 raise ValueError("JWT_SECRET must be set for production use")
-            logger.warning("Using default JWT secret - not suitable for production")
+            logger.warning(
+                "Using default JWT secret - not suitable for production"
+            )
 
         if self.settings.port < 1 or self.settings.port > 65535:
             raise ValueError(f"Invalid port number: {self.settings.port}")
@@ -120,7 +118,10 @@ class ZestAPI:
             raise ValueError(f"Invalid WebSocket route configuration: {e}")
 
     def route(
-        self, path: str, methods: Optional[List[str]] = None, name: Optional[str] = None
+        self,
+        path: str,
+        methods: Optional[List[str]] = None,
+        name: Optional[str] = None,
     ) -> Callable:
         """Decorator for adding routes to the application"""
 
@@ -130,7 +131,9 @@ class ZestAPI:
 
         return decorator
 
-    def websocket_route(self, path: str, name: Optional[str] = None) -> Callable:
+    def websocket_route(
+        self, path: str, name: Optional[str] = None
+    ) -> Callable:
         """Decorator for adding WebSocket routes to the application"""
 
         def decorator(func: Callable) -> Callable:
@@ -144,7 +147,9 @@ class ZestAPI:
         try:
             if hasattr(router, "routes"):
                 self._routes.extend(router.routes)
-                logger.info(f"Router included with {len(router.routes)} routes")
+                logger.info(
+                    f"Router included with {len(router.routes)} routes"
+                )
             else:
                 raise ValueError("Router must have 'routes' attribute")
         except Exception as e:
@@ -156,7 +161,9 @@ class ZestAPI:
         if self._app:
             try:
                 self._app.add_middleware(middleware_class, **kwargs)
-                logger.debug(f"Middleware added: {middleware_class.__name__}")
+                logger.debug(
+                    f"Middleware added: {middleware_class.__name__}"
+                )
             except Exception as e:
                 logger.error(
                     f"Failed to add middleware {middleware_class.__name__}: {e}"
@@ -175,7 +182,9 @@ class ZestAPI:
     def _discover_routes(self) -> None:
         """Discover routes from the routes directory"""
         if not self.routes_dir:
-            logger.info("No routes directory specified, skipping route discovery")
+            logger.info(
+                "No routes directory specified, skipping route discovery"
+            )
             return
 
         routes_path = Path(self.routes_dir)
@@ -187,7 +196,8 @@ class ZestAPI:
             discovered_routes = discover_routes(self.routes_dir)
             self._routes.extend(discovered_routes)
             logger.info(
-                f"Discovered {len(discovered_routes)} routes from {self.routes_dir}"
+                f"Discovered {len(discovered_routes)} routes from "
+                f"{self.routes_dir}"
             )
         except Exception as e:
             logger.error(f"Failed to discover routes from {self.routes_dir}: {e}")
@@ -205,51 +215,23 @@ class ZestAPI:
             logger.warning(f"Plugins directory not found: {self.plugins_dir}")
             return
 
-        successful_plugins = 0
-        for plugin_name in self.settings.enabled_plugins:
-            try:
+        try:
+            for plugin_name in self.settings.enabled_plugins:
                 plugin_file = plugins_path / f"{plugin_name}.py"
-                if not plugin_file.exists():
+                if plugin_file.exists():
+                    spec = importlib.util.spec_from_file_location(
+                        plugin_name, str(plugin_file)
+                    )
+                    if spec and spec.loader:
+                        plugin_module = importlib.util.module_from_spec(spec)
+                        spec.loader.exec_module(plugin_module)
+                        logger.info(f"Plugin loaded: {plugin_name}")
+                else:
                     logger.warning(f"Plugin file not found: {plugin_file}")
-                    continue
-
-                spec = importlib.util.spec_from_file_location(plugin_name, plugin_file)
-                if spec and spec.loader:
-                    module = importlib.util.module_from_spec(spec)
-                    spec.loader.exec_module(module)
-
-                    # Look for plugin classes or register functions
-                    plugin_loaded = False
-                    for attr_name in dir(module):
-                        attr = getattr(module, attr_name)
-
-                        # Try class-based plugin
-                        if isinstance(attr, type) and hasattr(attr, "register"):
-                            plugin_instance = attr(self._app)
-                            plugin_instance.register()
-                            plugin_loaded = True
-                            break
-
-                        # Try function-based plugin
-                        elif callable(attr) and attr_name == "register":
-                            attr(self._app)
-                            plugin_loaded = True
-                            break
-
-                    if plugin_loaded:
-                        successful_plugins += 1
-                        logger.info(f"Plugin '{plugin_name}' loaded successfully")
-                    else:
-                        logger.warning(f"Plugin '{plugin_name}' has no register method")
-
-            except Exception as e:
-                logger.error(f"Failed to load plugin '{plugin_name}': {e}")
-                if not self.settings.debug:
-                    raise RuntimeError(f"Plugin loading failed: {e}")
-
-        logger.info(
-            f"Loaded {successful_plugins}/{len(self.settings.enabled_plugins)} plugins"
-        )
+        except Exception as e:
+            logger.error(f"Failed to load plugins: {e}")
+            if not self.settings.debug:
+                raise RuntimeError(f"Plugin loading failed: {e}")
 
     def create_app(self) -> Starlette:
         """Create and configure the Starlette application"""
@@ -257,37 +239,23 @@ class ZestAPI:
             # Discover routes
             self._discover_routes()
 
+            # Load plugins
+            self._load_plugins()
+
             # Create Starlette app
-            self._app = Starlette(routes=self._routes)
-
-            # Add custom exception handlers
-            for exc_class, handler in self._error_handlers.items():
-                self._app.add_exception_handler(exc_class, handler)
-
-            # Add middleware in correct order (last added = first executed)
-            self._app.add_middleware(
-                CORSMiddleware,
-                allow_origins=self.settings.cors_origins,
-                allow_credentials=self.settings.cors_allow_credentials,
-                allow_methods=self.settings.cors_allow_methods,
-                allow_headers=self.settings.cors_allow_headers,
+            self._app = Starlette(
+                routes=self._routes,
+                debug=self.settings.debug,
             )
 
-            self._app.add_middleware(ErrorHandlingMiddleware, debug=self.settings.debug)
-            self._app.add_middleware(
-                RequestLoggingMiddleware, log_body=self.settings.debug
-            )
-            self._app.add_middleware(
-                RateLimitMiddleware, rate_limit=self.settings.rate_limit
-            )
-
-            # Only add authentication middleware if JWT secret is properly configured
+            # Add authentication middleware if JWT secret is configured
             if (
                 self.settings.jwt_secret
                 and self.settings.jwt_secret != "your-secret-key"
             ):
                 self._app.add_middleware(
-                    AuthenticationMiddleware, backend=JWTAuthBackend()
+                    AuthenticationMiddleware,
+                    backend=JWTAuthBackend(),
                 )
                 logger.info("JWT authentication middleware enabled")
             else:
@@ -295,8 +263,31 @@ class ZestAPI:
                     "JWT authentication middleware disabled - JWT_SECRET not configured"
                 )
 
-            # Load plugins
-            self._load_plugins()
+            # Add CORS middleware
+            if self.settings.cors_origins:
+                self._app.add_middleware(
+                    CORSMiddleware,
+                    allow_origins=self.settings.cors_origins,
+                    allow_credentials=self.settings.cors_allow_credentials,
+                    allow_methods=self.settings.cors_allow_methods,
+                    allow_headers=self.settings.cors_allow_headers,
+                )
+                logger.info("CORS middleware enabled")
+
+            # Add rate limiting middleware
+            if self.settings.rate_limit:
+                self._app.add_middleware(RateLimitMiddleware)
+                logger.info("Rate limiting middleware enabled")
+
+            # Add error handling middleware
+            self._app.add_middleware(ErrorHandlingMiddleware)
+
+            # Add request logging middleware
+            self._app.add_middleware(RequestLoggingMiddleware)
+
+            # Add custom exception handlers
+            for exc_class, handler in self._error_handlers.items():
+                self._app.add_exception_handler(exc_class, handler)
 
             logger.info("ZestAPI application created successfully")
             return self._app
@@ -308,9 +299,7 @@ class ZestAPI:
     @property
     def app(self) -> Starlette:
         """Get the Starlette application instance"""
-        if self._app is None:
-            self.create_app()
-        if self._app is None:
+        if not self._app:
             raise RuntimeError("Failed to create application")
         return self._app
 
@@ -319,26 +308,15 @@ class ZestAPI:
         try:
             import uvicorn
         except ImportError:
-            raise RuntimeError(
-                "uvicorn is required to run the application. Install with: pip install uvicorn"
+            raise ImportError(
+                "uvicorn is required to run the application. "
+                "Install with: pip install uvicorn"
             )
 
-        # Ensure app is created
-        app_instance = self.app
-
-        # Merge settings with kwargs
-        config = {
-            "host": self.settings.host,
-            "port": self.settings.port,
-            "reload": self.settings.reload,
-            "log_level": self.settings.log_level.lower(),
-        }
-        config.update(kwargs)
-
-        logger.info(f"Starting ZestAPI server on {config['host']}:{config['port']}")
-
-        try:
-            uvicorn.run(app_instance, **config)
-        except Exception as e:
-            logger.error(f"Failed to start server: {e}")
-            raise RuntimeError(f"Server startup failed: {e}")
+        uvicorn.run(
+            self.app,
+            host=self.settings.host,
+            port=self.settings.port,
+            log_level=self.settings.log_level.lower(),
+            **kwargs,
+        )

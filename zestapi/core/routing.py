@@ -58,7 +58,9 @@ def discover_routes(routes_dir):
                     import logging
 
                     logger = logging.getLogger(__name__)
-                    logger.warning(f"Failed to load route file {file_path}: {e}")
+                    logger.warning(
+                        f"Failed to load route file {file_path}: {e}"
+                    )
                     continue
     return discovered_routes
 

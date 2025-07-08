@@ -4,13 +4,9 @@ Tests for ZestAPI CLI functionality.
 
 import os
 import platform
-import shutil
 import tempfile
-from pathlib import Path
 
 import pytest
-
-from zestapi.cli import main
 
 
 class TestCLI:
@@ -26,7 +22,9 @@ class TestCLI:
         # Use a simpler approach for Windows compatibility
         if platform.system() == "Windows":
             # Skip this test on Windows due to temp directory cleanup issues
-            pytest.skip("Skipping on Windows due to temp directory cleanup issues")
+            pytest.skip(
+                "Skipping on Windows due to temp directory cleanup issues"
+            )
 
         with tempfile.TemporaryDirectory() as temp_dir:
             original_cwd = os.getcwd()
@@ -42,7 +40,9 @@ class TestCLI:
         # Use a simpler approach for Windows compatibility
         if platform.system() == "Windows":
             # Skip this test on Windows due to temp directory cleanup issues
-            pytest.skip("Skipping on Windows due to temp directory cleanup issues")
+            pytest.skip(
+                "Skipping on Windows due to temp directory cleanup issues"
+            )
 
         with tempfile.TemporaryDirectory() as temp_dir:
             original_cwd = os.getcwd()

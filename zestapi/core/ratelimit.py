@@ -17,14 +17,21 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
 
     def _parse_rate_limit(self, rate_limit: str) -> Tuple[int, int]:
         """Parse rate limit string like '100/minute' into (limit, window_seconds)"""
-        match = re.match(r"(\d+)/(second|minute|hour|day)", rate_limit.lower())
+        match = re.match(
+            r"(\d+)/(second|minute|hour|day)", rate_limit.lower()
+        )
         if not match:
             raise ValueError(f"Invalid rate limit format: {rate_limit}")
 
         limit = int(match.group(1))
         unit = match.group(2)
 
-        window_seconds = {"second": 1, "minute": 60, "hour": 3600, "day": 86400}[unit]
+        window_seconds = {
+            "second": 1,
+            "minute": 60,
+            "hour": 3600,
+            "day": 86400
+        }[unit]
 
         return limit, window_seconds
 

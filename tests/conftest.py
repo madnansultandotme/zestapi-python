@@ -29,9 +29,12 @@ async def app() -> AsyncGenerator[ZestAPICore, None]:
 @pytest.fixture
 async def client(app: ZestAPICore):
     """Create a test client for the ZestAPI application."""
+    import httpx
     from httpx import AsyncClient
-
-    async with AsyncClient(app=app.app, base_url="http://testserver") as client:
+    async with AsyncClient(
+        transport=httpx.ASGITransport(app=app.app), base_url="http://testserver"
+    ) as client:
+        yield client
         yield client
 
 

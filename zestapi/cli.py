@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 """
 ZestAPI CLI Tool
-
 This module provides command-line interface tools for ZestAPI projects.
 """
 import argparse
-import importlib.util
 import os
 import sys
 
@@ -34,7 +32,10 @@ app_instance = ZestAPI(
 
 @route("/")
 async def homepage(request):
-    return ORJSONResponse({"message": "Welcome to ZestAPI!", "version": "1.0.0"})
+    return ORJSONResponse({
+        "message": "Welcome to ZestAPI!",
+        "version": "1.0.0"
+    })
 
 app = app_instance.app
 
@@ -92,7 +93,6 @@ async def {name}_create(request):
         "data": data
     }}, status_code=201)
 """
-
     with open(route_path, "w") as f:
         f.write(route_content)
     print(f"Route {name}.py created at {route_path}")
@@ -101,29 +101,25 @@ async def {name}_create(request):
 def view_route_map():
     """View the ZestAPI route map"""
     print("ZestAPI Route Map:")
-    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
+    sys.path.insert(
+        0, os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    )
     try:
         from zestapi.core.routing import discover_routes
-
         routes_dir = os.path.join(os.getcwd(), "app", "routes")
-
         if not os.path.exists(routes_dir):
             print("  No routes directory found. Run 'zest init' first.")
             return
-
         discovered_routes = discover_routes(routes_dir)
 
         if not discovered_routes:
             print("  No routes discovered.")
             return
-
         for route_obj in discovered_routes:
             methods = getattr(route_obj, "methods", "N/A")
             if hasattr(methods, "__iter__") and not isinstance(methods, str):
                 methods = list(methods)
             print(f"  Path: {route_obj.path}, Methods: {methods}")
-
     except ImportError as e:
         print(f"  Error importing routing module: {e}")
     except Exception as e:
@@ -143,16 +139,14 @@ def generate_plugin(name):
 class {name.title()}Plugin:
     """
     {name.title()} Plugin for ZestAPI
-    
+
     This plugin adds {name} functionality to your ZestAPI application.
     """
-    
     def __init__(self, app):
         self.app = app
 
     def register(self):
         """Register plugin routes and middleware"""
-        
         # Add plugin routes
         @self.app.route("/{name}/status", methods=["GET"])
         async def {name}_status(request):
@@ -161,14 +155,16 @@ class {name.title()}Plugin:
                 "status": "active",
                 "version": "1.0.0"
             }})
-            
+
         print(f"{name.title()}Plugin registered successfully.")
 '''
 
     with open(plugin_path, "w") as f:
         f.write(plugin_content)
     print(f"Plugin {name}.py created at {plugin_path}")
-    print(f"To enable this plugin, add '{name}' to ENABLED_PLUGINS in your .env file")
+    print(
+        f"To enable this plugin, add '{name}' to ENABLED_PLUGINS in your .env file"
+    )
 
 
 def main():
@@ -179,7 +175,7 @@ def main():
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
     # init command
-    init_parser = subparsers.add_parser("init", help="Initialize a new ZestAPI project")
+    init_project()
 
     # generate command
     generate_parser = subparsers.add_parser(
@@ -197,15 +193,15 @@ def main():
     generate_plugin_parser = generate_subparsers.add_parser(
         "plugin", help="Generate a new plugin"
     )
-    generate_plugin_parser.add_argument("name", type=str, help="Name of the plugin")
-
-    # route-map command
-    route_map_parser = subparsers.add_parser(
-        "route-map", help="View the ZestAPI route map"
+    generate_plugin_parser.add_argument(
+        "name", type=str, help="Name of the plugin"
     )
 
+    # route-map command
+    subparsers.add_parser("route-map", help="View the ZestAPI route map")
+
     # version command
-    version_parser = subparsers.add_parser("version", help="Show ZestAPI version")
+    subparsers.add_parser("version", help="Show ZestAPI version")
 
     args = parser.parse_args()
 

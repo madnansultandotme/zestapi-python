@@ -2,8 +2,6 @@
 Tests for ZestAPI core functionality.
 """
 
-import pytest
-
 from zestapi import ORJSONResponse, ZestAPI
 
 
@@ -37,7 +35,9 @@ class TestZestAPICore:
             await websocket.close()
 
         # Check that WebSocket route was added
-        ws_routes = [r for r in app._routes if hasattr(r, "path") and r.path == "/ws"]
+        ws_routes = [
+            r for r in app._routes if getattr(r, "path", None) == "/ws"
+        ]
         assert len(ws_routes) > 0
 
 

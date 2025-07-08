@@ -48,7 +48,10 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
                 request=request,
             )
             logger.warning(
-                f"HTTP Exception {exc.status_code}: {exc.detail} (Request: {request_id})"
+                "HTTP Exception %s: %s (Request: %s)",
+                exc.status_code,
+                exc.detail,
+                request_id,
             )
             return error_response
 
@@ -61,7 +64,9 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
                 request_id=request_id,
                 request=request,
             )
-            logger.warning(f"Validation Error: {exc} (Request: {request_id})")
+            logger.warning(
+                "Validation Error: %s (Request: %s)", exc, request_id
+            )
             return error_response
 
         except PermissionError as exc:
@@ -73,7 +78,9 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
                 request_id=request_id,
                 request=request,
             )
-            logger.warning(f"Permission Error: {exc} (Request: {request_id})")
+            logger.warning(
+                "Permission Error: %s (Request: %s)", exc, request_id
+            )
             return error_response
 
         except FileNotFoundError as exc:
@@ -85,7 +92,9 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
                 request_id=request_id,
                 request=request,
             )
-            logger.warning(f"Not Found Error: {exc} (Request: {request_id})")
+            logger.warning(
+                "Not Found Error: %s (Request: %s)", exc, request_id
+            )
             return error_response
 
         except Exception as exc:
@@ -101,14 +110,18 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
 
             # Log the full exception with traceback
             logger.error(
-                f"Unhandled exception in request {request_id}: {exc}",
+                "Unhandled exception in request %s: %s",
+                request_id,
+                exc,
                 exc_info=True,
                 extra={
                     "request_id": request_id,
                     "method": request.method,
                     "url": str(request.url),
                     "user_agent": request.headers.get("user-agent"),
-                    "client_ip": request.client.host if request.client else None,
+                    "client_ip": (
+                        request.client.host if request.client else None
+                    ),
                 },
             )
             return error_response
@@ -149,17 +162,21 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
                 "hint"
             ] = "Check your request parameters and data format"
         elif status_code == 401:
-            error_data["error"][
-                "hint"
-            ] = "Authentication required or invalid credentials"
+            error_data["error"]["hint"] = (
+                "Authentication required or invalid credentials"
+            )
         elif status_code == 403:
-            error_data["error"][
-                "hint"
-            ] = "You don't have permission to access this resource"
+            error_data["error"]["hint"] = (
+                "You don't have permission to access this resource"
+            )
         elif status_code == 404:
-            error_data["error"]["hint"] = "The requested resource was not found"
+            error_data["error"]["hint"] = (
+                "The requested resource was not found"
+            )
         elif status_code == 429:
-            error_data["error"]["hint"] = "Too many requests, please try again later"
+            error_data["error"]["hint"] = (
+                "Too many requests, please try again later"
+            )
         elif status_code >= 500:
             error_data["error"][
                 "hint"
@@ -211,13 +228,13 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
             except Exception:
                 log_data["body"] = "Could not read body"
 
-        logger.info(f"Request started", extra=log_data)
+        logger.info("Request started", extra=log_data)
 
         try:
             response = await call_next(request)
         except Exception as e:
             # Log the exception before re-raising
-            logger.error(f"Request failed: {e}", extra=log_data, exc_info=True)
+            logger.error("Request failed: %s", e, extra=log_data, exc_info=True)
             raise e
 
         # Log response details
@@ -230,8 +247,15 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
         }
 
         if response.status_code >= 400:
-            logger.warning(f"Request completed with error", extra=response_log_data)
+            logger.warning(
+                "Request completed with error", extra=response_log_data
+            )
         else:
-            logger.info(f"Request completed successfully", extra=response_log_data)
+            logger.info(
+                "Request %s %s completed in %.2fms",
+                request.method,
+                request.url.path,
+                process_time * 1000,
+            )
 
         return response

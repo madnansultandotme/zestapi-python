@@ -1,9 +1,6 @@
-import asyncio
 import os
-import shutil
 import tempfile
 from datetime import timedelta
-from pathlib import Path
 
 import pytest
 from starlette.testclient import TestClient
@@ -260,7 +257,9 @@ async def discovered_route(request):
         @route("/create", methods=["POST"])
         async def create_item(request):
             data = await request.json()
-            return ORJSONResponse({"created": True, "data": data}, status_code=201)
+            return ORJSONResponse(
+                {"created": True, "data": data}, status_code=201
+            )
 
         app_instance.add_route("/create", create_item, methods=["POST"])
         app = app_instance.create_app()

@@ -35,9 +35,7 @@ class TestZestAPICore:
             await websocket.close()
 
         # Check that WebSocket route was added
-        ws_routes = [
-            r for r in app._routes if getattr(r, "path", None) == "/ws"
-        ]
+        ws_routes = [r for r in app._routes if getattr(r, "path", None) == "/ws"]
         assert len(ws_routes) > 0
 
 

@@ -8,7 +8,7 @@ import os
 import sys
 
 
-def init_project():
+def init_project() -> None:
     """Initialize a new ZestAPI project"""
     print("Initializing ZestAPI project...")
     if (
@@ -61,7 +61,7 @@ RATE_LIMIT=100/minute
         print("Run 'python main.py' to start your ZestAPI server!")
 
 
-def generate_route(name):
+def generate_route(name: str) -> None:
     """Generate a new route file"""
     print(f"Generating route: {name}.py")
     route_path = os.path.join("app", "routes", f"{name}.py")
@@ -98,14 +98,13 @@ async def {name}_create(request):
     print(f"Route {name}.py created at {route_path}")
 
 
-def view_route_map():
+def view_route_map() -> None:
     """View the ZestAPI route map"""
     print("ZestAPI Route Map:")
-    sys.path.insert(
-        0, os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    )
+    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
     try:
         from zestapi.core.routing import discover_routes
+
         routes_dir = os.path.join(os.getcwd(), "app", "routes")
         if not os.path.exists(routes_dir):
             print("  No routes directory found. Run 'zest init' first.")
@@ -119,14 +118,15 @@ def view_route_map():
             methods = getattr(route_obj, "methods", "N/A")
             if hasattr(methods, "__iter__") and not isinstance(methods, str):
                 methods = list(methods)
-            print(f"  Path: {route_obj.path}, Methods: {methods}")
+            path = getattr(route_obj, "path", "Unknown")
+            print(f"  Path: {path}, Methods: {methods}")
     except ImportError as e:
         print(f"  Error importing routing module: {e}")
     except Exception as e:
         print(f"  Error discovering routes: {e}")
 
 
-def generate_plugin(name):
+def generate_plugin(name: str) -> None:
     """Generate a new plugin"""
     print(f"Generating plugin: {name}.py")
     plugin_path = os.path.join("app", "plugins", f"{name}.py")
@@ -163,11 +163,11 @@ class {name.title()}Plugin:
         f.write(plugin_content)
     print(f"Plugin {name}.py created at {plugin_path}")
     print(
-        f"To enable this plugin, add '{name}' to ENABLED_PLUGINS in your .env file"
+        f"To enable this plugin, add '{name}' to ENABLED_PLUGINS " f"in your .env file"
     )
 
 
-def main():
+def main() -> None:
     """Main CLI entry point"""
     parser = argparse.ArgumentParser(
         description="ZestAPI CLI Tool - Build modern APIs with ease"
@@ -193,9 +193,7 @@ def main():
     generate_plugin_parser = generate_subparsers.add_parser(
         "plugin", help="Generate a new plugin"
     )
-    generate_plugin_parser.add_argument(
-        "name", type=str, help="Name of the plugin"
-    )
+    generate_plugin_parser.add_argument("name", type=str, help="Name of the plugin")
 
     # route-map command
     subparsers.add_parser("route-map", help="View the ZestAPI route map")

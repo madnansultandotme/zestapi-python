@@ -62,8 +62,7 @@ class ZestAPI:
                 ],
             )
             logger.info(
-                f"Logging configured at {self.settings.log_level.upper()} "
-                f"level"
+                f"Logging configured at {self.settings.log_level.upper()} " f"level"
             )
         except Exception as e:
             logger.warning(f"Failed to setup logging: {e}")
@@ -77,9 +76,7 @@ class ZestAPI:
         ):
             if not self.settings.debug:
                 raise ValueError("JWT_SECRET must be set for production use")
-            logger.warning(
-                "Using default JWT secret - not suitable for production"
-            )
+            logger.warning("Using default JWT secret - not suitable for production")
 
         if self.settings.port < 1 or self.settings.port > 65535:
             raise ValueError(f"Invalid port number: {self.settings.port}")
@@ -131,9 +128,7 @@ class ZestAPI:
 
         return decorator
 
-    def websocket_route(
-        self, path: str, name: Optional[str] = None
-    ) -> Callable:
+    def websocket_route(self, path: str, name: Optional[str] = None) -> Callable:
         """Decorator for adding WebSocket routes to the application"""
 
         def decorator(func: Callable) -> Callable:
@@ -142,31 +137,27 @@ class ZestAPI:
 
         return decorator
 
-    def include_router(self, router) -> None:
+    def include_router(self, router: Any) -> None:
         """Include routes from a router"""
         try:
             if hasattr(router, "routes"):
                 self._routes.extend(router.routes)
-                logger.info(
-                    f"Router included with {len(router.routes)} routes"
-                )
+                logger.info(f"Router included with {len(router.routes)} routes")
             else:
                 raise ValueError("Router must have 'routes' attribute")
         except Exception as e:
             logger.error(f"Failed to include router: {e}")
             raise e
 
-    def add_middleware(self, middleware_class, **kwargs) -> None:
+    def add_middleware(self, middleware_class: Any, **kwargs: Any) -> None:
         """Add middleware to the application"""
         if self._app:
             try:
                 self._app.add_middleware(middleware_class, **kwargs)
-                logger.debug(
-                    f"Middleware added: {middleware_class.__name__}"
-                )
+                logger.debug(f"Middleware added: {middleware_class.__name__}")
             except Exception as e:
                 logger.error(
-                    f"Failed to add middleware {middleware_class.__name__}: {e}"
+                    f"Failed to add middleware {middleware_class.__name__}: " f"{e}"
                 )
                 raise e
         else:
@@ -182,9 +173,7 @@ class ZestAPI:
     def _discover_routes(self) -> None:
         """Discover routes from the routes directory"""
         if not self.routes_dir:
-            logger.info(
-                "No routes directory specified, skipping route discovery"
-            )
+            logger.info("No routes directory specified, skipping route discovery")
             return
 
         routes_path = Path(self.routes_dir)
@@ -196,8 +185,7 @@ class ZestAPI:
             discovered_routes = discover_routes(self.routes_dir)
             self._routes.extend(discovered_routes)
             logger.info(
-                f"Discovered {len(discovered_routes)} routes from "
-                f"{self.routes_dir}"
+                f"Discovered {len(discovered_routes)} routes from " f"{self.routes_dir}"
             )
         except Exception as e:
             logger.error(f"Failed to discover routes from {self.routes_dir}: {e}")
@@ -260,7 +248,8 @@ class ZestAPI:
                 logger.info("JWT authentication middleware enabled")
             else:
                 logger.warning(
-                    "JWT authentication middleware disabled - JWT_SECRET not configured"
+                    "JWT authentication middleware disabled - "
+                    "JWT_SECRET not configured"
                 )
 
             # Add CORS middleware
@@ -300,10 +289,10 @@ class ZestAPI:
     def app(self) -> Starlette:
         """Get the Starlette application instance"""
         if not self._app:
-            raise RuntimeError("Failed to create application")
+            return self.create_app()
         return self._app
 
-    def run(self, **kwargs) -> None:
+    def run(self, **kwargs: Any) -> None:
         """Run the application with uvicorn"""
         try:
             import uvicorn

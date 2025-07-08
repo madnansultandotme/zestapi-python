@@ -80,7 +80,7 @@ jobs:
     
     - name: Run flake8
       run: |
-        flake8 zestapi/ tests/
+        flake8 zestapi/ tests/ --exclude=examples --max-line-length=88
     
     - name: Run mypy
       run: |

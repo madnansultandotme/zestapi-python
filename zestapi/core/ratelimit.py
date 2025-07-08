@@ -1,25 +1,24 @@
 import re
 import time
 from collections import defaultdict
-from typing import Dict, Tuple
+from typing import Any, Dict, Tuple
 
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, Response
 
 
 class RateLimitMiddleware(BaseHTTPMiddleware):
-    def __init__(self, app, rate_limit: str = "100/minute"):
+    def __init__(self, app: Any, rate_limit: str = "100/minute") -> None:
         super().__init__(app)
         self.rate_limit = rate_limit
         self.requests: Dict[str, list] = defaultdict(list)
         self.limit, self.window = self._parse_rate_limit(rate_limit)
 
     def _parse_rate_limit(self, rate_limit: str) -> Tuple[int, int]:
-        """Parse rate limit string like '100/minute' into (limit, window_seconds)"""
-        match = re.match(
-            r"(\d+)/(second|minute|hour|day)", rate_limit.lower()
-        )
+        """Parse rate limit string like '100/minute' into
+        (limit, window_seconds)"""
+        match = re.match(r"(\d+)/(second|minute|hour|day)", rate_limit.lower())
         if not match:
             raise ValueError(f"Invalid rate limit format: {rate_limit}")
 
@@ -30,7 +29,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
             "second": 1,
             "minute": 60,
             "hour": 3600,
-            "day": 86400
+            "day": 86400,
         }[unit]
 
         return limit, window_seconds
@@ -61,7 +60,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         self.requests[client_ip].append(current_time)
         return False
 
-    async def dispatch(self, request: Request, call_next):
+    async def dispatch(self, request: Request, call_next: Any) -> Response:
         client_ip = self._get_client_ip(request)
 
         if self._is_rate_limited(client_ip):
@@ -89,4 +88,4 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         response.headers["X-RateLimit-Remaining"] = str(remaining)
         response.headers["X-RateLimit-Window"] = str(self.window)
 
-        return response
+        return response  # type: ignore

@@ -17,11 +17,11 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
     Comprehensive error handling middleware for production use
     """
 
-    def __init__(self, app, debug: bool = False):
+    def __init__(self, app: Any, debug: bool = False) -> None:
         super().__init__(app)
         self.debug = debug
 
-    async def dispatch(self, request: Request, call_next) -> Response:
+    async def dispatch(self, request: Request, call_next: Any) -> Response:
         start_time = time.time()
         request_id = str(uuid.uuid4())[:8]
 
@@ -36,7 +36,7 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
             response.headers["X-Process-Time"] = f"{process_time:.4f}"
             response.headers["X-Request-ID"] = request_id
 
-            return response
+            return response  # type: ignore
 
         except HTTPException as exc:
             # Handle HTTP exceptions (4xx, 5xx)
@@ -64,9 +64,7 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
                 request_id=request_id,
                 request=request,
             )
-            logger.warning(
-                "Validation Error: %s (Request: %s)", exc, request_id
-            )
+            logger.warning("Validation Error: %s (Request: %s)", exc, request_id)
             return error_response
 
         except PermissionError as exc:
@@ -78,9 +76,7 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
                 request_id=request_id,
                 request=request,
             )
-            logger.warning(
-                "Permission Error: %s (Request: %s)", exc, request_id
-            )
+            logger.warning("Permission Error: %s (Request: %s)", exc, request_id)
             return error_response
 
         except FileNotFoundError as exc:
@@ -92,9 +88,7 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
                 request_id=request_id,
                 request=request,
             )
-            logger.warning(
-                "Not Found Error: %s (Request: %s)", exc, request_id
-            )
+            logger.warning("Not Found Error: %s (Request: %s)", exc, request_id)
             return error_response
 
         except Exception as exc:
@@ -119,9 +113,7 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
                     "method": request.method,
                     "url": str(request.url),
                     "user_agent": request.headers.get("user-agent"),
-                    "client_ip": (
-                        request.client.host if request.client else None
-                    ),
+                    "client_ip": (request.client.host if request.client else None),
                 },
             )
             return error_response
@@ -162,21 +154,17 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
                 "hint"
             ] = "Check your request parameters and data format"
         elif status_code == 401:
-            error_data["error"]["hint"] = (
-                "Authentication required or invalid credentials"
-            )
+            error_data["error"][
+                "hint"
+            ] = "Authentication required or invalid credentials"
         elif status_code == 403:
-            error_data["error"]["hint"] = (
-                "You don't have permission to access this resource"
-            )
+            error_data["error"][
+                "hint"
+            ] = "You don't have permission to access this resource"
         elif status_code == 404:
-            error_data["error"]["hint"] = (
-                "The requested resource was not found"
-            )
+            error_data["error"]["hint"] = "The requested resource was not found"
         elif status_code == 429:
-            error_data["error"]["hint"] = (
-                "Too many requests, please try again later"
-            )
+            error_data["error"]["hint"] = "Too many requests, please try again later"
         elif status_code >= 500:
             error_data["error"][
                 "hint"
@@ -185,7 +173,10 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
         return JSONResponse(
             status_code=status_code,
             content=error_data,
-            headers={"X-Request-ID": request_id, "Content-Type": "application/json"},
+            headers={
+                "X-Request-ID": request_id,
+                "Content-Type": "application/json",
+            },
         )
 
 
@@ -194,12 +185,14 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
     Enhanced request logging middleware
     """
 
-    def __init__(self, app, log_body: bool = False, max_body_size: int = 1024):
+    def __init__(
+        self, app: Any, log_body: bool = False, max_body_size: int = 1024
+    ) -> None:
         super().__init__(app)
         self.log_body = log_body
         self.max_body_size = max_body_size
 
-    async def dispatch(self, request: Request, call_next) -> Response:
+    async def dispatch(self, request: Request, call_next: Any) -> Response:
         start_time = time.time()
 
         # Get request ID from state (set by ErrorHandlingMiddleware)
@@ -247,9 +240,7 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
         }
 
         if response.status_code >= 400:
-            logger.warning(
-                "Request completed with error", extra=response_log_data
-            )
+            logger.warning("Request completed with error", extra=response_log_data)
         else:
             logger.info(
                 "Request %s %s completed in %.2fms",
@@ -258,4 +249,4 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
                 process_time * 1000,
             )
 
-        return response
+        return response  # type: ignore

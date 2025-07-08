@@ -31,6 +31,7 @@ async def client(app: ZestAPICore):
     """Create a test client for the ZestAPI application."""
     import httpx
     from httpx import AsyncClient
+
     async with AsyncClient(
         transport=httpx.ASGITransport(app=app.app), base_url="http://testserver"
     ) as client:

@@ -1,11 +1,12 @@
 import importlib.util
 import os
+from typing import Any, Callable, List, Optional
 
-from starlette.routing import Route, WebSocketRoute
+from starlette.routing import BaseRoute, Route, WebSocketRoute
 
 
-def discover_routes(routes_dir):
-    discovered_routes = []
+def discover_routes(routes_dir: str) -> List[BaseRoute]:
+    discovered_routes: List[BaseRoute] = []
     for root, _, files in os.walk(routes_dir):
         for file in files:
             if file.endswith(".py") and not file.startswith("__"):
@@ -20,7 +21,8 @@ def discover_routes(routes_dir):
                         module = importlib.util.module_from_spec(spec)
                         spec.loader.exec_module(module)
 
-                        # Determine the path prefix based on directory structure
+                        # Determine the path prefix based on directory
+                        # structure
                         relative_path = os.path.relpath(root, routes_dir)
                         path_prefix = (
                             "/" + relative_path.replace(os.sep, "/")
@@ -58,26 +60,24 @@ def discover_routes(routes_dir):
                     import logging
 
                     logger = logging.getLogger(__name__)
-                    logger.warning(
-                        f"Failed to load route file {file_path}: {e}"
-                    )
+                    logger.warning(f"Failed to load route file {file_path}: {e}")
                     continue
     return discovered_routes
 
 
-def route(path, methods=None):
+def route(path: str, methods: Optional[List[str]] = None) -> Callable[[Any], Any]:
     if methods is None:
         methods = ["GET"]
 
-    def decorator(func):
+    def decorator(func: Any) -> Any:
         func.__route__ = {"path": path, "methods": methods}
         return func
 
     return decorator
 
 
-def websocket_route(path):
-    def decorator(func):
+def websocket_route(path: str) -> Callable[[Any], Any]:
+    def decorator(func: Any) -> Any:
         func.__route__ = {"path": path, "websocket": True}
         return func
 

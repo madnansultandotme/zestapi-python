@@ -70,6 +70,9 @@ async def health_check(request):
 app_instance.add_route("/", root)
 app_instance.add_route("/health", health_check)
 
+# Expose the app for ASGI servers
+app = app_instance.app
+
 if __name__ == "__main__":
     print("[*] Starting ZestAPI E-commerce API...")
     print("[*] API available at: http://localhost:8000")

@@ -15,6 +15,8 @@ Key Features:
 - Production-ready middleware
 """
 
+from starlette.responses import HTMLResponse
+
 from .core.application import ZestAPI
 from .core.middleware import ErrorHandlingMiddleware, RequestLoggingMiddleware
 from .core.ratelimit import RateLimitMiddleware
@@ -36,6 +38,7 @@ __all__ = [
     "route",
     "websocket_route",
     "ORJSONResponse",
+    "HTMLResponse",
     "Settings",
     "create_access_token",
     "JWTAuthBackend",

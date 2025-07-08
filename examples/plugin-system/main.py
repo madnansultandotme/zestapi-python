@@ -242,6 +242,9 @@ async def shutdown():
         print(f"[!] Plugin cleanup failed: {e}")
 
 
+# Expose the app for ASGI servers
+app = app_instance.app
+
 if __name__ == "__main__":
     # Run startup
     asyncio.run(startup())

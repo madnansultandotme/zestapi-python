@@ -668,6 +668,9 @@ app_instance.add_route("/api", root)
 app_instance.add_route("/api/rooms", get_rooms)
 app_instance.add_route("/health", health_check)
 
+# Expose the app for ASGI servers
+app = app_instance.app
+
 if __name__ == "__main__":
     print("[*] Starting ZestAPI WebSocket Chat...")
     print("[*] Open http://localhost:8000 in your browser to start chatting!")

@@ -25,7 +25,7 @@ from .core.routing import route, websocket_route
 from .core.security import JWTAuthBackend, create_access_token
 from .core.settings import Settings
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __author__ = "Muhammad Adnan Sultan"
 __email__ = "info.adnansultan@gmail.com"
 

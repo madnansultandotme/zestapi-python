@@ -183,4 +183,4 @@ curl -I https://your-domain.com/
 For additional support, refer to:
 - [Production Guide](PRODUCTION_GUIDE.md)
 - [LLM Guide](LLM_GUIDE.md) 
-- [Framework Documentation](README.md)
+- [Framework Documentation](../README.md)

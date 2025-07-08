@@ -1,8 +1,6 @@
 from jose import jwt, JWTError
 from datetime import datetime, timedelta, timezone
-from starlette.authentication import (
-    AuthCredentials, AuthenticationBackend, SimpleUser
-)
+from starlette.authentication import AuthCredentials, AuthenticationBackend, SimpleUser
 from starlette.requests import HTTPConnection
 from .settings import settings
 
@@ -25,9 +23,7 @@ class JWTAuthBackend(AuthenticationBackend):
                 if username is None:
                     # Return None for missing subject
                     return
-                return (
-                    AuthCredentials(["authenticated"]), SimpleUser(username)
-                )
+                return (AuthCredentials(["authenticated"]), SimpleUser(username))
         except JWTError:
             # Return None instead of raising exception for invalid JWT
             return
@@ -41,14 +37,11 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
     else:
-        expire = (
-            datetime.now(timezone.utc)
-            + timedelta(minutes=settings.jwt_access_token_expire_minutes)
+        expire = datetime.now(timezone.utc) + timedelta(
+            minutes=settings.jwt_access_token_expire_minutes
         )
     to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(
-        to_encode, settings.jwt_secret, algorithm=ALGORITHM
-    )
+    encoded_jwt = jwt.encode(to_encode, settings.jwt_secret, algorithm=ALGORITHM)
     return encoded_jwt
 
 
